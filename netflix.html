@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Netflix Sigilosa 5</title>
+
+<style>
+    body {
+        background: #111;
+        color: #eee;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    #login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 80px;
+    }
+
+    input {
+        padding: 10px;
+        margin: 10px;
+        width: 250px;
+        border: none;
+        border-radius: 4px;
+        background: #222;
+        color: #eee;
+    }
+
+    button {
+        padding: 10px 20px;
+        background: #e50914;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #status {
+        text-align: center;
+        margin-top: 20px;
+        color: #ccc;
+    }
+
+    #catalogo {
+        display: none;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .card {
+        width: 300px;
+        background: #181818;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        border: 2px solid #222;
+    }
+
+    video {
+        width: 100%;
+        border-radius: 8px;
+        border: 2px solid #333;
+    }
+
+    h3 {
+        font-size: 15px;
+        font-weight: normal;
+        margin-bottom: 8px;
+        color: #eee;
+    }
+</style>
+</head>
+<body>
+
+<div id="login">
+    <h2>🔒 Acesso</h2>
+    <input type="password" id="senha" placeholder="Digite a senha">
+    <button onclick="entrar()">Entrar</button>
+</div>
+
+<div id="status"></div>
+<div id="catalogo"></div>
+
+<script>
+// ==================== CONFIGURAÇÕES ====================
+const MAGIC = new TextEncoder().encode('VIDENC01');
+const PBKDF2_ITER = 200000;
+const DIGEST = 'SHA-256';
+
+// ==================== FUNÇÕES CRIPTO ====================
+async function deriveKey(password, salt) {
+    const enc = new TextEncoder();
+
+    const passKey = await crypto.subtle.importKey(
+        "raw",
+        enc.encode(password),
+        { name: "PBKDF2" },
+        false,
+        ["deriveKey"]
+    );
+
+    return await crypto.subtle.deriveKey(
+        {
+            name: "PBKDF2",
+            salt: salt,
+            iterations: PBKDF2_ITER,
+            hash: DIGEST
+        },
+        passKey,
+        { name: "AES-GCM", length: 256 },
+        false,
+        ["decrypt"]
+    );
+}
+
+async function decryptEncArrayBuffer(arrayBuffer, password) {
+    const data = new Uint8Array(arrayBuffer);
+    let offset = 0;
+
+    // MAGIC
+    for (let i = 0; i < MAGIC.length; i++) {
+        if (data[offset + i] !== MAGIC[i]) {
+            throw new Error("Arquivo inválido.");
+        }
+    }
+    offset += MAGIC.length;
+
+    const saltLen = data[offset++];
+    const salt = data.slice(offset, offset + saltLen);
+    offset += saltLen;
+
+    const ivLen = data[offset++];
+    const iv = data.slice(offset, offset + ivLen);
+    offset += ivLen;
+
+    const tagLen = data[offset++];
+    const tag = data.slice(offset, offset + tagLen);
+    offset += tagLen;
+
+    const cipher = data.slice(offset);
+
+    const cipherPlusTag = new Uint8Array(cipher.length + tagLen);
+    cipherPlusTag.set(cipher, 0);
+    cipherPlusTag.set(tag, cipher.length);
+
+    const key = await deriveKey(password, salt);
+
+    try {
+        return await crypto.subtle.decrypt(
+            { name: "AES-GCM", iv: iv },
+            key,
+            cipherPlusTag
+        );
+    } catch {
+        throw new Error("Senha incorreta.");
+    }
+}
+
+// ==================== LOAD DE CATÁLOGO ====================
+async function carregarTodos(password) {
+    const status = document.getElementById("status");
+    const lista = document.getElementById("catalogo");
+
+    lista.innerHTML = "";
+    status.textContent = "Carregando vídeos...";
+
+    const resp = await fetch("videos.json");
+    const videos = await resp.json();
+
+    for (const vid of videos) {
+        try {
+            const encFile = `${vid.index}.enc`;
+
+            const r = await fetch(encFile);
+            if (!r.ok) throw new Error("Arquivo não encontrado");
+
+            const buffer = await r.arrayBuffer();
+            const plain = await decryptEncArrayBuffer(buffer, password);
+
+            const blob = new Blob([plain], { type: "video/mp4" });
+            const url = URL.createObjectURL(blob);
+
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+                <h3>${vid.title}</h3>
+                <video controls src="${url}"></video>
+            `;
+
+            lista.appendChild(card);
+
+        } catch (e) {
+            console.log("Falhou:", vid.index, e.message);
+        }
+    }
+
+    status.textContent = "Pronto.";
+}
+
+// ==================== LOGIN ====================
+function entrar() {
+    const senha = document.getElementById("senha").value;
+    if (!senha) {
+        alert("Digite a senha!");
+        return;
+    }
+
+    document.getElementById("login").style.display = "none";
+    document.getElementById("catalogo").style.display = "flex";
+
+    carregarTodos(senha);
+}
+</script>
+
+</body>
+</html>

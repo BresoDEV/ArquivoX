@@ -1,224 +1,263 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<title>Netflix Sigilosa 5</title>
-
-<style>
-    body {
-        background: #111;
-        color: #eee;
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breso X Files</title>
+    <style>
+	* {
+      -webkit-tap-highlight-color: transparent;
+      /* Remove o flash azul no toque */
+      -webkit-touch-callout: none;
+      /* Remove menu de toque (iOS) */
+      user-select: none;
+      /* Impede seleção de texto acidental (opcional) */
+      -webkit-user-select: none;
+      /* Compatibilidade com WebKit */
     }
 
-    #login {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 80px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
 
-    input {
-        padding: 10px;
-        margin: 10px;
-        width: 250px;
-        border: none;
-        border-radius: 4px;
-        background: #222;
-        color: #eee;
-    }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+        }
 
-    button {
-        padding: 10px 20px;
-        background: #e50914;
-        border: none;
-        border-radius: 4px;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-    }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
 
-    #status {
-        text-align: center;
-        margin-top: 20px;
-        color: #ccc;
-    }
+        .form-group {
+            margin-bottom: 15px;
+        }
 
-    #catalogo {
-        display: none;
-        padding: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-    }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-    .card {
-        width: 300px;
-        background: #181818;
-        padding: 10px;
-        border-radius: 8px;
-        text-align: center;
-        border: 2px solid #222;
-    }
+        .form-group input,
+        .form-group textarea {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            resize: none;
+        }
 
-    video {
-        width: 100%;
-        border-radius: 8px;
-        border: 2px solid #333;
-    }
+        .form-group input[type="file"] {
+            padding: 5px;
+        }
 
-    h3 {
-        font-size: 15px;
-        font-weight: normal;
-        margin-bottom: 8px;
-        color: #eee;
-    }
-</style>
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .buttons button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6200ea;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #3700b3;
+        }
+
+        .line-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .line-buttons input {
+            width: 70%;
+        }
+
+        .line-buttons button {
+            width: 15%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6200ea;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .line-buttons button:hover {
+            background-color: #3700b3;
+        }
+
+        @media (max-width: 600px) {
+
+            .line-buttons input,
+            .line-buttons button {
+                width: 60%;
+                margin-bottom: 10px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .buttons button {
+                width: 60%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div id="login">
-    <h2>🔒 Acesso</h2>
-    <input type="password" id="senha" placeholder="Digite a senha">
-    <button onclick="entrar()">Entrar</button>
-</div>
+    <div class="container" id="container">
+        <center>
+            <h1 id="ArquivoX">ArquivoX V2</h1>
+			
+			<div class="buttons">
+                <center>
+                    <button id="netflix">Netflix X</button>
+                </center>
+            </div>
+			
 
-<div id="status"></div>
-<div id="catalogo"></div>
+            <div class="form-group">
+                <input type="text" autocomplete="off" id="senha" placeholder="Chave de Acesso">
+            </div>
 
-<script>
-// ==================== CONFIGURAÇÕES ====================
-const MAGIC = new TextEncoder().encode('VIDENC01');
-const PBKDF2_ITER = 200000;
-const DIGEST = 'SHA-256';
+            <div class="form-group">
+                <input type="number" autocomplete="off" id="indexIMG" placeholder="Index da Imagem">
+            </div>
 
-// ==================== FUNÇÕES CRIPTO ====================
-async function deriveKey(password, salt) {
-    const enc = new TextEncoder();
+            <div class="buttons">
+                <center>
+                    <button id="Exibir">Carregar Imagem</button>
+                </center>
+            </div>
 
-    const passKey = await crypto.subtle.importKey(
-        "raw",
-        enc.encode(password),
-        { name: "PBKDF2" },
-        false,
-        ["deriveKey"]
-    );
 
-    return await crypto.subtle.deriveKey(
-        {
-            name: "PBKDF2",
-            salt: salt,
-            iterations: PBKDF2_ITER,
-            hash: DIGEST
-        },
-        passKey,
-        { name: "AES-GCM", length: 256 },
-        false,
-        ["decrypt"]
-    );
-}
 
-async function decryptEncArrayBuffer(arrayBuffer, password) {
-    const data = new Uint8Array(arrayBuffer);
-    let offset = 0;
+            <img id="imgResultado" style="max-width: 80%;width: 80%;border:1px solid white">
+            <br>
+            <br>
+            <br>
 
-    // MAGIC
-    for (let i = 0; i < MAGIC.length; i++) {
-        if (data[offset + i] !== MAGIC[i]) {
-            throw new Error("Arquivo inválido.");
-        }
-    }
-    offset += MAGIC.length;
 
-    const saltLen = data[offset++];
-    const salt = data.slice(offset, offset + saltLen);
-    offset += saltLen;
-
-    const ivLen = data[offset++];
-    const iv = data.slice(offset, offset + ivLen);
-    offset += ivLen;
-
-    const tagLen = data[offset++];
-    const tag = data.slice(offset, offset + tagLen);
-    offset += tagLen;
-
-    const cipher = data.slice(offset);
-
-    const cipherPlusTag = new Uint8Array(cipher.length + tagLen);
-    cipherPlusTag.set(cipher, 0);
-    cipherPlusTag.set(tag, cipher.length);
-
-    const key = await deriveKey(password, salt);
-
-    try {
-        return await crypto.subtle.decrypt(
-            { name: "AES-GCM", iv: iv },
-            key,
-            cipherPlusTag
-        );
-    } catch {
-        throw new Error("Senha incorreta.");
-    }
-}
-
-// ==================== LOAD DE CATÁLOGO ====================
-async function carregarTodos(password) {
-    const status = document.getElementById("status");
-    const lista = document.getElementById("catalogo");
-
-    lista.innerHTML = "";
-    status.textContent = "Carregando vídeos...";
-
-    const resp = await fetch("videos.json");
-    const videos = await resp.json();
-
-    for (const vid of videos) {
-        try {
-            const encFile = `${vid.index}.enc`;
-
-            const r = await fetch(encFile);
-            if (!r.ok) throw new Error("Arquivo não encontrado");
-
-            const buffer = await r.arrayBuffer();
-            const plain = await decryptEncArrayBuffer(buffer, password);
-
-            const blob = new Blob([plain], { type: "video/mp4" });
-            const url = URL.createObjectURL(blob);
-
-            const card = document.createElement("div");
-            card.className = "card";
-            card.innerHTML = `
-                <h3>${vid.title}</h3>
-                <video controls src="${url}"></video>
-            `;
-
-            lista.appendChild(card);
-
-        } catch (e) {
-            console.log("Falhou:", vid.index, e.message);
-        }
-    }
-
-    status.textContent = "Pronto.";
-}
-
-// ==================== LOGIN ====================
-function entrar() {
-    const senha = document.getElementById("senha").value;
-    if (!senha) {
-        alert("Digite a senha!");
-        return;
-    }
-
-    document.getElementById("login").style.display = "none";
-    document.getElementById("catalogo").style.display = "flex";
-
-    carregarTodos(senha);
-}
-</script>
+        </center>
+    </div>
 
 </body>
+
+<script>
+
+
+    var senha = document.getElementById('senha')
+    var indexIMG = document.getElementById('indexIMG')
+    var Exibir = document.getElementById('Exibir')
+    var imgResultado = document.getElementById('imgResultado')
+    var netflix = document.getElementById('netflix')
+
+
+
+
+
+
+    netflix.addEventListener('click', () => {
+         window.location.href = "netflix.html";
+    })
+
+    Exibir.addEventListener('click', () => {
+        fetch(`img (${indexIMG.value}).txt`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP! Status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(data => {
+                //console.log('Dados recebidos:', data);
+                let base64 = data.trim();
+
+                imgResultado.src = "data:image/png;base64," + decrip(base64, joaat(senha.value));
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+                console.log(error)
+                i = 10000 //finaliza o hook
+            });
+    })
+
+     
+
+    function decrip(text, key) {
+        let e = atob(text)
+        let d = ''
+        for (let i = 0; i < e.length; i++) {
+            d += String.fromCharCode(e.charCodeAt(i) ^ key.charCodeAt(i % key.length))
+        }
+        return d
+    }
+
+    function joaat(text) {
+        if (!text) {
+            return 0;
+        }
+        var value = 0, temp;
+        var index = 0;
+        var quoted = false;
+        if (text.charCodeAt(index) === 34) {
+            quoted = true;
+            index = (index + 1) | 0;
+        }
+        text = text.toLowerCase();
+        for (; index < text.length; index = (index + 1) | 0) {
+            var v = text.charCodeAt(index);
+            if (quoted && (v === 34)) {
+                break;
+            }
+            if (v === 92) {
+                v = 47;
+            }
+            temp = v;
+            temp = (temp + value) >>> 0;
+            value = (temp << 10) >>> 0;
+            temp = (temp + value) >>> 0;
+            value = temp >>> 6;
+            value = (value ^ temp) >>> 0;
+        }
+        temp = (value << 3) >>> 0;
+        temp = (value + temp) >>> 0;
+        var temp2 = temp >>> 11;
+        temp = (temp2 ^ temp) >>> 0;
+        temp2 = (temp << 15) >>> 0;
+        value = (temp2 + temp) >>> 0;
+        if (value < 2) {
+            value = (value + 2) >>> 0;
+        }
+        return '0x' + value.toString(16).toUpperCase();
+    }
+
+
+</script>
+
 </html>
