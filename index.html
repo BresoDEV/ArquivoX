@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>NetFlix Sigiloso 3</title>
+<title>NetFlix Sigiloso 4</title>
 <style>
   :root{
     --bg:#0a0a0a; --card:#111; --muted:#9aa;
@@ -48,10 +48,13 @@
 
 <script>
 /* ====== Configurações (deve ser consistente com o encriptor C#) ====== */
-const MAGIC = new TextEncoder().encode('VIDENC01');
-const PBKDF2_ITER = 200000;
-const DIGEST = 'SHA-256';
+ 
 const CONCURRENCY = 2; // quantos downloads/descrypt simultâneos (ajuste conforme memória)
+
+const MAGIC = new TextEncoder().encode('VIDENC01'); // 8 bytes
+const PBKDF2_ITER = 200000;
+const KEY_LEN = 32; // 256 bits
+const DIGEST = 'SHA-256';
 
 /* ====== Util helpers ====== */
 function el(tag, props={}, ...children){
@@ -61,13 +64,13 @@ function el(tag, props={}, ...children){
   return e;
 }
 
-async function deriveKeyOnce(password, salt) {
+async function deriveKey(password, salt) {
   const enc = new TextEncoder();
-  const base = await crypto.subtle.importKey('raw', enc.encode(password), {name:'PBKDF2'}, false, ['deriveKey']);
+  const passKey = await crypto.subtle.importKey('raw', enc.encode(password), {name: 'PBKDF2'}, false, ['deriveKey']);
   const key = await crypto.subtle.deriveKey(
-    { name:'PBKDF2', salt: salt, iterations: PBKDF2_ITER, hash: DIGEST },
-    base,
-    { name:'AES-GCM', length: 256 },
+    { name: 'PBKDF2', salt: salt, iterations: PBKDF2_ITER, hash: DIGEST },
+    passKey,
+    { name: 'AES-GCM', length: 256 },
     false,
     ['decrypt']
   );
@@ -78,24 +81,32 @@ async function deriveKeyFromPasswordAndSalt(password, salt) {
   return await deriveKeyOnce(password, salt);
 }
 
-async function decryptEncArrayBufferWithKey(arrayBuffer, key) {
+async function decryptEncArrayBuffer(arrayBuffer, password) {
   const data = new Uint8Array(arrayBuffer);
   let offset = 0;
   const magic = data.slice(offset, offset + MAGIC.length); offset += MAGIC.length;
-  for(let i=0;i<MAGIC.length;i++) if(magic[i] !== MAGIC[i]) throw new Error('Formato inválido (magic mismatch)');
-  const saltLen = data[offset++]; const salt = data.slice(offset, offset + saltLen); offset += saltLen;
-  const ivLen = data[offset++]; const iv = data.slice(offset, offset + ivLen); offset += ivLen;
-  const tagLen = data[offset++]; const tag = data.slice(offset, offset + tagLen); offset += tagLen;
+  for (let i=0;i<MAGIC.length;i++){
+    if (magic[i] !== MAGIC[i]) throw new Error('Formato inválido (magic mismatch).');
+  }
+  const saltLen = data[offset++]; 
+  const salt = data.slice(offset, offset + saltLen); offset += saltLen;
+  const ivLen = data[offset++]; 
+  const iv = data.slice(offset, offset + ivLen); offset += ivLen;
+  const tagLen = data[offset++]; 
+  const tag = data.slice(offset, offset + tagLen); offset += tagLen;
   const cipher = data.slice(offset);
-  const cipherPlusTag = new Uint8Array(cipher.length + tagLen);
-  cipherPlusTag.set(cipher,0); cipherPlusTag.set(tag, cipher.length);
 
-  // Important: here we already have a derived key passed in; but the format stores salt for consistency.
+  // AES-GCM espera ciphertext concatenado com tag no final
+  const cipherPlusTag = new Uint8Array(cipher.length + tagLen);
+  cipherPlusTag.set(cipher, 0);
+  cipherPlusTag.set(tag, cipher.length);
+
+  const key = await deriveKey(password, salt.buffer);
   try {
-    const plain = await crypto.subtle.decrypt({name:'AES-GCM', iv: iv}, key, cipherPlusTag.buffer);
-    return plain;
+    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, key, cipherPlusTag.buffer);
+    return plain; // ArrayBuffer do mp4
   } catch (e) {
-    throw new Error('Falha na descriptografia (senha incorreta ou arquivo corrompido).');
+    throw new Error('Falha na descriptografia (senha incorreta ou dados corrompidos).');
   }
 }
 
