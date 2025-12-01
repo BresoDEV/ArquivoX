@@ -230,7 +230,7 @@ namespace ImgToText
 
             if (ConversorJPEG.arquivos.Count() == ConversorJPEG.ponteiro)
             {
-                timer1.Stop();
+                timer2.Stop();
             }
         }
 
