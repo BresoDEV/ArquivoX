@@ -187,7 +187,7 @@
     })
 
     Exibir.addEventListener('click', () => {
-        fetch(`img (${indexIMG.value}).txt`)
+        fetch(`imagens/img (${indexIMG.value}).txt`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`Erro HTTP! Status: ${response.status}`);
