@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Netflix - Arquivo X</title>
+<title>Netflix - Arquivo X V2</title>
 
 <style>
     body {
@@ -178,7 +178,7 @@ async function carregarTodos(password) {
 
     for (const vid of videos) {
         try {
-            const encFile = `${vid.index}.enc`;
+            const encFile = `${vid.index}`;
 
             const r = await fetch(encFile);
             if (!r.ok) throw new Error("Arquivo não encontrado");

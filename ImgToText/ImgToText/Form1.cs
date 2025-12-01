@@ -285,7 +285,7 @@ namespace ImgToText
             }
             s += "{\"index\":\"\", \"title\":\"\"}\n";
             s += "]\n";
-            richTextBox2.Text = s;
+            richTextBox2.Text = s.Replace(".mp4", ".enc");
         }
     }
 }
