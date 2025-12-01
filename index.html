@@ -1,252 +1,223 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>NetFlix Sigiloso 4</title>
+<meta charset="UTF-8">
+<title>Netflix Sigilosa 5</title>
+
 <style>
-  :root{
-    --bg:#0a0a0a; --card:#111; --muted:#9aa;
-  }
-  body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#050505,#0b0b0b);color:#eee;}
-  header{padding:22px 28px;display:flex;align-items:center;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,.6);background:rgba(0,0,0,.2);}
-  h1{margin:0;font-size:20px;letter-spacing:0.5px}
-  .controls{display:flex;gap:10px;align-items:center;margin-left:auto}
-  input[type="password"]{padding:8px 10px;border-radius:6px;border:1px solid #222;background:#0c0c0c;color:#fff}
-  button{padding:9px 12px;border-radius:8px;border:0;background:#e50914;color:#fff;cursor:pointer;font-weight:600}
-  main{padding:18px;}
-  .status{margin:8px 0;color:var(--muted);font-size:14px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:18px}
-  .card{background:linear-gradient(180deg,#111,#0f0f0f);border-radius:10px;padding:8px;border:1px solid rgba(255,255,255,.03);box-shadow:0 6px 18px rgba(0,0,0,.6);display:flex;flex-direction:column}
-  .thumb{background:#000;height:125px;border-radius:6px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-  .thumb video{height:100%;width:auto;display:block}
-  .meta{padding:8px 6px;display:flex;flex-direction:column;gap:6px}
-  .title{font-size:14px;font-weight:600}
-  .small{font-size:12px;color:var(--muted)}
-  .actions{display:flex;gap:8px;align-items:center}
-  .playBtn{padding:7px 10px;border-radius:6px;border:0;background:#22a;color:#fff;cursor:pointer}
-  .error{color:#ff6b6b}
-  .ok{color:#66ff99}
-  .tiny{font-size:11px;color:var(--muted)}
+    body {
+        background: #111;
+        color: #eee;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    #login {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 80px;
+    }
+
+    input {
+        padding: 10px;
+        margin: 10px;
+        width: 250px;
+        border: none;
+        border-radius: 4px;
+        background: #222;
+        color: #eee;
+    }
+
+    button {
+        padding: 10px 20px;
+        background: #e50914;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #status {
+        text-align: center;
+        margin-top: 20px;
+        color: #ccc;
+    }
+
+    #catalogo {
+        display: none;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .card {
+        width: 300px;
+        background: #181818;
+        padding: 10px;
+        border-radius: 8px;
+        text-align: center;
+        border: 2px solid #222;
+    }
+
+    video {
+        width: 100%;
+        border-radius: 8px;
+        border: 2px solid #333;
+    }
+
+    h3 {
+        font-size: 15px;
+        font-weight: normal;
+        margin-bottom: 8px;
+        color: #eee;
+    }
 </style>
 </head>
 <body>
-<header>
-  <h1>NetFlix Sigiloso</h1>
-  <div class="controls">
-    <input id="pw" type="password" placeholder="Digite a senha..." />
-    <button id="unlockBtn">Desbloquear Todos</button>
-  </div>
-</header>
 
-<main>
-  <div class="status" id="globalStatus">Arquivo manifest: <span id="manifestStatus">aguardando</span></div>
-  <div class="tiny">OBS: Coloque <code>videos.json</code> e os <code>.enc</code> na mesma pasta.</div>
-  <div class="grid" id="grid"></div>
-</main>
+<div id="login">
+    <h2>🔒 Acesso</h2>
+    <input type="password" id="senha" placeholder="Digite a senha">
+    <button onclick="entrar()">Entrar</button>
+</div>
+
+<div id="status"></div>
+<div id="catalogo"></div>
 
 <script>
-/* ====== Configurações (deve ser consistente com o encriptor C#) ====== */
- 
-const CONCURRENCY = 2; // quantos downloads/descrypt simultâneos (ajuste conforme memória)
-
-const MAGIC = new TextEncoder().encode('VIDENC01'); // 8 bytes
+// ==================== CONFIGURAÇÕES ====================
+const MAGIC = new TextEncoder().encode('VIDENC01');
 const PBKDF2_ITER = 200000;
-const KEY_LEN = 32; // 256 bits
 const DIGEST = 'SHA-256';
 
-/* ====== Util helpers ====== */
-function el(tag, props={}, ...children){
-  const e = document.createElement(tag);
-  Object.assign(e, props);
-  for(const c of children) if (c != null) e.append(typeof c === 'string' ? document.createTextNode(c) : c);
-  return e;
-}
-
+// ==================== FUNÇÕES CRIPTO ====================
 async function deriveKey(password, salt) {
-  const enc = new TextEncoder();
-  const passKey = await crypto.subtle.importKey('raw', enc.encode(password), {name: 'PBKDF2'}, false, ['deriveKey']);
-  const key = await crypto.subtle.deriveKey(
-    { name: 'PBKDF2', salt: salt, iterations: PBKDF2_ITER, hash: DIGEST },
-    passKey,
-    { name: 'AES-GCM', length: 256 },
-    false,
-    ['decrypt']
-  );
-  return key;
-}
+    const enc = new TextEncoder();
 
-async function deriveKeyFromPasswordAndSalt(password, salt) {
-  return await deriveKeyOnce(password, salt);
+    const passKey = await crypto.subtle.importKey(
+        "raw",
+        enc.encode(password),
+        { name: "PBKDF2" },
+        false,
+        ["deriveKey"]
+    );
+
+    return await crypto.subtle.deriveKey(
+        {
+            name: "PBKDF2",
+            salt: salt,
+            iterations: PBKDF2_ITER,
+            hash: DIGEST
+        },
+        passKey,
+        { name: "AES-GCM", length: 256 },
+        false,
+        ["decrypt"]
+    );
 }
 
 async function decryptEncArrayBuffer(arrayBuffer, password) {
-  const data = new Uint8Array(arrayBuffer);
-  let offset = 0;
-  const magic = data.slice(offset, offset + MAGIC.length); offset += MAGIC.length;
-  for (let i=0;i<MAGIC.length;i++){
-    if (magic[i] !== MAGIC[i]) throw new Error('Formato inválido (magic mismatch).');
-  }
-  const saltLen = data[offset++]; 
-  const salt = data.slice(offset, offset + saltLen); offset += saltLen;
-  const ivLen = data[offset++]; 
-  const iv = data.slice(offset, offset + ivLen); offset += ivLen;
-  const tagLen = data[offset++]; 
-  const tag = data.slice(offset, offset + tagLen); offset += tagLen;
-  const cipher = data.slice(offset);
-
-  // AES-GCM espera ciphertext concatenado com tag no final
-  const cipherPlusTag = new Uint8Array(cipher.length + tagLen);
-  cipherPlusTag.set(cipher, 0);
-  cipherPlusTag.set(tag, cipher.length);
-
-  const key = await deriveKey(password, salt.buffer);
-  try {
-    const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, key, cipherPlusTag.buffer);
-    return plain; // ArrayBuffer do mp4
-  } catch (e) {
-    throw new Error('Falha na descriptografia (senha incorreta ou dados corrompidos).');
-  }
-}
-
-/* ====== Funções principais ====== */
-const manifestStatus = document.getElementById('manifestStatus');
-const grid = document.getElementById('grid');
-const globalStatus = document.getElementById('globalStatus');
-
-async function loadManifest() {
-  manifestStatus.textContent = 'carregando...';
-  try {
-    const r = await fetch('videos.json', {cache:'no-store'});
-    if (!r.ok) throw new Error('videos.json não encontrado');
-    const list = await r.json();
-    // Expecting array of {index: '1', title: 'Nome opcional'} or simple array of indices
-    manifestStatus.textContent = `encontrados ${list.length} itens`;
-    return list;
-  } catch (e) {
-    manifestStatus.textContent = 'erro: ' + e.message;
-    throw e;
-  }
-}
-
-function makeCard(item) {
-  const card = el('div',{className:'card'});
-  const thumb = el('div',{className:'thumb'}, el('div', {className:'tiny'}, 'preview'));
-  const meta = el('div',{className:'meta'});
-  const title = el('div',{className:'title'}, item.title || `Vídeo ${item.index}`);
-  const small = el('div',{className:'small'}, `Arquivo: ${item.index}.enc`);
-  const actions = el('div',{className:'actions'});
-  const status = el('div',{className:'tiny'}, 'pendente');
-  const playBtn = el('button',{className:'playBtn', disabled:true}, 'Play');
-  actions.append(playBtn);
-  meta.append(title, small, actions, status);
-  card.append(thumb, meta);
-  return {card, thumb, status, playBtn};
-}
-
-async function unlockAll(password) {
-  grid.innerHTML = '';
-  globalStatus.textContent = 'Derivando chave...';
-  const manifest = await loadManifest();
-  // normalize manifest
-  const items = manifest.map(x => {
-    if (typeof x === 'number' || typeof x === 'string') return { index: String(x), title: null };
-    return { index: String(x.index), title: x.title || null };
-  });
-
-  // create UI cards
-  const uiItems = items.map(it => ({ item: it, ui: makeCard(it) }));
-  uiItems.forEach(u => grid.appendChild(u.ui.card));
-
-  // Strategy:
-  // 1) Fetch small headers of first file to get salt and derive key once.
-  // We'll try to fetch the first file partial (Range) to read header; but not all servers support Range.
-  // Fallback: fetch whole first file.
-  let commonKey = null;
-  try {
-    globalStatus.textContent = 'Obtendo salt do primeiro arquivo para derivar chave...';
-    const firstFile = `${items[0].index}.enc`;
-    // try range fetch first 64KB (should include header)
-    let resp = await fetch(firstFile, {headers: {'Range':'bytes=0-65535'}});
-    if (!resp.ok && resp.status !== 206 && resp.status !== 200) throw new Error('Não foi possível obter arquivo para extrair salt.');
-    const ab = await resp.arrayBuffer();
-    // parse header to extract salt
-    const data = new Uint8Array(ab);
+    const data = new Uint8Array(arrayBuffer);
     let offset = 0;
-    const magic = data.slice(offset, offset + MAGIC.length); offset += MAGIC.length;
-    for(let i=0;i<MAGIC.length;i++) if(magic[i] !== MAGIC[i]) throw new Error('Formato inválido (magic mismatch)');
-    const saltLen = data[offset++]; const salt = data.slice(offset, offset + saltLen); offset += saltLen;
-    // derive key once
-    commonKey = await deriveKeyFromPasswordAndSalt(password, salt.buffer);
-    globalStatus.textContent = 'Chave derivada com sucesso. Iniciando download/descriptografia em fila...';
-  } catch (e) {
-    globalStatus.textContent = 'Erro ao derivar chave: ' + e.message;
-    // stop
-    return;
-  }
 
-  // Promise pool for concurrency
-  let idx = 0;
-  async function worker() {
-    while(true) {
-      const i = idx++;
-      if (i >= uiItems.length) return;
-      const obj = uiItems[i];
-      const filename = `${obj.item.index}.enc`;
-      obj.ui.status.textContent = 'baixando...';
-      try {
-        const resp = await fetch(filename);
-        if (!resp.ok) throw new Error('Arquivo não encontrado');
-        const ab = await resp.arrayBuffer();
-        obj.ui.status.textContent = 'descriptografando...';
-        const plain = await decryptEncArrayBufferWithKey(ab, commonKey);
-        // cria blob e video
-        const blob = new Blob([plain], {type:'video/mp4'});
-        const url = URL.createObjectURL(blob);
-        const video = document.createElement('video');
-        video.controls = true; video.preload = 'metadata';
-        video.src = url; video.style.width = '100%';
-        // attach into thumb
-        obj.ui.thumb.innerHTML = '';
-        obj.ui.thumb.appendChild(video);
-        obj.ui.playBtn.disabled = false;
-        obj.ui.playBtn.onclick = () => {
-          // pausar outros vídeos para comportamento "netflix"
-          document.querySelectorAll('.thumb video').forEach(v => { if (v !== video) v.pause(); });
-          video.play();
-        };
-        obj.ui.status.textContent = 'OK';
-        obj.ui.status.classList.add('ok');
-      } catch (err) {
-        console.error('Erro item', filename, err);
-        obj.ui.status.textContent = 'erro: ' + err.message;
-        obj.ui.status.classList.add('error');
-      }
+    // MAGIC
+    for (let i = 0; i < MAGIC.length; i++) {
+        if (data[offset + i] !== MAGIC[i]) {
+            throw new Error("Arquivo inválido.");
+        }
     }
-  }
+    offset += MAGIC.length;
 
-  // launch workers
-  const workers = [];
-  for (let w=0; w<CONCURRENCY; w++) workers.push(worker());
-  await Promise.all(workers);
-  globalStatus.textContent = 'Processo concluído.';
+    const saltLen = data[offset++];
+    const salt = data.slice(offset, offset + saltLen);
+    offset += saltLen;
+
+    const ivLen = data[offset++];
+    const iv = data.slice(offset, offset + ivLen);
+    offset += ivLen;
+
+    const tagLen = data[offset++];
+    const tag = data.slice(offset, offset + tagLen);
+    offset += tagLen;
+
+    const cipher = data.slice(offset);
+
+    const cipherPlusTag = new Uint8Array(cipher.length + tagLen);
+    cipherPlusTag.set(cipher, 0);
+    cipherPlusTag.set(tag, cipher.length);
+
+    const key = await deriveKey(password, salt);
+
+    try {
+        return await crypto.subtle.decrypt(
+            { name: "AES-GCM", iv: iv },
+            key,
+            cipherPlusTag
+        );
+    } catch {
+        throw new Error("Senha incorreta.");
+    }
 }
 
-/* ====== Entrypoints ====== */
-document.getElementById('unlockBtn').addEventListener('click', async () => {
-  const pw = document.getElementById('pw').value;
-  if (!pw) { alert('Digite a senha'); return; }
-  try {
-    await unlockAll(pw);
-  } catch (e) {
-    console.error(e);
-    alert('Falha: ' + e.message);
-  }
-});
+// ==================== LOAD DE CATÁLOGO ====================
+async function carregarTodos(password) {
+    const status = document.getElementById("status");
+    const lista = document.getElementById("catalogo");
 
-/* carrega manifest inicial (opcional) */
-loadManifest().catch(()=>{});
+    lista.innerHTML = "";
+    status.textContent = "Carregando vídeos...";
+
+    const resp = await fetch("videos.json");
+    const videos = await resp.json();
+
+    for (const vid of videos) {
+        try {
+            const encFile = `${vid.index}.enc`;
+
+            const r = await fetch(encFile);
+            if (!r.ok) throw new Error("Arquivo não encontrado");
+
+            const buffer = await r.arrayBuffer();
+            const plain = await decryptEncArrayBuffer(buffer, password);
+
+            const blob = new Blob([plain], { type: "video/mp4" });
+            const url = URL.createObjectURL(blob);
+
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+                <h3>${vid.title}</h3>
+                <video controls src="${url}"></video>
+            `;
+
+            lista.appendChild(card);
+
+        } catch (e) {
+            console.log("Falhou:", vid.index, e.message);
+        }
+    }
+
+    status.textContent = "Pronto.";
+}
+
+// ==================== LOGIN ====================
+function entrar() {
+    const senha = document.getElementById("senha").value;
+    if (!senha) {
+        alert("Digite a senha!");
+        return;
+    }
+
+    document.getElementById("login").style.display = "none";
+    document.getElementById("catalogo").style.display = "flex";
+
+    carregarTodos(senha);
+}
 </script>
 
 </body>
