@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Netflix Sigilosa 5</title>
+<title>Netflix Arquivo X</title>
 
 <style>
     body {
@@ -172,7 +172,7 @@ async function carregarTodos(password) {
     lista.innerHTML = "";
     status.textContent = "Carregando vídeos...";
 
-    const resp = await fetch("videos.json");
+    const resp = await fetch("videos.json?v=" + Date.now());
     const videos = await resp.json();
 
     for (const vid of videos) {
