@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Dark</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0e0e0e;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
+			margin-top:50px;
+        }
+
+        .container label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .container input {
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background: #2a2a2a;
+            color: #fff;
+            outline: none;
+        }
+
+        .container input::placeholder {
+            color: #aaa;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6200ea;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container"> 
+        <button id="Voltar">Voltar</button>
+
+        <input value="6c2285fdd0@webxio.pro" type="text" placeholder="Digite algo...">  
+        <input value="1fc4e747e4@webxio.pro" type="text" placeholder="Digite algo..."> 
+        <input value="4855d76fb5@webxio.pro" type="text" placeholder="Digite algo..."> 
+        <input value="ad3c073afc@webxio.pro" type="text" placeholder="Digite algo..."> 
+        <input value="cc686bbcc5@webxio.pro" type="text" placeholder="Digite algo..."> 
+        <input value="e7c045d72f@webxio.pro" type="text" placeholder="Digite algo..."> 
+        <input value="3c936596bc@webxio.pro" type="text" placeholder="Digite algo..."> 
+        <input value="34e73a8eb1@webxio.pro" type="text" placeholder="Digite algo...">  
+    </div>
+
+</body>
+<script>
+    document.getElementById('Voltar').addEventListener('click',()=>{
+        window.location.href = "index.html";
+    })
+</script>
+</html>

@@ -137,6 +137,8 @@
 			<div class="buttons">
                 <center>
                     <button id="netflix">Netflix X</button>
+                    <button id="Prompts">Prompts</button>
+                    <button id="emails">Emails</button>
                 </center>
             </div>
 			
@@ -176,12 +178,21 @@
     var Exibir = document.getElementById('Exibir')
     var imgResultado = document.getElementById('imgResultado')
     var netflix = document.getElementById('netflix')
+    var Prompts = document.getElementById('Prompts')
+    var emails = document.getElementById('emails')
 
 
 
 
 
 
+    emails.addEventListener('click', () => {
+         window.location.href = "emails.html";
+    })
+
+    Prompts.addEventListener('click', () => {
+         window.location.href = "gerador_prompt.html";
+    })
     netflix.addEventListener('click', () => {
          window.location.href = "netflix.html";
     })
