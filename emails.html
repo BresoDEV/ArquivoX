@@ -1,80 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layout Dark</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #0e0e0e;
-            font-family: Arial, sans-serif;
-            color: #fff;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 300px;
-            padding: 20px;
-            background: #1a1a1a;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.6);
-			margin-top:50px;
-        }
-
-        .container label {
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .container input {
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            background: #2a2a2a;
-            color: #fff;
-            outline: none;
-        }
-
-        .container input::placeholder {
-            color: #aaa;
-        }
-        button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            background-color: #6200ea;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Lista de Emails</title>
+<style>
+    body {
+        background-color: #111;
+        color: #ccc;
+        font-family: Arial, sans-serif;
+        padding: 40px;
+        text-align: center;
+    }
+    .email-input {
+        display: block;
+        margin: 10px auto;
+        padding: 8px;
+        width: 300px;
+        font-size: 17px;
+        text-align: center;
+        border: 1px solid #444;
+        background: #000;
+        color: green;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
 
-    <div class="container"> 
-        <button id="Voltar">Voltar</button>
+<h2>Lista de Emails</h2>
+<div id="emailContainer"></div>
 
-        <input value="6c2285fdd0@webxio.pro" type="text" placeholder="Digite algo...">  
-        <input value="1fc4e747e4@webxio.pro" type="text" placeholder="Digite algo..."> 
-        <input value="4855d76fb5@webxio.pro" type="text" placeholder="Digite algo..."> 
-        <input value="ad3c073afc@webxio.pro" type="text" placeholder="Digite algo..."> 
-        <input value="cc686bbcc5@webxio.pro" type="text" placeholder="Digite algo..."> 
-        <input value="e7c045d72f@webxio.pro" type="text" placeholder="Digite algo..."> 
-        <input value="3c936596bc@webxio.pro" type="text" placeholder="Digite algo..."> 
-        <input value="34e73a8eb1@webxio.pro" type="text" placeholder="Digite algo...">  
-    </div>
+<script>
+// -------------------------------------------
+// 1) LISTA DE EMAILS
+// -------------------------------------------
+const emails = [
+    "d0482d626a@webxio.pro",
+"c6259afbe3@webxio.pro",
+"4ceb9d860b@webxio.pro",
+"333343f713@webxio.pro",
+"e6e37ceee8@webxio.pro",
+"61dd088efa@webxio.pro",
+"6c2285fdd0@webxio.pro",  
+"1fc4e747e4@webxio.pro", 
+"4855d76fb5@webxio.pro", 
+"ad3c073afc@webxio.pro", 
+"cc686bbcc5@webxio.pro", 
+"e7c045d72f@webxio.pro", 
+"3c936596bc@webxio.pro", 
+"34e73a8eb1@webxio.pro"
+];
+
+// -------------------------------------------
+// 2) CONTROLE DE EXPIRAÇÃO (2 DIAS)
+// -------------------------------------------
+const STORAGE_KEY = "emails_used_state";
+const EXP_KEY = "emails_used_expiration";
+const TWO_DAYS_MS = 2 * 24 * 60 * 60 * 1000;
+
+function resetIfExpired() {
+    const exp = localStorage.getItem(EXP_KEY);
+    const now = Date.now();
+
+    if (!exp || now > Number(exp)) {
+        localStorage.removeItem(STORAGE_KEY);
+
+        localStorage.setItem(EXP_KEY, now + TWO_DAYS_MS);
+    }
+}
+
+resetIfExpired();
+
+// -------------------------------------------
+// 3) CARREGA ESTADOS SALVOS
+// -------------------------------------------
+let usedState = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+
+// -------------------------------------------
+// 4) RENDERIZA OS INPUTS
+// -------------------------------------------
+const container = document.getElementById("emailContainer");
+
+emails.forEach(email => {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = email;
+    input.className = "email-input";
+
+    // Cor inicial
+    input.style.color = usedState[email] ? "red" : "green";
+
+    // Evento de clique → copiar
+    input.addEventListener("click", async () => {
+        try {
+            await navigator.clipboard.writeText(email);
+
+            // Marca como usado
+            usedState[email] = true;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(usedState));
+
+            // Muda cor
+            input.style.color = "red";
+
+        } catch (err) {
+            alert("Erro ao copiar.");
+        }
+    });
+
+    container.appendChild(input);
+});
+</script>
 
 </body>
-<script>
-    document.getElementById('Voltar').addEventListener('click',()=>{
-        window.location.href = "index.html";
-    })
-</script>
 </html>
