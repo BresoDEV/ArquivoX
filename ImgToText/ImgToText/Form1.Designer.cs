@@ -31,16 +31,13 @@
             components = new System.ComponentModel.Container();
             textBox1 = new TextBox();
             button1 = new Button();
-            richTextBox1 = new RichTextBox();
             button2 = new Button();
             button3 = new Button();
             pictureBox1 = new PictureBox();
-            groupBox1 = new GroupBox();
             groupBox3 = new GroupBox();
+            richTextBox1 = new RichTextBox();
             button6 = new Button();
-            groupBox2 = new GroupBox();
             button5 = new Button();
-            textBox2 = new TextBox();
             button4 = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
             groupBox4 = new GroupBox();
@@ -50,7 +47,6 @@
             groupBox5 = new GroupBox();
             button10 = new Button();
             button9 = new Button();
-            textBox3 = new TextBox();
             label2 = new Label();
             button8 = new Button();
             timer3 = new System.Windows.Forms.Timer(components);
@@ -60,70 +56,72 @@
             button12 = new Button();
             button13 = new Button();
             button14 = new Button();
+            textBox4 = new TextBox();
+            button15 = new Button();
+            button16 = new Button();
+            textBox5 = new TextBox();
+            groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
-            groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // textBox1
             // 
             textBox1.BackColor = Color.FromArgb(50, 50, 50);
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             textBox1.ForeColor = SystemColors.ButtonFace;
-            textBox1.Location = new Point(6, 22);
+            textBox1.Location = new Point(12, 75);
             textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Senha";
-            textBox1.Size = new Size(180, 23);
+            textBox1.PasswordChar = '*';
+            textBox1.PlaceholderText = "Senha Padrão";
+            textBox1.Size = new Size(516, 20);
             textBox1.TabIndex = 0;
             textBox1.MouseHover += textBox1_MouseHover;
             // 
             // button1
             // 
-            button1.BackColor = Color.FromArgb(50, 50, 50);
+            button1.BackColor = SystemColors.AppWorkspace;
+            button1.FlatAppearance.BorderSize = 0;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = SystemColors.AppWorkspace;
-            button1.Location = new Point(6, 55);
+            button1.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ActiveCaptionText;
+            button1.Location = new Point(5, 10);
             button1.Name = "button1";
-            button1.Size = new Size(180, 36);
+            button1.Size = new Size(260, 25);
             button1.TabIndex = 1;
-            button1.Text = "Abrir imagem e gerar codigo";
+            button1.Text = "Abrir imagem e gerar codigo TXT";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
-            // richTextBox1
-            // 
-            richTextBox1.BackColor = Color.FromArgb(50, 50, 50);
-            richTextBox1.ForeColor = SystemColors.AppWorkspace;
-            richTextBox1.Location = new Point(6, 19);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(180, 115);
-            richTextBox1.TabIndex = 2;
-            richTextBox1.Text = "\n";
-            richTextBox1.MouseHover += richTextBox1_MouseHover;
-            // 
             // button2
             // 
-            button2.BackColor = Color.FromArgb(50, 50, 50);
+            button2.BackColor = SystemColors.AppWorkspace;
+            button2.FlatAppearance.BorderSize = 0;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.ForeColor = SystemColors.AppWorkspace;
-            button2.Location = new Point(6, 140);
+            button2.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.ForeColor = SystemColors.ActiveCaptionText;
+            button2.Location = new Point(5, 41);
             button2.Name = "button2";
-            button2.Size = new Size(180, 36);
+            button2.Size = new Size(260, 25);
             button2.TabIndex = 4;
-            button2.Text = "Decodificar e exibir a imagem";
+            button2.Text = "Decodificar Texto e exibir a imagem";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
             // button3
             // 
-            button3.BackColor = Color.FromArgb(50, 50, 50);
+            button3.BackColor = SystemColors.AppWorkspace;
+            button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.ForeColor = SystemColors.AppWorkspace;
-            button3.Location = new Point(211, 53);
+            button3.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.ForeColor = SystemColors.ActiveCaptionText;
+            button3.Location = new Point(4, 235);
             button3.Name = "button3";
-            button3.Size = new Size(308, 25);
+            button3.Size = new Size(261, 25);
             button3.TabIndex = 6;
             button3.Text = "Salvar arquivo de texto";
             button3.UseVisualStyleBackColor = false;
@@ -132,40 +130,47 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = SystemColors.ControlDarkDark;
-            pictureBox1.Location = new Point(742, 23);
+            pictureBox1.Location = new Point(674, 8);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(259, 296);
+            pictureBox1.Size = new Size(308, 409);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Location = new Point(12, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(193, 101);
-            groupBox1.TabIndex = 7;
-            groupBox1.TabStop = false;
-            // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(button2);
             groupBox3.Controls.Add(richTextBox1);
-            groupBox3.Location = new Point(12, 119);
+            groupBox3.Controls.Add(button1);
+            groupBox3.Controls.Add(button2);
+            groupBox3.Controls.Add(button3);
+            groupBox3.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox3.Location = new Point(12, 103);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(193, 191);
+            groupBox3.Size = new Size(272, 266);
             groupBox3.TabIndex = 9;
             groupBox3.TabStop = false;
             // 
+            // richTextBox1
+            // 
+            richTextBox1.BackColor = Color.FromArgb(64, 64, 64);
+            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBox1.ForeColor = SystemColors.AppWorkspace;
+            richTextBox1.Location = new Point(5, 72);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(260, 157);
+            richTextBox1.TabIndex = 22;
+            richTextBox1.Text = "";
+            // 
             // button6
             // 
-            button6.BackColor = Color.FromArgb(50, 50, 50);
+            button6.BackColor = SystemColors.AppWorkspace;
             button6.Enabled = false;
+            button6.FlatAppearance.BorderSize = 0;
             button6.FlatStyle = FlatStyle.Flat;
-            button6.ForeColor = SystemColors.AppWorkspace;
-            button6.Location = new Point(211, 21);
+            button6.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button6.ForeColor = SystemColors.ActiveCaptionText;
+            button6.Location = new Point(674, 423);
             button6.Name = "button6";
             button6.Size = new Size(308, 25);
             button6.TabIndex = 7;
@@ -173,48 +178,29 @@
             button6.UseVisualStyleBackColor = false;
             button6.Click += button6_Click;
             // 
-            // groupBox2
-            // 
-            groupBox2.Controls.Add(button5);
-            groupBox2.Controls.Add(textBox2);
-            groupBox2.Controls.Add(button4);
-            groupBox2.Location = new Point(12, 316);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(193, 142);
-            groupBox2.TabIndex = 8;
-            groupBox2.TabStop = false;
-            // 
             // button5
             // 
-            button5.BackColor = Color.FromArgb(50, 50, 50);
+            button5.BackColor = SystemColors.AppWorkspace;
+            button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.ForeColor = SystemColors.AppWorkspace;
-            button5.Location = new Point(6, 97);
+            button5.ForeColor = SystemColors.ActiveCaptionText;
+            button5.Location = new Point(6, 53);
             button5.Name = "button5";
-            button5.Size = new Size(180, 36);
+            button5.Size = new Size(151, 25);
             button5.TabIndex = 2;
             button5.Text = "Processar Todos TXTs";
             button5.UseVisualStyleBackColor = false;
             button5.Click += button5_Click;
             // 
-            // textBox2
-            // 
-            textBox2.BackColor = Color.FromArgb(50, 50, 50);
-            textBox2.ForeColor = SystemColors.AppWorkspace;
-            textBox2.Location = new Point(6, 22);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "Senha";
-            textBox2.Size = new Size(180, 23);
-            textBox2.TabIndex = 0;
-            // 
             // button4
             // 
-            button4.BackColor = Color.FromArgb(50, 50, 50);
+            button4.BackColor = SystemColors.AppWorkspace;
+            button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.ForeColor = SystemColors.AppWorkspace;
-            button4.Location = new Point(6, 55);
+            button4.ForeColor = SystemColors.ActiveCaptionText;
+            button4.Location = new Point(6, 22);
             button4.Name = "button4";
-            button4.Size = new Size(180, 36);
+            button4.Size = new Size(151, 25);
             button4.TabIndex = 1;
             button4.Text = "Processar Todas Imagens";
             button4.UseVisualStyleBackColor = false;
@@ -231,9 +217,9 @@
             groupBox4.Controls.Add(label1);
             groupBox4.Controls.Add(button7);
             groupBox4.ForeColor = Color.White;
-            groupBox4.Location = new Point(211, 119);
+            groupBox4.Location = new Point(290, 103);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(308, 141);
+            groupBox4.Size = new Size(378, 145);
             groupBox4.TabIndex = 10;
             groupBox4.TabStop = false;
             groupBox4.Text = "Converter Imagens para JPEG";
@@ -249,14 +235,16 @@
             // 
             // button7
             // 
-            button7.BackColor = Color.FromArgb(50, 50, 50);
+            button7.BackColor = SystemColors.AppWorkspace;
+            button7.FlatAppearance.BorderSize = 0;
             button7.FlatStyle = FlatStyle.Flat;
-            button7.ForeColor = SystemColors.AppWorkspace;
+            button7.Font = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            button7.ForeColor = SystemColors.ActiveCaptionText;
             button7.Location = new Point(6, 22);
             button7.Name = "button7";
-            button7.Size = new Size(296, 25);
+            button7.Size = new Size(366, 25);
             button7.TabIndex = 7;
-            button7.Text = "Converter Imagens da Pasta do EXE";
+            button7.Text = "Converter Todas Imagens para JPEG (diminue o tamanho)";
             button7.UseVisualStyleBackColor = false;
             button7.Click += button7_Click;
             // 
@@ -268,59 +256,52 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(button10);
-            groupBox5.Controls.Add(button9);
-            groupBox5.Controls.Add(textBox3);
             groupBox5.Controls.Add(label2);
+            groupBox5.Controls.Add(button9);
             groupBox5.Controls.Add(button8);
+            groupBox5.Controls.Add(richTextBox2);
             groupBox5.ForeColor = Color.White;
-            groupBox5.Location = new Point(211, 275);
+            groupBox5.Location = new Point(12, 370);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(506, 183);
+            groupBox5.Size = new Size(482, 183);
             groupBox5.TabIndex = 11;
             groupBox5.TabStop = false;
             groupBox5.Text = "Encriptador de Videos";
             // 
             // button10
             // 
-            button10.BackColor = Color.FromArgb(50, 50, 50);
+            button10.BackColor = SystemColors.AppWorkspace;
+            button10.FlatAppearance.BorderSize = 0;
             button10.FlatStyle = FlatStyle.Flat;
-            button10.ForeColor = SystemColors.AppWorkspace;
-            button10.Location = new Point(217, 51);
+            button10.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button10.ForeColor = SystemColors.ActiveCaptionText;
+            button10.Location = new Point(6, 53);
             button10.Name = "button10";
-            button10.Size = new Size(279, 25);
+            button10.Size = new Size(231, 25);
             button10.TabIndex = 13;
-            button10.Text = "Descriptografar Videos da Pasta do EXE pra MP4 novamente";
+            button10.Text = "Descriptografar Videos pra MP4 novamente";
             button10.UseVisualStyleBackColor = false;
             button10.Click += button10_Click;
             // 
             // button9
             // 
-            button9.BackColor = Color.FromArgb(50, 50, 50);
+            button9.BackColor = SystemColors.AppWorkspace;
+            button9.FlatAppearance.BorderSize = 0;
             button9.FlatStyle = FlatStyle.Flat;
-            button9.ForeColor = SystemColors.AppWorkspace;
-            button9.Location = new Point(6, 82);
+            button9.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button9.ForeColor = SystemColors.ActiveCaptionText;
+            button9.Location = new Point(243, 152);
             button9.Name = "button9";
-            button9.Size = new Size(490, 25);
+            button9.Size = new Size(231, 25);
             button9.TabIndex = 10;
             button9.Text = "Gerar Lista de Videos para o Site";
             button9.UseVisualStyleBackColor = false;
             button9.Click += button9_Click;
             // 
-            // textBox3
-            // 
-            textBox3.BackColor = Color.FromArgb(50, 50, 50);
-            textBox3.ForeColor = SystemColors.ButtonFace;
-            textBox3.Location = new Point(6, 22);
-            textBox3.Name = "textBox3";
-            textBox3.PlaceholderText = "Senha";
-            textBox3.Size = new Size(490, 23);
-            textBox3.TabIndex = 9;
-            textBox3.TextChanged += textBox3_TextChanged;
-            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(6, 117);
+            label2.Location = new Point(6, 81);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 8;
@@ -328,14 +309,16 @@
             // 
             // button8
             // 
-            button8.BackColor = Color.FromArgb(50, 50, 50);
+            button8.BackColor = SystemColors.AppWorkspace;
+            button8.FlatAppearance.BorderSize = 0;
             button8.FlatStyle = FlatStyle.Flat;
-            button8.ForeColor = SystemColors.AppWorkspace;
-            button8.Location = new Point(6, 51);
+            button8.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button8.ForeColor = SystemColors.ActiveCaptionText;
+            button8.Location = new Point(6, 22);
             button8.Name = "button8";
-            button8.Size = new Size(205, 25);
+            button8.Size = new Size(231, 25);
             button8.TabIndex = 7;
-            button8.Text = "Criptografar Videos da Pasta do EXE";
+            button8.Text = "Criptografar Todos Videos";
             button8.UseVisualStyleBackColor = false;
             button8.Click += button8_Click;
             // 
@@ -346,11 +329,12 @@
             // 
             // richTextBox2
             // 
-            richTextBox2.BackColor = Color.FromArgb(50, 50, 50);
+            richTextBox2.BackColor = Color.FromArgb(64, 64, 64);
+            richTextBox2.BorderStyle = BorderStyle.None;
             richTextBox2.ForeColor = SystemColors.AppWorkspace;
-            richTextBox2.Location = new Point(525, 23);
+            richTextBox2.Location = new Point(243, 22);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(211, 237);
+            richTextBox2.Size = new Size(231, 124);
             richTextBox2.TabIndex = 12;
             richTextBox2.Text = "\n";
             // 
@@ -361,12 +345,14 @@
             // 
             // button11
             // 
-            button11.BackColor = Color.FromArgb(50, 50, 50);
+            button11.BackColor = SystemColors.AppWorkspace;
+            button11.FlatAppearance.BorderSize = 0;
             button11.FlatStyle = FlatStyle.Flat;
-            button11.ForeColor = SystemColors.AppWorkspace;
-            button11.Location = new Point(742, 326);
+            button11.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button11.ForeColor = SystemColors.ActiveCaptionText;
+            button11.Location = new Point(290, 254);
             button11.Name = "button11";
-            button11.Size = new Size(259, 25);
+            button11.Size = new Size(378, 25);
             button11.TabIndex = 14;
             button11.Text = "Apagar todos TXT da pasta atual";
             button11.UseVisualStyleBackColor = false;
@@ -374,12 +360,14 @@
             // 
             // button12
             // 
-            button12.BackColor = Color.FromArgb(50, 50, 50);
+            button12.BackColor = SystemColors.AppWorkspace;
+            button12.FlatAppearance.BorderSize = 0;
             button12.FlatStyle = FlatStyle.Flat;
-            button12.ForeColor = SystemColors.AppWorkspace;
-            button12.Location = new Point(742, 357);
+            button12.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button12.ForeColor = SystemColors.ActiveCaptionText;
+            button12.Location = new Point(290, 285);
             button12.Name = "button12";
-            button12.Size = new Size(259, 25);
+            button12.Size = new Size(378, 25);
             button12.TabIndex = 15;
             button12.Text = "Apagar todas imagens da pasta atual";
             button12.UseVisualStyleBackColor = false;
@@ -387,12 +375,14 @@
             // 
             // button13
             // 
-            button13.BackColor = Color.FromArgb(50, 50, 50);
+            button13.BackColor = SystemColors.AppWorkspace;
+            button13.FlatAppearance.BorderSize = 0;
             button13.FlatStyle = FlatStyle.Flat;
-            button13.ForeColor = SystemColors.AppWorkspace;
-            button13.Location = new Point(742, 387);
+            button13.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button13.ForeColor = SystemColors.ActiveCaptionText;
+            button13.Location = new Point(290, 315);
             button13.Name = "button13";
-            button13.Size = new Size(259, 25);
+            button13.Size = new Size(378, 25);
             button13.TabIndex = 16;
             button13.Text = "Apagar todos videos da pasta atual";
             button13.UseVisualStyleBackColor = false;
@@ -400,35 +390,103 @@
             // 
             // button14
             // 
-            button14.BackColor = Color.FromArgb(50, 50, 50);
+            button14.BackColor = SystemColors.AppWorkspace;
+            button14.FlatAppearance.BorderSize = 0;
             button14.FlatStyle = FlatStyle.Flat;
-            button14.ForeColor = SystemColors.AppWorkspace;
-            button14.Location = new Point(742, 416);
+            button14.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button14.ForeColor = SystemColors.ActiveCaptionText;
+            button14.Location = new Point(290, 344);
             button14.Name = "button14";
-            button14.Size = new Size(259, 25);
+            button14.Size = new Size(378, 25);
             button14.TabIndex = 17;
             button14.Text = "Apagar todos videos ENC da pasta atual";
             button14.UseVisualStyleBackColor = false;
             button14.Click += button14_Click;
+            // 
+            // textBox4
+            // 
+            textBox4.BackColor = Color.FromArgb(50, 50, 50);
+            textBox4.BorderStyle = BorderStyle.FixedSingle;
+            textBox4.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox4.ForeColor = SystemColors.ButtonFace;
+            textBox4.Location = new Point(12, 12);
+            textBox4.Name = "textBox4";
+            textBox4.PlaceholderText = "Diretorio das Imagens";
+            textBox4.Size = new Size(425, 20);
+            textBox4.TabIndex = 18;
+            // 
+            // button15
+            // 
+            button15.BackColor = SystemColors.AppWorkspace;
+            button15.FlatAppearance.BorderSize = 0;
+            button15.FlatStyle = FlatStyle.Flat;
+            button15.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button15.ForeColor = SystemColors.ActiveCaptionText;
+            button15.Location = new Point(443, 12);
+            button15.Name = "button15";
+            button15.Size = new Size(85, 20);
+            button15.TabIndex = 19;
+            button15.Text = "Buscar";
+            button15.UseVisualStyleBackColor = false;
+            // 
+            // button16
+            // 
+            button16.BackColor = SystemColors.AppWorkspace;
+            button16.FlatAppearance.BorderSize = 0;
+            button16.FlatStyle = FlatStyle.Flat;
+            button16.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button16.ForeColor = SystemColors.ActiveCaptionText;
+            button16.Location = new Point(443, 44);
+            button16.Name = "button16";
+            button16.Size = new Size(85, 20);
+            button16.TabIndex = 21;
+            button16.Text = "Buscar";
+            button16.UseVisualStyleBackColor = false;
+            // 
+            // textBox5
+            // 
+            textBox5.BackColor = Color.FromArgb(50, 50, 50);
+            textBox5.BorderStyle = BorderStyle.FixedSingle;
+            textBox5.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox5.ForeColor = SystemColors.ButtonFace;
+            textBox5.Location = new Point(12, 44);
+            textBox5.Name = "textBox5";
+            textBox5.PlaceholderText = "Diretorio dos Videos";
+            textBox5.Size = new Size(425, 20);
+            textBox5.TabIndex = 20;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(button4);
+            groupBox1.Controls.Add(button5);
+            groupBox1.ForeColor = Color.White;
+            groupBox1.Location = new Point(500, 375);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(168, 178);
+            groupBox1.TabIndex = 22;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Encriptador de Imagens";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(50, 50, 50);
-            ClientSize = new Size(1013, 477);
+            ClientSize = new Size(992, 565);
+            Controls.Add(groupBox1);
+            Controls.Add(textBox1);
+            Controls.Add(button16);
+            Controls.Add(textBox5);
+            Controls.Add(button15);
+            Controls.Add(textBox4);
             Controls.Add(button14);
             Controls.Add(button13);
             Controls.Add(button12);
             Controls.Add(button11);
-            Controls.Add(richTextBox2);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
             Controls.Add(button6);
-            Controls.Add(button3);
-            Controls.Add(groupBox2);
             Controls.Add(groupBox3);
-            Controls.Add(groupBox1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "Form1";
@@ -436,30 +494,24 @@
             Text = "3";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox3.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private TextBox textBox1;
         private Button button1;
-        private RichTextBox richTextBox1;
         private Button button2;
         private Button button3;
         private PictureBox pictureBox1;
-        private GroupBox groupBox1;
         private GroupBox groupBox3;
-        private GroupBox groupBox2;
-        private TextBox textBox2;
         private Button button4;
         private Button button5;
         private Button button6;
@@ -471,7 +523,6 @@
         private GroupBox groupBox5;
         private Label label2;
         private Button button8;
-        private TextBox textBox3;
         private System.Windows.Forms.Timer timer3;
         private Button button9;
         private RichTextBox richTextBox2;
@@ -481,5 +532,11 @@
         private Button button12;
         private Button button13;
         private Button button14;
+        private TextBox textBox4;
+        private Button button15;
+        private Button button16;
+        private TextBox textBox5;
+        private RichTextBox richTextBox1;
+        private GroupBox groupBox1;
     }
 }

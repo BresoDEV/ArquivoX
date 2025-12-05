@@ -74,13 +74,13 @@ namespace ImgToText
         private void button4_Click(object sender, EventArgs e)
         {
 
-            Processamento.converter_todas_imagens_da_pasta_para_txt(textBox2.Text);
+            Processamento.converter_todas_imagens_da_pasta_para_txt(textBox1.Text);
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Processamento.converter_todos_txt_da_pasta_para_png(pictureBox1, textBox2.Text);
+            Processamento.converter_todos_txt_da_pasta_para_png(pictureBox1, textBox1.Text);
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -124,7 +124,7 @@ namespace ImgToText
             //------------------
 
             //Habilita os botoes de processar tudo, caso exista uma senha ja, no textbox2
-            if (textBox2.Text.Length > 0)
+            if (textBox1.Text.Length > 0)
             {
                 button4.Enabled = true;
                 button5.Enabled = true;
@@ -256,7 +256,7 @@ namespace ImgToText
         {
             try
             {
-                Encriptador_de_Video.EncryptFile(Encriptador_de_Video.files.ToList()[Encriptador_de_Video.ponteiro], textBox3.Text);
+                Encriptador_de_Video.EncryptFile(Encriptador_de_Video.files.ToList()[Encriptador_de_Video.ponteiro], textBox1.Text);
                 Encriptador_de_Video.ctOK++;
             }
             catch (Exception ex)
@@ -315,7 +315,7 @@ namespace ImgToText
         {
             try
             {
-                Encriptador_de_Video.DecryptFile(Encriptador_de_Video.files.ToList()[Encriptador_de_Video.ponteiro], textBox3.Text);
+                Encriptador_de_Video.DecryptFile(Encriptador_de_Video.files.ToList()[Encriptador_de_Video.ponteiro], textBox1.Text);
                 Encriptador_de_Video.ctOK++;
             }
             catch (Exception ex)
