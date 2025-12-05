@@ -296,9 +296,14 @@ namespace ImgToText
             public static int ponteiro = 0;
 
         }
+
         
+
+
         public class Encriptador_de_Video
         {
+              
+
             static readonly byte[] MAGIC = Encoding.ASCII.GetBytes("VIDENC01"); // 8 bytes
             const int SALT_LEN = 16;
             const int IV_LEN = 12; // recomendado para AES-GCM
@@ -312,7 +317,68 @@ namespace ImgToText
             public static int ctERRRO = 0;
             public static int ponteiro = 0;
 
-         
+
+            public static void DecryptFile(string filepath, string password)
+            {
+                byte[] data = File.ReadAllBytes(filepath);
+                int offset = 0;
+
+                // --- MAGIC ---
+                if (data.Length < MAGIC.Length)
+                    throw new Exception("Arquivo inválido ou corrompido.");
+
+                for (int i = 0; i < MAGIC.Length; i++)
+                    if (data[offset + i] != MAGIC[i])
+                        throw new Exception("MAGIC inválido: arquivo não foi criptografado por este sistema.");
+
+                offset += MAGIC.Length;
+
+                // --- SALT ---
+                int saltLen = data[offset++];
+                byte[] salt = data.AsSpan(offset, saltLen).ToArray();
+                offset += saltLen;
+
+                // --- IV ---
+                int ivLen = data[offset++];
+                byte[] iv = data.AsSpan(offset, ivLen).ToArray();
+                offset += ivLen;
+
+                // --- TAG ---
+                int tagLen = data[offset++];
+                byte[] tag = data.AsSpan(offset, tagLen).ToArray();
+                offset += tagLen;
+
+                // --- CIPHERTEXT ---
+                byte[] ciphertext = data.AsSpan(offset).ToArray();
+
+                // Deriva chave
+                using var kdf = new Rfc2898DeriveBytes(password, salt, PBKDF2_ITER, HashAlgorithmName.SHA256);
+                byte[] key = kdf.GetBytes(KEY_LEN);
+
+                // AES-GCM decrypt
+                byte[] plain = new byte[ciphertext.Length];
+                using (var aes = new AesGcm(key))
+                {
+                    try
+                    {
+                        aes.Decrypt(iv, ciphertext, tag, plain);
+                    }
+                    catch (CryptographicException)
+                    {
+                        throw new Exception("Senha incorreta ou arquivo corrompido.");
+                    }
+                }
+
+                // Salvar como MP4
+                string outPath = Path.Combine(
+                    Path.GetDirectoryName(filepath),
+                    Path.GetFileNameWithoutExtension(filepath) + "_dec.mp4"
+                );
+
+                File.WriteAllBytes(outPath, plain);
+
+               // Console.WriteLine($"Decrypted: {Path.GetFileName(filepath)} -> {Path.GetFileName(outPath)}");
+            }
 
 
             public static void EncryptFile(string filepath, string password)

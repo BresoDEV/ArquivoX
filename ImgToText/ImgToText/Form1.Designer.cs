@@ -48,12 +48,18 @@
             button7 = new Button();
             timer2 = new System.Windows.Forms.Timer(components);
             groupBox5 = new GroupBox();
+            button10 = new Button();
             button9 = new Button();
             textBox3 = new TextBox();
             label2 = new Label();
             button8 = new Button();
             timer3 = new System.Windows.Forms.Timer(components);
             richTextBox2 = new RichTextBox();
+            timer4 = new System.Windows.Forms.Timer(components);
+            button11 = new Button();
+            button12 = new Button();
+            button13 = new Button();
+            button14 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -261,6 +267,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(button10);
             groupBox5.Controls.Add(button9);
             groupBox5.Controls.Add(textBox3);
             groupBox5.Controls.Add(label2);
@@ -268,10 +275,23 @@
             groupBox5.ForeColor = Color.White;
             groupBox5.Location = new Point(211, 275);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(308, 183);
+            groupBox5.Size = new Size(506, 183);
             groupBox5.TabIndex = 11;
             groupBox5.TabStop = false;
             groupBox5.Text = "Encriptador de Videos";
+            // 
+            // button10
+            // 
+            button10.BackColor = Color.FromArgb(50, 50, 50);
+            button10.FlatStyle = FlatStyle.Flat;
+            button10.ForeColor = SystemColors.AppWorkspace;
+            button10.Location = new Point(217, 51);
+            button10.Name = "button10";
+            button10.Size = new Size(279, 25);
+            button10.TabIndex = 13;
+            button10.Text = "Descriptografar Videos da Pasta do EXE pra MP4 novamente";
+            button10.UseVisualStyleBackColor = false;
+            button10.Click += button10_Click;
             // 
             // button9
             // 
@@ -280,7 +300,7 @@
             button9.ForeColor = SystemColors.AppWorkspace;
             button9.Location = new Point(6, 82);
             button9.Name = "button9";
-            button9.Size = new Size(296, 25);
+            button9.Size = new Size(490, 25);
             button9.TabIndex = 10;
             button9.Text = "Gerar Lista de Videos para o Site";
             button9.UseVisualStyleBackColor = false;
@@ -293,8 +313,9 @@
             textBox3.Location = new Point(6, 22);
             textBox3.Name = "textBox3";
             textBox3.PlaceholderText = "Senha";
-            textBox3.Size = new Size(296, 23);
+            textBox3.Size = new Size(490, 23);
             textBox3.TabIndex = 9;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // label2
             // 
@@ -312,9 +333,9 @@
             button8.ForeColor = SystemColors.AppWorkspace;
             button8.Location = new Point(6, 51);
             button8.Name = "button8";
-            button8.Size = new Size(296, 25);
+            button8.Size = new Size(205, 25);
             button8.TabIndex = 7;
-            button8.Text = "Converter Videos da Pasta do EXE";
+            button8.Text = "Criptografar Videos da Pasta do EXE";
             button8.UseVisualStyleBackColor = false;
             button8.Click += button8_Click;
             // 
@@ -329,9 +350,66 @@
             richTextBox2.ForeColor = SystemColors.AppWorkspace;
             richTextBox2.Location = new Point(525, 23);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(211, 296);
+            richTextBox2.Size = new Size(211, 237);
             richTextBox2.TabIndex = 12;
             richTextBox2.Text = "\n";
+            // 
+            // timer4
+            // 
+            timer4.Interval = 3000;
+            timer4.Tick += timer4_Tick;
+            // 
+            // button11
+            // 
+            button11.BackColor = Color.FromArgb(50, 50, 50);
+            button11.FlatStyle = FlatStyle.Flat;
+            button11.ForeColor = SystemColors.AppWorkspace;
+            button11.Location = new Point(742, 326);
+            button11.Name = "button11";
+            button11.Size = new Size(259, 25);
+            button11.TabIndex = 14;
+            button11.Text = "Apagar todos TXT da pasta atual";
+            button11.UseVisualStyleBackColor = false;
+            button11.Click += button11_Click;
+            // 
+            // button12
+            // 
+            button12.BackColor = Color.FromArgb(50, 50, 50);
+            button12.FlatStyle = FlatStyle.Flat;
+            button12.ForeColor = SystemColors.AppWorkspace;
+            button12.Location = new Point(742, 357);
+            button12.Name = "button12";
+            button12.Size = new Size(259, 25);
+            button12.TabIndex = 15;
+            button12.Text = "Apagar todas imagens da pasta atual";
+            button12.UseVisualStyleBackColor = false;
+            button12.Click += button12_Click;
+            // 
+            // button13
+            // 
+            button13.BackColor = Color.FromArgb(50, 50, 50);
+            button13.FlatStyle = FlatStyle.Flat;
+            button13.ForeColor = SystemColors.AppWorkspace;
+            button13.Location = new Point(742, 387);
+            button13.Name = "button13";
+            button13.Size = new Size(259, 25);
+            button13.TabIndex = 16;
+            button13.Text = "Apagar todos videos da pasta atual";
+            button13.UseVisualStyleBackColor = false;
+            button13.Click += button13_Click;
+            // 
+            // button14
+            // 
+            button14.BackColor = Color.FromArgb(50, 50, 50);
+            button14.FlatStyle = FlatStyle.Flat;
+            button14.ForeColor = SystemColors.AppWorkspace;
+            button14.Location = new Point(742, 416);
+            button14.Name = "button14";
+            button14.Size = new Size(259, 25);
+            button14.TabIndex = 17;
+            button14.Text = "Apagar todos videos ENC da pasta atual";
+            button14.UseVisualStyleBackColor = false;
+            button14.Click += button14_Click;
             // 
             // Form1
             // 
@@ -339,6 +417,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(50, 50, 50);
             ClientSize = new Size(1013, 477);
+            Controls.Add(button14);
+            Controls.Add(button13);
+            Controls.Add(button12);
+            Controls.Add(button11);
             Controls.Add(richTextBox2);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
@@ -393,5 +475,11 @@
         private System.Windows.Forms.Timer timer3;
         private Button button9;
         private RichTextBox richTextBox2;
+        private Button button10;
+        private System.Windows.Forms.Timer timer4;
+        private Button button11;
+        private Button button12;
+        private Button button13;
+        private Button button14;
     }
 }

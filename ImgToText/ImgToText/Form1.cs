@@ -287,5 +287,140 @@ namespace ImgToText
             s += "]\n";
             richTextBox2.Text = s.Replace(".mp4", ".enc");
         }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string folder = AppDomain.CurrentDomain.BaseDirectory;
+
+
+
+            Encriptador_de_Video.files = Directory.GetFiles(folder, "*.enc")
+                                 .OrderBy(f =>
+                                 {
+                                     // tenta ordenar numericamente se nomes forem '1.mp4'
+                                     var name = Path.GetFileNameWithoutExtension(f);
+                                     if (int.TryParse(name, out var n)) return n;
+                                     return int.MaxValue;
+                                 });
+
+            timer4.Start();
+        }
+
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                Encriptador_de_Video.DecryptFile(Encriptador_de_Video.files.ToList()[Encriptador_de_Video.ponteiro], textBox3.Text);
+                Encriptador_de_Video.ctOK++;
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine($"Erro ao encriptar {file}: {ex.Message}");
+                Encriptador_de_Video.ctERRRO++;
+            }
+
+            Encriptador_de_Video.ponteiro++;
+
+            label2.Text = $"Total de Videos: {Encriptador_de_Video.files.Count()} videos \nPonteiro atual: {Encriptador_de_Video.ponteiro}\nConvertidos {Encriptador_de_Video.ctOK} arquivos\nErros: {Encriptador_de_Video.ctERRRO} erros";
+
+
+            if (Encriptador_de_Video.files.Count() == Encriptador_de_Video.ponteiro)
+            {
+                timer4.Stop();
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            string pasta = AppDomain.CurrentDomain.BaseDirectory;
+
+            var arquivosTxt = Directory.GetFiles(pasta, "*.txt", SearchOption.TopDirectoryOnly);
+
+            foreach (var arquivo in arquivosTxt)
+            {
+                try
+                {
+                    File.Delete(arquivo);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
+                }
+            }
+            MessageBox.Show($"Finalizado");
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            string pasta = AppDomain.CurrentDomain.BaseDirectory;
+
+            string[] extensoes = {
+            "*.jpg", "*.jpeg", "*.png", "*.gif", "*.bmp",
+            "*.webp", "*.webm", "*.tiff"
+        };
+
+            foreach (var ext in extensoes)
+            {
+                var arquivos = Directory.GetFiles(pasta, ext, SearchOption.TopDirectoryOnly);
+
+                foreach (var arquivo in arquivos)
+                {
+                    try
+                    {
+                        File.Delete(arquivo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
+                    }
+                }
+            }
+            MessageBox.Show($"Finalizado");
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            string pasta = AppDomain.CurrentDomain.BaseDirectory;
+
+            var arquivosTxt = Directory.GetFiles(pasta, "*.mp4", SearchOption.TopDirectoryOnly);
+
+            foreach (var arquivo in arquivosTxt)
+            {
+                try
+                {
+                    File.Delete(arquivo);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
+                }
+            }
+            MessageBox.Show($"Finalizado");
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            string pasta = AppDomain.CurrentDomain.BaseDirectory;
+
+            var arquivosTxt = Directory.GetFiles(pasta, "*.enc", SearchOption.TopDirectoryOnly);
+
+            foreach (var arquivo in arquivosTxt)
+            {
+                try
+                {
+                    File.Delete(arquivo);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
+                }
+            }
+            MessageBox.Show($"Finalizado");
+        }
     }
 }
