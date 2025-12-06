@@ -46,11 +46,11 @@
             timer2 = new System.Windows.Forms.Timer(components);
             groupBox5 = new GroupBox();
             button10 = new Button();
-            button9 = new Button();
             label2 = new Label();
             button8 = new Button();
-            timer3 = new System.Windows.Forms.Timer(components);
+            button9 = new Button();
             richTextBox2 = new RichTextBox();
+            timer3 = new System.Windows.Forms.Timer(components);
             timer4 = new System.Windows.Forms.Timer(components);
             button11 = new Button();
             button12 = new Button();
@@ -80,6 +80,7 @@
             textBox1.PlaceholderText = "Senha Padrão";
             textBox1.Size = new Size(516, 20);
             textBox1.TabIndex = 0;
+            textBox1.TextChanged += textBox1_TextChanged;
             textBox1.MouseHover += textBox1_MouseHover;
             // 
             // button1
@@ -130,9 +131,9 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = SystemColors.ControlDarkDark;
-            pictureBox1.Location = new Point(674, 8);
+            pictureBox1.Location = new Point(651, 8);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(308, 409);
+            pictureBox1.Size = new Size(213, 302);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -170,9 +171,9 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button6.ForeColor = SystemColors.ActiveCaptionText;
-            button6.Location = new Point(674, 423);
+            button6.Location = new Point(651, 316);
             button6.Name = "button6";
-            button6.Size = new Size(308, 25);
+            button6.Size = new Size(213, 25);
             button6.TabIndex = 7;
             button6.Text = "Salvar Imagem";
             button6.UseVisualStyleBackColor = false;
@@ -219,7 +220,7 @@
             groupBox4.ForeColor = Color.White;
             groupBox4.Location = new Point(290, 103);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(378, 145);
+            groupBox4.Size = new Size(355, 145);
             groupBox4.TabIndex = 10;
             groupBox4.TabStop = false;
             groupBox4.Text = "Converter Imagens para JPEG";
@@ -242,7 +243,7 @@
             button7.ForeColor = SystemColors.ActiveCaptionText;
             button7.Location = new Point(6, 22);
             button7.Name = "button7";
-            button7.Size = new Size(366, 25);
+            button7.Size = new Size(342, 25);
             button7.TabIndex = 7;
             button7.Text = "Converter Todas Imagens para JPEG (diminue o tamanho)";
             button7.UseVisualStyleBackColor = false;
@@ -257,13 +258,11 @@
             // 
             groupBox5.Controls.Add(button10);
             groupBox5.Controls.Add(label2);
-            groupBox5.Controls.Add(button9);
             groupBox5.Controls.Add(button8);
-            groupBox5.Controls.Add(richTextBox2);
             groupBox5.ForeColor = Color.White;
             groupBox5.Location = new Point(12, 370);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(482, 183);
+            groupBox5.Size = new Size(272, 183);
             groupBox5.TabIndex = 11;
             groupBox5.TabStop = false;
             groupBox5.Text = "Encriptador de Videos";
@@ -282,21 +281,6 @@
             button10.Text = "Descriptografar Videos pra MP4 novamente";
             button10.UseVisualStyleBackColor = false;
             button10.Click += button10_Click;
-            // 
-            // button9
-            // 
-            button9.BackColor = SystemColors.AppWorkspace;
-            button9.FlatAppearance.BorderSize = 0;
-            button9.FlatStyle = FlatStyle.Flat;
-            button9.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button9.ForeColor = SystemColors.ActiveCaptionText;
-            button9.Location = new Point(243, 152);
-            button9.Name = "button9";
-            button9.Size = new Size(231, 25);
-            button9.TabIndex = 10;
-            button9.Text = "Gerar Lista de Videos para o Site";
-            button9.UseVisualStyleBackColor = false;
-            button9.Click += button9_Click;
             // 
             // label2
             // 
@@ -322,21 +306,36 @@
             button8.UseVisualStyleBackColor = false;
             button8.Click += button8_Click;
             // 
-            // timer3
+            // button9
             // 
-            timer3.Interval = 3000;
-            timer3.Tick += timer3_Tick;
+            button9.BackColor = SystemColors.AppWorkspace;
+            button9.FlatAppearance.BorderSize = 0;
+            button9.FlatStyle = FlatStyle.Flat;
+            button9.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button9.ForeColor = SystemColors.ActiveCaptionText;
+            button9.Location = new Point(651, 528);
+            button9.Name = "button9";
+            button9.Size = new Size(213, 25);
+            button9.TabIndex = 10;
+            button9.Text = "Gerar Lista de Videos para o Site";
+            button9.UseVisualStyleBackColor = false;
+            button9.Click += button9_Click;
             // 
             // richTextBox2
             // 
             richTextBox2.BackColor = Color.FromArgb(64, 64, 64);
             richTextBox2.BorderStyle = BorderStyle.None;
             richTextBox2.ForeColor = SystemColors.AppWorkspace;
-            richTextBox2.Location = new Point(243, 22);
+            richTextBox2.Location = new Point(651, 359);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(231, 124);
+            richTextBox2.Size = new Size(213, 163);
             richTextBox2.TabIndex = 12;
             richTextBox2.Text = "\n";
+            // 
+            // timer3
+            // 
+            timer3.Interval = 3000;
+            timer3.Tick += timer3_Tick;
             // 
             // timer4
             // 
@@ -352,9 +351,9 @@
             button11.ForeColor = SystemColors.ActiveCaptionText;
             button11.Location = new Point(290, 254);
             button11.Name = "button11";
-            button11.Size = new Size(378, 25);
+            button11.Size = new Size(355, 25);
             button11.TabIndex = 14;
-            button11.Text = "Apagar todos TXT da pasta atual";
+            button11.Text = "Apagar todos TXT da pasta das imagens";
             button11.UseVisualStyleBackColor = false;
             button11.Click += button11_Click;
             // 
@@ -367,9 +366,9 @@
             button12.ForeColor = SystemColors.ActiveCaptionText;
             button12.Location = new Point(290, 285);
             button12.Name = "button12";
-            button12.Size = new Size(378, 25);
+            button12.Size = new Size(355, 25);
             button12.TabIndex = 15;
-            button12.Text = "Apagar todas imagens da pasta atual";
+            button12.Text = "Apagar todas imagens da pasta das imagens";
             button12.UseVisualStyleBackColor = false;
             button12.Click += button12_Click;
             // 
@@ -382,9 +381,9 @@
             button13.ForeColor = SystemColors.ActiveCaptionText;
             button13.Location = new Point(290, 315);
             button13.Name = "button13";
-            button13.Size = new Size(378, 25);
+            button13.Size = new Size(355, 25);
             button13.TabIndex = 16;
-            button13.Text = "Apagar todos videos da pasta atual";
+            button13.Text = "Apagar todos videos da pasta de videos";
             button13.UseVisualStyleBackColor = false;
             button13.Click += button13_Click;
             // 
@@ -397,9 +396,9 @@
             button14.ForeColor = SystemColors.ActiveCaptionText;
             button14.Location = new Point(290, 344);
             button14.Name = "button14";
-            button14.Size = new Size(378, 25);
+            button14.Size = new Size(355, 25);
             button14.TabIndex = 17;
-            button14.Text = "Apagar todos videos ENC da pasta atual";
+            button14.Text = "Apagar todos videos ENC da pasta de videos";
             button14.UseVisualStyleBackColor = false;
             button14.Click += button14_Click;
             // 
@@ -428,6 +427,7 @@
             button15.TabIndex = 19;
             button15.Text = "Buscar";
             button15.UseVisualStyleBackColor = false;
+            button15.Click += button15_Click;
             // 
             // button16
             // 
@@ -442,6 +442,7 @@
             button16.TabIndex = 21;
             button16.Text = "Buscar";
             button16.UseVisualStyleBackColor = false;
+            button16.Click += button16_Click;
             // 
             // textBox5
             // 
@@ -460,9 +461,9 @@
             groupBox1.Controls.Add(button4);
             groupBox1.Controls.Add(button5);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(500, 375);
+            groupBox1.Location = new Point(290, 375);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(168, 178);
+            groupBox1.Size = new Size(355, 178);
             groupBox1.TabIndex = 22;
             groupBox1.TabStop = false;
             groupBox1.Text = "Encriptador de Imagens";
@@ -472,11 +473,13 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(50, 50, 50);
-            ClientSize = new Size(992, 565);
+            ClientSize = new Size(876, 565);
             Controls.Add(groupBox1);
             Controls.Add(textBox1);
+            Controls.Add(button9);
             Controls.Add(button16);
             Controls.Add(textBox5);
+            Controls.Add(richTextBox2);
             Controls.Add(button15);
             Controls.Add(textBox4);
             Controls.Add(button14);
@@ -491,7 +494,6 @@
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "Form1";
             Opacity = 0.98D;
-            Text = "3";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox3.ResumeLayout(false);

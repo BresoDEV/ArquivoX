@@ -82,3 +82,5 @@ D:\Github Repositorios\ArquivoX\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\
 D:\Github Repositorios\ArquivoX\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.pdb
 D:\Github Repositorios\ArquivoX\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.genruntimeconfig.cache
 D:\Github Repositorios\ArquivoX\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ref\ImgToText.dll
+D:\Github Repositorios\ArquivoX\ImgToText\ImgToText\bin\Debug\net6.0-windows7.0\ImgToText.dll.config
+D:\Github Repositorios\ArquivoX\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.Properties.Resources.resources

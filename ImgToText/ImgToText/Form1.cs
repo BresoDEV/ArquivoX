@@ -185,6 +185,14 @@ namespace ImgToText
         {
             label1.Text = "";
             label2.Text = "";
+
+
+            textBox4.Text = Properties.Settings.Default.PastaImagens;
+            textBox5.Text = Properties.Settings.Default.PastaVideo;
+            textBox1.Text = Properties.Settings.Default.Senha;
+
+
+
         }
 
 
@@ -337,9 +345,9 @@ namespace ImgToText
 
         private void button11_Click(object sender, EventArgs e)
         {
-            string pasta = AppDomain.CurrentDomain.BaseDirectory;
+            //string pasta = AppDomain.CurrentDomain.BaseDirectory;
 
-            var arquivosTxt = Directory.GetFiles(pasta, "*.txt", SearchOption.TopDirectoryOnly);
+            var arquivosTxt = Directory.GetFiles(textBox4.Text, "*.txt", SearchOption.TopDirectoryOnly);
 
             foreach (var arquivo in arquivosTxt)
             {
@@ -357,7 +365,7 @@ namespace ImgToText
 
         private void button12_Click(object sender, EventArgs e)
         {
-            string pasta = AppDomain.CurrentDomain.BaseDirectory;
+
 
             string[] extensoes = {
             "*.jpg", "*.jpeg", "*.png", "*.gif", "*.bmp",
@@ -366,7 +374,7 @@ namespace ImgToText
 
             foreach (var ext in extensoes)
             {
-                var arquivos = Directory.GetFiles(pasta, ext, SearchOption.TopDirectoryOnly);
+                var arquivos = Directory.GetFiles(textBox4.Text, ext, SearchOption.TopDirectoryOnly);
 
                 foreach (var arquivo in arquivos)
                 {
@@ -385,9 +393,8 @@ namespace ImgToText
 
         private void button13_Click(object sender, EventArgs e)
         {
-            string pasta = AppDomain.CurrentDomain.BaseDirectory;
 
-            var arquivosTxt = Directory.GetFiles(pasta, "*.mp4", SearchOption.TopDirectoryOnly);
+            var arquivosTxt = Directory.GetFiles(textBox5.Text, "*.mp4", SearchOption.TopDirectoryOnly);
 
             foreach (var arquivo in arquivosTxt)
             {
@@ -405,9 +412,8 @@ namespace ImgToText
 
         private void button14_Click(object sender, EventArgs e)
         {
-            string pasta = AppDomain.CurrentDomain.BaseDirectory;
 
-            var arquivosTxt = Directory.GetFiles(pasta, "*.enc", SearchOption.TopDirectoryOnly);
+            var arquivosTxt = Directory.GetFiles(textBox5.Text, "*.enc", SearchOption.TopDirectoryOnly);
 
             foreach (var arquivo in arquivosTxt)
             {
@@ -421,6 +427,48 @@ namespace ImgToText
                 }
             }
             MessageBox.Show($"Finalizado");
+        }
+
+        public static string SelecionarPasta()
+        {
+            using (var dialog = new FolderBrowserDialog())
+            {
+                dialog.Description = "Selecione uma pasta:";
+                dialog.ShowNewFolderButton = true;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    return dialog.SelectedPath;
+                }
+            }
+
+            return null; // usuário cancelou
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            textBox4.Text = SelecionarPasta();
+            if (textBox4.Text != "")
+            {
+                Properties.Settings.Default.PastaImagens = textBox4.Text;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            textBox5.Text = SelecionarPasta();
+            if (textBox5.Text != "")
+            {
+                Properties.Settings.Default.PastaVideo = textBox5.Text;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Senha = textBox1.Text;
+            Properties.Settings.Default.Save();
         }
     }
 }
