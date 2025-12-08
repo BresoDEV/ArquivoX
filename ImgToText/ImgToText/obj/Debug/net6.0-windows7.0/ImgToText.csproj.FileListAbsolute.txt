@@ -84,3 +84,21 @@ D:\Github Repositorios\ArquivoX\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\
 D:\Github Repositorios\ArquivoX\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ref\ImgToText.dll
 D:\Github Repositorios\ArquivoX\ImgToText\ImgToText\bin\Debug\net6.0-windows7.0\ImgToText.dll.config
 D:\Github Repositorios\ArquivoX\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.Properties.Resources.resources
+C:\Users\User\Desktop\ImgToText\ImgToText\bin\Debug\net6.0-windows7.0\ImgToText.exe
+C:\Users\User\Desktop\ImgToText\ImgToText\bin\Debug\net6.0-windows7.0\ImgToText.dll.config
+C:\Users\User\Desktop\ImgToText\ImgToText\bin\Debug\net6.0-windows7.0\ImgToText.deps.json
+C:\Users\User\Desktop\ImgToText\ImgToText\bin\Debug\net6.0-windows7.0\ImgToText.runtimeconfig.json
+C:\Users\User\Desktop\ImgToText\ImgToText\bin\Debug\net6.0-windows7.0\ImgToText.dll
+C:\Users\User\Desktop\ImgToText\ImgToText\bin\Debug\net6.0-windows7.0\ImgToText.pdb
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.Form1.resources
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.Properties.Resources.resources
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.csproj.GenerateResource.cache
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.AssemblyInfo.cs
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.dll
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\refint\ImgToText.dll
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.pdb
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ImgToText.genruntimeconfig.cache
+C:\Users\User\Desktop\ImgToText\ImgToText\obj\Debug\net6.0-windows7.0\ref\ImgToText.dll

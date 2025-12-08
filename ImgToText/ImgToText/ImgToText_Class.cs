@@ -38,13 +38,13 @@ namespace ImgToText
                     int ct = 1;
                     for (int i = 1; i < 1000; i++)
                     {
-                        if (!File.Exists("img (" + i + ").txt"))
+                        if (!File.Exists(Properties.Settings.Default.PastaImagens+"/img (" + i + ").txt"))
                         {
                             ct = i;
                             break;
                         }
                     }
-                    File.WriteAllText("img (" + ct + ").txt", imagem_convertida);
+                    File.WriteAllText(Properties.Settings.Default.PastaImagens+"/img (" + ct + ").txt", imagem_convertida);
                 }
                 
             } 
@@ -66,7 +66,7 @@ namespace ImgToText
                         senha.Append(caracteresPermitidos[indice]);
                     }
 
-                    string filePath = senha.ToString() + ".png";
+                    string filePath = Properties.Settings.Default.PastaImagens+"/"+senha.ToString() + ".png";
 
                     if(picturebox.Image != null)
                     {
@@ -244,7 +244,7 @@ namespace ImgToText
         {
             public static void converter_todas_imagens_da_pasta_para_txt(string password)
             {
-                string diretorio = AppDomain.CurrentDomain.BaseDirectory;
+                string diretorio = Properties.Settings.Default.PastaImagens;
                 string[] extensoesImagem = new string[] { "*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif" };
                 string[] arquivosImagens = new string[0];
                 foreach (var extensao in extensoesImagem)
@@ -269,9 +269,9 @@ namespace ImgToText
 
               
 
-                while (File.Exists("img (" + ct + ").txt"))
+                while (File.Exists(Properties.Settings.Default.PastaImagens+"/img (" + ct + ").txt"))
                 {
-                    pictureBox.Image = Sem_OpenDialog.Text_to_Img(File.ReadAllText("img (" + ct + ").txt"), password);
+                    pictureBox.Image = Sem_OpenDialog.Text_to_Img(File.ReadAllText(Properties.Settings.Default.PastaImagens + "/img (" + ct + ").txt"), password);
                      
                     Diversos.SalvarIMG(pictureBox);
 
@@ -288,9 +288,9 @@ namespace ImgToText
         public class ConversorJPEG
         {
 
-            public static string pasta = AppDomain.CurrentDomain.BaseDirectory;
-            public static string[] arquivos = Directory.GetFiles(pasta);
-            public static string pastaConvertidas = Path.Combine(pasta, "convertidas");
+            public static string pasta = "";
+            public static string[] arquivos  = { "" };
+            public static string pastaConvertidas="";
             public static int ctOK = 0;
             public static int ctERRRO = 0;
             public static int ponteiro = 0;

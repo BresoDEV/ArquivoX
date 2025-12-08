@@ -1,4 +1,5 @@
 using System.Drawing.Imaging;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
@@ -23,7 +24,8 @@ namespace ImgToText
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length > 0)
+            /*
+              if (textBox1.Text.Length > 0)
             {
                 richTextBox1.Text = ImgToText_Class.Com_OpenDialog.ImgtoText(textBox1.Text);
                 pictureBox1.Image = ImgToText_Class.Sem_OpenDialog.Text_to_Img(richTextBox1.Text, textBox1.Text);
@@ -32,27 +34,27 @@ namespace ImgToText
             else
             {
                 textBox1.BackColor = Color.FromArgb(250, 50, 50);
-            }
+            }*/
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (richTextBox1.Text.Length > 0)
-            {
-                if (textBox1.Text.Length > 0)
-                {
-                    pictureBox1.Image = ImgToText_Class.Sem_OpenDialog.Text_to_Img(richTextBox1.Text, textBox1.Text);
-                }
-                else
-                {
-                    textBox1.BackColor = Color.FromArgb(250, 50, 50);
-                }
-            }
-            else
-            {
-                richTextBox1.BackColor = Color.FromArgb(250, 50, 50);
-            }
+            /* if (richTextBox1.Text.Length > 0)
+             {
+                 if (textBox1.Text.Length > 0)
+                 {
+                     pictureBox1.Image = ImgToText_Class.Sem_OpenDialog.Text_to_Img(richTextBox1.Text, textBox1.Text);
+                 }
+                 else
+                 {
+                     textBox1.BackColor = Color.FromArgb(250, 50, 50);
+                 }
+             }
+             else
+             {
+                 richTextBox1.BackColor = Color.FromArgb(250, 50, 50);
+             }*/
         }
 
 
@@ -67,20 +69,20 @@ namespace ImgToText
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ImgToText_Class.Diversos.SalvarTXT(richTextBox1.Text);
+            //ImgToText_Class.Diversos.SalvarTXT(richTextBox1.Text);
 
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
 
-            Processamento.converter_todas_imagens_da_pasta_para_txt(textBox1.Text);
+            // Processamento.converter_todas_imagens_da_pasta_para_txt(textBox1.Text);
 
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Processamento.converter_todos_txt_da_pasta_para_png(pictureBox1, textBox1.Text);
+            // Processamento.converter_todos_txt_da_pasta_para_png(pictureBox1, textBox1.Text);
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -172,13 +174,33 @@ namespace ImgToText
 
         private void button7_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Será criada uma pasta como nome CONVERTIDAS na mesma pasta atual, com as imagens convertidas");
+            /*
+               if (textBox4.Text == "")
+              {
+                  return;
+              }
+              ConversorJPEG.ctOK = 0;
+              ConversorJPEG.ctERRRO = 0;
+              ConversorJPEG.ponteiro = 0;
 
-            if (!Directory.Exists(ConversorJPEG.pastaConvertidas))
-                Directory.CreateDirectory(ConversorJPEG.pastaConvertidas);
+
+              Array.Clear(ConversorJPEG.arquivos, 0, ConversorJPEG.arquivos.Length);
+
+              ConversorJPEG.pasta = Properties.Settings.Default.PastaImagens;
+              ConversorJPEG.arquivos = Directory.GetFiles(ConversorJPEG.pasta);
+              ConversorJPEG.pastaConvertidas = Path.Combine(ConversorJPEG.pasta, "convertidas");
+
+              MessageBox.Show("Será criada uma pasta como nome CONVERTIDAS na mesma pasta atual, com as imagens convertidas");
+
+              if (!Directory.Exists(ConversorJPEG.pastaConvertidas))
+                  Directory.CreateDirectory(ConversorJPEG.pastaConvertidas);
 
 
-            timer2.Start();
+              //-----------------------
+
+
+              timer2.Start();
+             */
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -213,7 +235,7 @@ namespace ImgToText
         string nomeSemExt;
         private void timer2_Tick(object sender, EventArgs e)
         {
-
+            //var arquivosTxt = Directory.GetFiles(textBox4.Text, "*.txt", SearchOption.TopDirectoryOnly);
             try
             {
                 using (System.Drawing.Image img = System.Drawing.Image.FromFile(ConversorJPEG.arquivos[ConversorJPEG.ponteiro]))
@@ -239,25 +261,37 @@ namespace ImgToText
             if (ConversorJPEG.arquivos.Count() == ConversorJPEG.ponteiro)
             {
                 timer2.Stop();
+                ConversorJPEG.ctOK = 0;
+                ConversorJPEG.ctERRRO = 0;
+                ConversorJPEG.ponteiro = 0;
             }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            string folder = AppDomain.CurrentDomain.BaseDirectory;
+            /*
+              if (textBox5.Text == "")
+             {
+                 return;
+             }
+             string folder = textBox5.Text;
 
 
+             Encriptador_de_Video.files = Directory.GetFiles(folder, "*.mp4")
+                                  .OrderBy(f =>
+                                  {
+                                      // tenta ordenar numericamente se nomes forem '1.mp4'
+                                      var name = Path.GetFileNameWithoutExtension(f);
+                                      if (int.TryParse(name, out var n)) return n;
+                                      return int.MaxValue;
+                                  });
 
-            Encriptador_de_Video.files = Directory.GetFiles(folder, "*.mp4")
-                                 .OrderBy(f =>
-                                 {
-                                     // tenta ordenar numericamente se nomes forem '1.mp4'
-                                     var name = Path.GetFileNameWithoutExtension(f);
-                                     if (int.TryParse(name, out var n)) return n;
-                                     return int.MaxValue;
-                                 });
+             Encriptador_de_Video.ctOK = 0;
+             Encriptador_de_Video.ctERRRO = 0;
+             Encriptador_de_Video.ponteiro = 0;
 
-            timer3.Start();
+             timer3.Start();
+             */
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -286,14 +320,16 @@ namespace ImgToText
 
         private void button9_Click(object sender, EventArgs e)
         {
-            string s = "[\n";
-            foreach (var item in Encriptador_de_Video.files)
-            {
-                s += "{\"index\":\"" + item + "\", \"title\":\"" + item + "\"},\n";
-            }
-            s += "{\"index\":\"\", \"title\":\"\"}\n";
-            s += "]\n";
-            richTextBox2.Text = s.Replace(".mp4", ".enc");
+            /*
+              string s = "[\n";
+             foreach (var item in Encriptador_de_Video.files)
+             {
+                 s += "{\"index\":\"" + item + "\", \"title\":\"" + item + "\"},\n";
+             }
+             s += "{\"index\":\"\", \"title\":\"\"}\n";
+             s += "]\n";
+             richTextBox2.Text = s.Replace(".mp4", ".enc");s
+             */
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -303,20 +339,29 @@ namespace ImgToText
 
         private void button10_Click(object sender, EventArgs e)
         {
-            string folder = AppDomain.CurrentDomain.BaseDirectory;
+            /*
+              if (textBox5.Text == "")
+             {
+                 return;
+             }
+             string folder = textBox5.Text;
 
 
+             Encriptador_de_Video.files = Directory.GetFiles(folder, "*.enc")
+                                  .OrderBy(f =>
+                                  {
+                                      // tenta ordenar numericamente se nomes forem '1.mp4'
+                                      var name = Path.GetFileNameWithoutExtension(f);
+                                      if (int.TryParse(name, out var n)) return n;
+                                      return int.MaxValue;
+                                  });
 
-            Encriptador_de_Video.files = Directory.GetFiles(folder, "*.enc")
-                                 .OrderBy(f =>
-                                 {
-                                     // tenta ordenar numericamente se nomes forem '1.mp4'
-                                     var name = Path.GetFileNameWithoutExtension(f);
-                                     if (int.TryParse(name, out var n)) return n;
-                                     return int.MaxValue;
-                                 });
+             Encriptador_de_Video.ctOK = 0;
+             Encriptador_de_Video.ctERRRO = 0;
+             Encriptador_de_Video.ponteiro = 0;
 
-            timer4.Start();
+             timer4.Start();
+             */
         }
 
         private void timer4_Tick(object sender, EventArgs e)
@@ -345,56 +390,60 @@ namespace ImgToText
 
         private void button11_Click(object sender, EventArgs e)
         {
-            //string pasta = AppDomain.CurrentDomain.BaseDirectory;
+            /*
+             var arquivosTxt = Directory.GetFiles(textBox4.Text, "*.txt", SearchOption.TopDirectoryOnly);
 
-            var arquivosTxt = Directory.GetFiles(textBox4.Text, "*.txt", SearchOption.TopDirectoryOnly);
+           foreach (var arquivo in arquivosTxt)
+           {
+               try
+               {
+                   File.Delete(arquivo);
+               }
+               catch (Exception ex)
+               {
+                   MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
+               }
+           }
+           MessageBox.Show($"Finalizado"); 
+             */
 
-            foreach (var arquivo in arquivosTxt)
-            {
-                try
-                {
-                    File.Delete(arquivo);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
-                }
-            }
-            MessageBox.Show($"Finalizado");
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
 
+            /*
 
-            string[] extensoes = {
-            "*.jpg", "*.jpeg", "*.png", "*.gif", "*.bmp",
-            "*.webp", "*.webm", "*.tiff"
-        };
+                        string[] extensoes = {
+                        "*.jpg", "*.jpeg", "*.png", "*.gif", "*.bmp",
+                        "*.webp", "*.webm", "*.tiff"
+                    };
 
-            foreach (var ext in extensoes)
-            {
-                var arquivos = Directory.GetFiles(textBox4.Text, ext, SearchOption.TopDirectoryOnly);
+                        foreach (var ext in extensoes)
+                        {
+                            var arquivos = Directory.GetFiles(textBox4.Text, ext, SearchOption.TopDirectoryOnly);
 
-                foreach (var arquivo in arquivos)
-                {
-                    try
-                    {
-                        File.Delete(arquivo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
-                    }
-                }
-            }
-            MessageBox.Show($"Finalizado");
+                            foreach (var arquivo in arquivos)
+                            {
+                                try
+                                {
+                                    File.Delete(arquivo);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
+                                }
+                            }
+                        }
+                        MessageBox.Show($"Finalizado"); 
+             */
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
 
-            var arquivosTxt = Directory.GetFiles(textBox5.Text, "*.mp4", SearchOption.TopDirectoryOnly);
+            /*
+             var arquivosTxt = Directory.GetFiles(textBox5.Text, "*.mp4", SearchOption.TopDirectoryOnly);
 
             foreach (var arquivo in arquivosTxt)
             {
@@ -408,12 +457,14 @@ namespace ImgToText
                 }
             }
             MessageBox.Show($"Finalizado");
+             */
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
 
-            var arquivosTxt = Directory.GetFiles(textBox5.Text, "*.enc", SearchOption.TopDirectoryOnly);
+            /*
+             var arquivosTxt = Directory.GetFiles(textBox5.Text, "*.enc", SearchOption.TopDirectoryOnly);
 
             foreach (var arquivo in arquivosTxt)
             {
@@ -426,7 +477,8 @@ namespace ImgToText
                     MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
                 }
             }
-            MessageBox.Show($"Finalizado");
+            MessageBox.Show($"Finalizado"); 
+             */
         }
 
         public static string SelecionarPasta()
@@ -469,6 +521,236 @@ namespace ImgToText
         {
             Properties.Settings.Default.Senha = textBox1.Text;
             Properties.Settings.Default.Save();
+        }
+
+        private void processarTodasImagensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Processamento.converter_todas_imagens_da_pasta_para_txt(textBox1.Text);
+        }
+
+        private void processarTodosTXTsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Processamento.converter_todos_txt_da_pasta_para_png(pictureBox1, textBox1.Text);
+        }
+
+        private void abrirImagemEGerarCodigoTXTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length > 0)
+            {
+                richTextBox1.Text = ImgToText_Class.Com_OpenDialog.ImgtoText(textBox1.Text);
+                pictureBox1.Image = ImgToText_Class.Sem_OpenDialog.Text_to_Img(richTextBox1.Text, textBox1.Text);
+
+            }
+            else
+            {
+                textBox1.BackColor = Color.FromArgb(250, 50, 50);
+            }
+        }
+
+        private void decodificarTextoEExibirAImagemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (richTextBox1.Text.Length > 0)
+            {
+                if (textBox1.Text.Length > 0)
+                {
+                    pictureBox1.Image = ImgToText_Class.Sem_OpenDialog.Text_to_Img(richTextBox1.Text, textBox1.Text);
+                }
+                else
+                {
+                    textBox1.BackColor = Color.FromArgb(250, 50, 50);
+                }
+            }
+            else
+            {
+                richTextBox1.BackColor = Color.FromArgb(250, 50, 50);
+            }
+        }
+
+        private void salvarArquivoDeTextoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImgToText_Class.Diversos.SalvarTXT(richTextBox1.Text);
+        }
+
+        private void criptografarMP4ParaENCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (textBox5.Text == "")
+            {
+                return;
+            }
+            string folder = textBox5.Text;
+
+
+            Encriptador_de_Video.files = Directory.GetFiles(folder, "*.mp4")
+                                 .OrderBy(f =>
+                                 {
+                                     // tenta ordenar numericamente se nomes forem '1.mp4'
+                                     var name = Path.GetFileNameWithoutExtension(f);
+                                     if (int.TryParse(name, out var n)) return n;
+                                     return int.MaxValue;
+                                 });
+
+            Encriptador_de_Video.ctOK = 0;
+            Encriptador_de_Video.ctERRRO = 0;
+            Encriptador_de_Video.ponteiro = 0;
+
+            timer3.Start();
+        }
+
+        private void descriptografarENCParaMP4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (textBox5.Text == "")
+            {
+                return;
+            }
+            string folder = textBox5.Text;
+
+
+            Encriptador_de_Video.files = Directory.GetFiles(folder, "*.enc")
+                                 .OrderBy(f =>
+                                 {
+                                     // tenta ordenar numericamente se nomes forem '1.mp4'
+                                     var name = Path.GetFileNameWithoutExtension(f);
+                                     if (int.TryParse(name, out var n)) return n;
+                                     return int.MaxValue;
+                                 });
+
+            Encriptador_de_Video.ctOK = 0;
+            Encriptador_de_Video.ctERRRO = 0;
+            Encriptador_de_Video.ponteiro = 0;
+
+            timer4.Start();
+        }
+
+        private void gerarListaDeVideosParaOSiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string s = "[\n";
+            foreach (var item in Encriptador_de_Video.files)
+            {
+                string[] arraia = item.Split("\\");
+                string formatado = arraia[arraia.Length - 1];
+
+
+
+                    s += "{\"index\":\"videos/" + formatado + "\", \"title\":\"" + formatado + "\"},\n";
+            }
+            s += "{\"index\":\"\", \"title\":\"\"}\n";
+            s += "]\n";
+            richTextBox2.Text = s.Replace(".mp4", ".enc");
+        }
+
+        private void converterTodasImagensParaJPEGdiminueOTamanhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (textBox4.Text == "")
+            {
+                return;
+            }
+            ConversorJPEG.ctOK = 0;
+            ConversorJPEG.ctERRRO = 0;
+            ConversorJPEG.ponteiro = 0;
+
+
+            Array.Clear(ConversorJPEG.arquivos, 0, ConversorJPEG.arquivos.Length);
+
+            ConversorJPEG.pasta = Properties.Settings.Default.PastaImagens;
+            ConversorJPEG.arquivos = Directory.GetFiles(ConversorJPEG.pasta);
+            ConversorJPEG.pastaConvertidas = Path.Combine(ConversorJPEG.pasta, "convertidas");
+
+            MessageBox.Show("Será criada uma pasta como nome CONVERTIDAS na mesma pasta atual, com as imagens convertidas");
+
+            if (!Directory.Exists(ConversorJPEG.pastaConvertidas))
+                Directory.CreateDirectory(ConversorJPEG.pastaConvertidas);
+
+
+            //-----------------------
+
+
+            timer2.Start();
+        }
+
+        private void apagarTodosTXTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var arquivosTxt = Directory.GetFiles(textBox4.Text, "*.txt", SearchOption.TopDirectoryOnly);
+
+            foreach (var arquivo in arquivosTxt)
+            {
+                try
+                {
+                    File.Delete(arquivo);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
+                }
+            }
+            MessageBox.Show($"Finalizado");
+        }
+
+        private void apagarTodasImagensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            string[] extensoes = {
+            "*.jpg", "*.jpeg", "*.png", "*.gif", "*.bmp",
+            "*.webp", "*.webm", "*.tiff"
+        };
+
+            foreach (var ext in extensoes)
+            {
+                var arquivos = Directory.GetFiles(textBox4.Text, ext, SearchOption.TopDirectoryOnly);
+
+                foreach (var arquivo in arquivos)
+                {
+                    try
+                    {
+                        File.Delete(arquivo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
+                    }
+                }
+            }
+            MessageBox.Show($"Finalizado");
+        }
+
+        private void apagarTodosMP4ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var arquivosTxt = Directory.GetFiles(textBox5.Text, "*.mp4", SearchOption.TopDirectoryOnly);
+
+            foreach (var arquivo in arquivosTxt)
+            {
+                try
+                {
+                    File.Delete(arquivo);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
+                }
+            }
+            MessageBox.Show($"Finalizado");
+        }
+
+        private void apagarTodosENCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var arquivosTxt = Directory.GetFiles(textBox5.Text, "*.enc", SearchOption.TopDirectoryOnly);
+
+            foreach (var arquivo in arquivosTxt)
+            {
+                try
+                {
+                    File.Delete(arquivo);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao apagar {arquivo}: {ex.Message}");
+                }
+            }
+            MessageBox.Show($"Finalizado");
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
