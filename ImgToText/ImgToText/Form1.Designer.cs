@@ -72,6 +72,9 @@
             descriptografarENCParaMP4ToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             gerarListaDeVideosParaOSiteToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
+            criptografarMP4ParaENCUnitarioToolStripMenuItem = new ToolStripMenuItem();
+            descriptografarENCParaMP4UnitarioToolStripMenuItem = new ToolStripMenuItem();
             opçõesToolStripMenuItem = new ToolStripMenuItem();
             converterTodasImagensParaJPEGdiminueOTamanhoToolStripMenuItem = new ToolStripMenuItem();
             apagarToolStripMenuItem = new ToolStripMenuItem();
@@ -79,6 +82,8 @@
             apagarTodasImagensToolStripMenuItem = new ToolStripMenuItem();
             apagarTodosMP4ToolStripMenuItem = new ToolStripMenuItem();
             apagarTodosENCToolStripMenuItem = new ToolStripMenuItem();
+            fFMPEGToolStripMenuItem = new ToolStripMenuItem();
+            extrairOUltimoFrameDoVideoToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -188,7 +193,7 @@
             button5.BackColor = SystemColors.AppWorkspace;
             button5.FlatAppearance.BorderSize = 0;
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Arial Narrow", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button5.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button5.ForeColor = SystemColors.ActiveCaptionText;
             button5.Location = new Point(793, 425);
             button5.Name = "button5";
@@ -203,7 +208,7 @@
             button4.BackColor = SystemColors.AppWorkspace;
             button4.FlatAppearance.BorderSize = 0;
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Font = new Font("Arial Narrow", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button4.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button4.ForeColor = SystemColors.ActiveCaptionText;
             button4.Location = new Point(793, 395);
             button4.Name = "button4";
@@ -517,7 +522,7 @@
             // 
             // videosToolStripMenuItem
             // 
-            videosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { criptografarMP4ParaENCToolStripMenuItem, descriptografarENCParaMP4ToolStripMenuItem, toolStripSeparator1, gerarListaDeVideosParaOSiteToolStripMenuItem });
+            videosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { criptografarMP4ParaENCToolStripMenuItem, descriptografarENCParaMP4ToolStripMenuItem, toolStripSeparator1, gerarListaDeVideosParaOSiteToolStripMenuItem, toolStripSeparator3, criptografarMP4ParaENCUnitarioToolStripMenuItem, descriptografarENCParaMP4UnitarioToolStripMenuItem });
             videosToolStripMenuItem.Name = "videosToolStripMenuItem";
             videosToolStripMenuItem.Size = new Size(54, 20);
             videosToolStripMenuItem.Text = "Videos";
@@ -525,32 +530,51 @@
             // criptografarMP4ParaENCToolStripMenuItem
             // 
             criptografarMP4ParaENCToolStripMenuItem.Name = "criptografarMP4ParaENCToolStripMenuItem";
-            criptografarMP4ParaENCToolStripMenuItem.Size = new Size(241, 22);
+            criptografarMP4ParaENCToolStripMenuItem.Size = new Size(279, 22);
             criptografarMP4ParaENCToolStripMenuItem.Text = "Criptografar MP4 para ENC";
             criptografarMP4ParaENCToolStripMenuItem.Click += criptografarMP4ParaENCToolStripMenuItem_Click;
             // 
             // descriptografarENCParaMP4ToolStripMenuItem
             // 
             descriptografarENCParaMP4ToolStripMenuItem.Name = "descriptografarENCParaMP4ToolStripMenuItem";
-            descriptografarENCParaMP4ToolStripMenuItem.Size = new Size(241, 22);
+            descriptografarENCParaMP4ToolStripMenuItem.Size = new Size(279, 22);
             descriptografarENCParaMP4ToolStripMenuItem.Text = "Descriptografar ENC para MP4";
             descriptografarENCParaMP4ToolStripMenuItem.Click += descriptografarENCParaMP4ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(238, 6);
+            toolStripSeparator1.Size = new Size(276, 6);
             // 
             // gerarListaDeVideosParaOSiteToolStripMenuItem
             // 
             gerarListaDeVideosParaOSiteToolStripMenuItem.Name = "gerarListaDeVideosParaOSiteToolStripMenuItem";
-            gerarListaDeVideosParaOSiteToolStripMenuItem.Size = new Size(241, 22);
+            gerarListaDeVideosParaOSiteToolStripMenuItem.Size = new Size(279, 22);
             gerarListaDeVideosParaOSiteToolStripMenuItem.Text = "Gerar Lista de Videos para o Site";
             gerarListaDeVideosParaOSiteToolStripMenuItem.Click += gerarListaDeVideosParaOSiteToolStripMenuItem_Click;
             // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(276, 6);
+            // 
+            // criptografarMP4ParaENCUnitarioToolStripMenuItem
+            // 
+            criptografarMP4ParaENCUnitarioToolStripMenuItem.Name = "criptografarMP4ParaENCUnitarioToolStripMenuItem";
+            criptografarMP4ParaENCUnitarioToolStripMenuItem.Size = new Size(279, 22);
+            criptografarMP4ParaENCUnitarioToolStripMenuItem.Text = "Criptografar MP4 para ENC Unitario";
+            criptografarMP4ParaENCUnitarioToolStripMenuItem.Click += criptografarMP4ParaENCUnitarioToolStripMenuItem_Click;
+            // 
+            // descriptografarENCParaMP4UnitarioToolStripMenuItem
+            // 
+            descriptografarENCParaMP4UnitarioToolStripMenuItem.Name = "descriptografarENCParaMP4UnitarioToolStripMenuItem";
+            descriptografarENCParaMP4UnitarioToolStripMenuItem.Size = new Size(279, 22);
+            descriptografarENCParaMP4UnitarioToolStripMenuItem.Text = "Descriptografar ENC para MP4 Unitario";
+            descriptografarENCParaMP4UnitarioToolStripMenuItem.Click += descriptografarENCParaMP4UnitarioToolStripMenuItem_Click;
+            // 
             // opçõesToolStripMenuItem
             // 
-            opçõesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { converterTodasImagensParaJPEGdiminueOTamanhoToolStripMenuItem, apagarToolStripMenuItem });
+            opçõesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { converterTodasImagensParaJPEGdiminueOTamanhoToolStripMenuItem, apagarToolStripMenuItem, fFMPEGToolStripMenuItem });
             opçõesToolStripMenuItem.Name = "opçõesToolStripMenuItem";
             opçõesToolStripMenuItem.Size = new Size(59, 20);
             opçõesToolStripMenuItem.Text = "Opções";
@@ -596,6 +620,20 @@
             apagarTodosENCToolStripMenuItem.Size = new Size(192, 22);
             apagarTodosENCToolStripMenuItem.Text = "Apagar todos ENC";
             apagarTodosENCToolStripMenuItem.Click += apagarTodosENCToolStripMenuItem_Click;
+            // 
+            // fFMPEGToolStripMenuItem
+            // 
+            fFMPEGToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { extrairOUltimoFrameDoVideoToolStripMenuItem });
+            fFMPEGToolStripMenuItem.Name = "fFMPEGToolStripMenuItem";
+            fFMPEGToolStripMenuItem.Size = new Size(377, 22);
+            fFMPEGToolStripMenuItem.Text = "FFMPEG";
+            // 
+            // extrairOUltimoFrameDoVideoToolStripMenuItem
+            // 
+            extrairOUltimoFrameDoVideoToolStripMenuItem.Name = "extrairOUltimoFrameDoVideoToolStripMenuItem";
+            extrairOUltimoFrameDoVideoToolStripMenuItem.Size = new Size(238, 22);
+            extrairOUltimoFrameDoVideoToolStripMenuItem.Text = "Extrair o ultimo frame do video";
+            extrairOUltimoFrameDoVideoToolStripMenuItem.Click += extrairOUltimoFrameDoVideoToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -696,5 +734,10 @@
         private ToolStripMenuItem abrirImagemEGerarCodigoTXTToolStripMenuItem;
         private ToolStripMenuItem decodificarTextoEExibirAImagemToolStripMenuItem;
         private ToolStripMenuItem salvarArquivoDeTextoToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem criptografarMP4ParaENCUnitarioToolStripMenuItem;
+        private ToolStripMenuItem descriptografarENCParaMP4UnitarioToolStripMenuItem;
+        private ToolStripMenuItem fFMPEGToolStripMenuItem;
+        private ToolStripMenuItem extrairOUltimoFrameDoVideoToolStripMenuItem;
     }
 }

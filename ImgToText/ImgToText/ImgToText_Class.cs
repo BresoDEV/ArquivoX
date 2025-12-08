@@ -376,7 +376,7 @@ namespace ImgToText
                 );
 
                 File.WriteAllBytes(outPath, plain);
-
+                
                // Console.WriteLine($"Decrypted: {Path.GetFileName(filepath)} -> {Path.GetFileName(outPath)}");
             }
 

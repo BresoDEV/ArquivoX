@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
@@ -31,10 +32,10 @@ namespace ImgToText
             };
         }
 
-      
+
         public bool pastaImagensOK()
         {
-            if(textBox4.Text == "" && senhaOK())
+            if (string.IsNullOrWhiteSpace(textBox4.Text) && senhaOK())
             {
                 campoVermelho(textBox4);
                 return false;
@@ -48,7 +49,7 @@ namespace ImgToText
         }
         public bool pastaVideosOK()
         {
-            if (textBox5.Text == "" && senhaOK())
+            if (string.IsNullOrWhiteSpace(textBox5.Text) && senhaOK())
             {
                 campoVermelho(textBox5);
                 return false;
@@ -59,17 +60,17 @@ namespace ImgToText
                 return false;
             }
             return true;
-        } 
+        }
         public bool senhaOK()
         {
-            if (textBox1.Text == "")
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
             {
                 campoVermelho(textBox1);
                 return false;
-            } 
+            }
             return true;
-        }    
-        
+        }
+
         public bool tudoOK()
         {
             if (pastaImagensOK())
@@ -87,7 +88,7 @@ namespace ImgToText
             return false;
         }
 
-         
+
 
 
 
@@ -598,7 +599,7 @@ namespace ImgToText
             {
                 Processamento.converter_todas_imagens_da_pasta_para_txt(textBox1.Text);
             }
-            
+
         }
 
         private void processarTodosTXTsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -607,7 +608,7 @@ namespace ImgToText
             {
                 Processamento.converter_todos_txt_da_pasta_para_png(pictureBox1, textBox1.Text);
             }
-                
+
         }
 
         private void abrirImagemEGerarCodigoTXTToolStripMenuItem_Click(object sender, EventArgs e)
@@ -649,7 +650,7 @@ namespace ImgToText
             {
                 ImgToText_Class.Diversos.SalvarTXT(richTextBox1.Text);
             }
-               
+
         }
 
         private void criptografarMP4ParaENCToolStripMenuItem_Click(object sender, EventArgs e)
@@ -674,7 +675,7 @@ namespace ImgToText
 
                 timer3.Start();
             }
-           
+
         }
 
         private void descriptografarENCParaMP4ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -699,7 +700,7 @@ namespace ImgToText
 
                 timer4.Start();
             }
-                
+
         }
 
         private void gerarListaDeVideosParaOSiteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -720,7 +721,7 @@ namespace ImgToText
                 s += "]\n";
                 richTextBox2.Text = s.Replace(".mp4", ".enc");
             }
-                
+
 
         }
 
@@ -750,7 +751,7 @@ namespace ImgToText
 
                 timer2.Start();
             }
-               
+
         }
 
         private void apagarTodosTXTToolStripMenuItem_Click(object sender, EventArgs e)
@@ -772,7 +773,7 @@ namespace ImgToText
                 }
                 MessageBox.Show($"Finalizado");
             }
-                
+
         }
 
         private void apagarTodasImagensToolStripMenuItem_Click(object sender, EventArgs e)
@@ -803,13 +804,13 @@ namespace ImgToText
                 }
                 MessageBox.Show($"Finalizado");
             }
-               
+
         }
 
         private void apagarTodosMP4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           if (pastaVideosOK())
-                {
+            if (pastaVideosOK())
+            {
                 var arquivosTxt = Directory.GetFiles(textBox5.Text, "*.mp4", SearchOption.TopDirectoryOnly);
 
                 foreach (var arquivo in arquivosTxt)
@@ -825,7 +826,7 @@ namespace ImgToText
                 }
                 MessageBox.Show($"Finalizado");
             }
-           
+
         }
 
         private void apagarTodosENCToolStripMenuItem_Click(object sender, EventArgs e)
@@ -847,12 +848,81 @@ namespace ImgToText
                 }
                 MessageBox.Show($"Finalizado");
             }
-               
+
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
+
+        private void criptografarMP4ParaENCUnitarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tudoOK())
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog { })
+                {
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        Encriptador_de_Video.ctOK = 0;
+                        Encriptador_de_Video.ctERRRO = 0;
+                        Encriptador_de_Video.ponteiro = 0;
+
+                        Encriptador_de_Video.EncryptFile(openFileDialog.FileName, textBox1.Text);
+
+                        MessageBox.Show("Concluido");
+                    }
+                }
+            }
+
+        }
+
+        private void descriptografarENCParaMP4UnitarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (tudoOK())
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog { })
+                {
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        Encriptador_de_Video.ctOK = 0;
+                        Encriptador_de_Video.ctERRRO = 0;
+                        Encriptador_de_Video.ponteiro = 0;
+
+                        Encriptador_de_Video.DecryptFile(openFileDialog.FileName, textBox1.Text);
+
+                        MessageBox.Show("Concluido");
+                    }
+                }
+            }
+
+        }
+
+        private void extrairOUltimoFrameDoVideoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog { })
+            {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string final = openFileDialog.FileName.Replace(".mp4", ".png");
+
+                    MessageBox.Show(openFileDialog.FileName);
+                    MessageBox.Show(final);
+
+                    var p = new Process();
+                    p.StartInfo.FileName = "ffmpeg";
+                    p.StartInfo.Arguments = $"-sseof -1 -i \"{openFileDialog.FileName}\" -vframes 1 \"{final}\"";
+                    
+                    richTextBox1.Text = $"-sseof -1 -i \"{openFileDialog.FileName}\" -vframes 1 \"{final}\"";
+                    
+                    p.StartInfo.RedirectStandardOutput = true;
+                    p.StartInfo.RedirectStandardError = true;
+                    p.StartInfo.UseShellExecute = false;
+                    p.StartInfo.CreateNoWindow = true;
+                    p.Start();
+                    //p.WaitForExit();       // espera o FFmpeg terminar
+                    p.Close();
+
+                    MessageBox.Show("Concluido");
+                }
+            }
         }
     }
 }
