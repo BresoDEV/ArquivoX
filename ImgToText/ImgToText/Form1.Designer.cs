@@ -84,6 +84,11 @@
             apagarTodosENCToolStripMenuItem = new ToolStripMenuItem();
             fFMPEGToolStripMenuItem = new ToolStripMenuItem();
             extrairOUltimoFrameDoVideoToolStripMenuItem = new ToolStripMenuItem();
+            progressBar1 = new ProgressBar();
+            progressBar2 = new ProgressBar();
+            timer5 = new System.Windows.Forms.Timer(components);
+            progressBar3 = new ProgressBar();
+            timer6 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -155,7 +160,7 @@
             pictureBox1.BackColor = SystemColors.ControlDarkDark;
             pictureBox1.Location = new Point(548, 32);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(199, 283);
+            pictureBox1.Size = new Size(163, 250);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -166,9 +171,9 @@
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBox1.ForeColor = SystemColors.AppWorkspace;
-            richTextBox1.Location = new Point(271, 134);
+            richTextBox1.Location = new Point(12, 288);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(130, 181);
+            richTextBox1.Size = new Size(325, 79);
             richTextBox1.TabIndex = 22;
             richTextBox1.Text = "";
             // 
@@ -180,7 +185,7 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button6.ForeColor = SystemColors.ActiveCaptionText;
-            button6.Location = new Point(350, 411);
+            button6.Location = new Point(292, 456);
             button6.Name = "button6";
             button6.Size = new Size(180, 25);
             button6.TabIndex = 7;
@@ -226,23 +231,24 @@
             // 
             // groupBox4
             // 
+            groupBox4.Controls.Add(progressBar3);
             groupBox4.Controls.Add(label1);
             groupBox4.ForeColor = Color.White;
             groupBox4.Location = new Point(12, 134);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(253, 87);
+            groupBox4.Size = new Size(530, 71);
             groupBox4.TabIndex = 10;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Converter Imagens para JPEG";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 19);
+            label1.ForeColor = SystemColors.Control;
+            label1.Location = new Point(8, 19);
             label1.Name = "label1";
-            label1.Size = new Size(23, 60);
+            label1.Size = new Size(41, 15);
             label1.TabIndex = 8;
-            label1.Text = "bla\r\nbla\r\nbla\r\nbla";
+            label1.Text = "blaaaa";
             // 
             // button7
             // 
@@ -267,22 +273,22 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(label2);
+            groupBox5.Controls.Add(progressBar2);
             groupBox5.ForeColor = Color.White;
-            groupBox5.Location = new Point(12, 227);
+            groupBox5.Location = new Point(12, 211);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(253, 88);
+            groupBox5.Size = new Size(530, 71);
             groupBox5.TabIndex = 11;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Encriptador de Videos";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(6, 19);
             label2.Name = "label2";
-            label2.Size = new Size(23, 60);
+            label2.Size = new Size(23, 15);
             label2.TabIndex = 8;
-            label2.Text = "bla\r\nbla\r\nbla\r\nbla";
+            label2.Text = "bla";
             // 
             // button10
             // 
@@ -321,7 +327,7 @@
             button9.FlatStyle = FlatStyle.Flat;
             button9.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button9.ForeColor = SystemColors.ActiveCaptionText;
-            button9.Location = new Point(567, 425);
+            button9.Location = new Point(478, 456);
             button9.Name = "button9";
             button9.Size = new Size(180, 25);
             button9.TabIndex = 10;
@@ -334,9 +340,9 @@
             richTextBox2.BackColor = Color.FromArgb(64, 64, 64);
             richTextBox2.BorderStyle = BorderStyle.None;
             richTextBox2.ForeColor = SystemColors.AppWorkspace;
-            richTextBox2.Location = new Point(412, 133);
+            richTextBox2.Location = new Point(386, 288);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(130, 181);
+            richTextBox2.Size = new Size(325, 79);
             richTextBox2.TabIndex = 12;
             richTextBox2.Text = "\n";
             // 
@@ -357,7 +363,7 @@
             button11.FlatStyle = FlatStyle.Flat;
             button11.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button11.ForeColor = SystemColors.ActiveCaptionText;
-            button11.Location = new Point(162, 363);
+            button11.Location = new Point(12, 456);
             button11.Name = "button11";
             button11.Size = new Size(134, 25);
             button11.TabIndex = 14;
@@ -372,7 +378,7 @@
             button12.FlatStyle = FlatStyle.Flat;
             button12.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button12.ForeColor = SystemColors.ActiveCaptionText;
-            button12.Location = new Point(162, 394);
+            button12.Location = new Point(12, 487);
             button12.Name = "button12";
             button12.Size = new Size(134, 25);
             button12.TabIndex = 15;
@@ -387,7 +393,7 @@
             button13.FlatStyle = FlatStyle.Flat;
             button13.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button13.ForeColor = SystemColors.ActiveCaptionText;
-            button13.Location = new Point(162, 425);
+            button13.Location = new Point(152, 456);
             button13.Name = "button13";
             button13.Size = new Size(134, 25);
             button13.TabIndex = 16;
@@ -402,7 +408,7 @@
             button14.FlatStyle = FlatStyle.Flat;
             button14.Font = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
             button14.ForeColor = SystemColors.ActiveCaptionText;
-            button14.Location = new Point(162, 456);
+            button14.Location = new Point(152, 487);
             button14.Name = "button14";
             button14.Size = new Size(134, 25);
             button14.TabIndex = 17;
@@ -469,7 +475,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { imagensToolStripMenuItem, videosToolStripMenuItem, opçõesToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(756, 24);
+            menuStrip1.Size = new Size(721, 24);
             menuStrip1.TabIndex = 23;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -635,12 +641,44 @@
             extrairOUltimoFrameDoVideoToolStripMenuItem.Text = "Extrair o ultimo frame do video";
             extrairOUltimoFrameDoVideoToolStripMenuItem.Click += extrairOUltimoFrameDoVideoToolStripMenuItem_Click;
             // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(12, 373);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(699, 23);
+            progressBar1.TabIndex = 24;
+            // 
+            // progressBar2
+            // 
+            progressBar2.Location = new Point(8, 37);
+            progressBar2.Name = "progressBar2";
+            progressBar2.Size = new Size(516, 23);
+            progressBar2.TabIndex = 25;
+            // 
+            // timer5
+            // 
+            timer5.Interval = 1000;
+            timer5.Tick += timer5_Tick;
+            // 
+            // progressBar3
+            // 
+            progressBar3.Location = new Point(8, 37);
+            progressBar3.Name = "progressBar3";
+            progressBar3.Size = new Size(516, 23);
+            progressBar3.TabIndex = 26;
+            // 
+            // timer6
+            // 
+            timer6.Interval = 1000;
+            timer6.Tick += timer6_Tick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(50, 50, 50);
-            ClientSize = new Size(756, 325);
+            ClientSize = new Size(721, 404);
+            Controls.Add(progressBar1);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
@@ -739,5 +777,10 @@
         private ToolStripMenuItem descriptografarENCParaMP4UnitarioToolStripMenuItem;
         private ToolStripMenuItem fFMPEGToolStripMenuItem;
         private ToolStripMenuItem extrairOUltimoFrameDoVideoToolStripMenuItem;
+        private ProgressBar progressBar1;
+        private ProgressBar progressBar2;
+        private System.Windows.Forms.Timer timer5;
+        private ProgressBar progressBar3;
+        private System.Windows.Forms.Timer timer6;
     }
 }

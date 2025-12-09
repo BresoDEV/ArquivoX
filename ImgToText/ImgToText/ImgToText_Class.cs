@@ -242,6 +242,44 @@ namespace ImgToText
  
         public class Processamento
         {
+            public static int ctOK = 0;
+            public static int ctERRRO = 0;
+            public static int ponteiro = 0;
+
+            public static void converter_imagen_para_txt(string caminho_img, string password)
+            {
+                byte[] imageBytes = File.ReadAllBytes(caminho_img);
+                string base64String = Convert.ToBase64String(imageBytes);
+
+                //---------------------
+                string input = password;
+                uint hash = 0;
+                foreach (char c in input)
+                {
+                    hash += (uint)c;
+                    hash += (hash << 10);
+                    hash ^= (hash >> 6);
+                }
+
+                hash += (hash << 3);
+                hash ^= (hash >> 11);
+                hash += (hash << 15);
+
+                //-------------------------
+                string text = base64String;
+                string key = "0x" + hash.ToString("X");
+                StringBuilder e2 = new StringBuilder();
+                int keyLength = key.Length;
+
+                for (int i = 0; i < text.Length; i++)
+                {
+                    e2.Append((char)(text[i] ^ key[i % keyLength]));
+                }
+
+                
+                Diversos.SalvarTXT(Convert.ToBase64String(Encoding.UTF8.GetBytes(e2.ToString())));
+            }
+
             public static void converter_todas_imagens_da_pasta_para_txt(string password)
             {
                 string diretorio = Properties.Settings.Default.PastaImagens;
@@ -261,6 +299,11 @@ namespace ImgToText
                     
                 }
                 MessageBox.Show(ct + " imagens convertidas");
+                 
+            }
+            public static void converter_txt_para_png(PictureBox pictureBox,string password)
+            {
+                 
                  
             }
             public static void converter_todos_txt_da_pasta_para_png(PictureBox pictureBox,string password)

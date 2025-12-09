@@ -326,7 +326,12 @@ namespace ImgToText
 
             ConversorJPEG.ponteiro++;
 
-            label1.Text = $"Total de Imagens: {ConversorJPEG.arquivos.Count()} imagens \nPonteiro atual: {ConversorJPEG.ponteiro}\nConvertidos {ConversorJPEG.ctOK} arquivos\nErros: {ConversorJPEG.ctERRRO} erros";
+            //------------------------------------
+            progressBar1.Maximum = ConversorJPEG.arquivos.Count();
+            progressBar1.Value = ConversorJPEG.ctOK;
+            //------------------------------------
+
+            label1.Text = $"Total de Imagens: {ConversorJPEG.arquivos.Count()} imagens.    Convertidos {ConversorJPEG.ctOK} arquivos.    Erros: {ConversorJPEG.ctERRRO} erros";
 
             if (ConversorJPEG.arquivos.Count() == ConversorJPEG.ponteiro)
             {
@@ -379,12 +384,20 @@ namespace ImgToText
 
             Encriptador_de_Video.ponteiro++;
 
-            label2.Text = $"Total de Videos: {Encriptador_de_Video.files.Count()} videos \nPonteiro atual: {Encriptador_de_Video.ponteiro}\nConvertidos {Encriptador_de_Video.ctOK} arquivos\nErros: {Encriptador_de_Video.ctERRRO} erros";
+            //------------------------------------
+            progressBar2.Maximum = Encriptador_de_Video.files.Count();
+            progressBar2.Value = Encriptador_de_Video.ctOK;
+            //------------------------------------
+
+            label2.Text = $"Total de Videos: {Encriptador_de_Video.files.Count()} videos.    Ponteiro atual: {Encriptador_de_Video.ponteiro}.    Convertidos {Encriptador_de_Video.ctOK} arquivos.    Erros: {Encriptador_de_Video.ctERRRO} erros";
 
 
             if (Encriptador_de_Video.files.Count() == Encriptador_de_Video.ponteiro)
             {
                 timer3.Stop();
+                MessageBox.Show(Encriptador_de_Video.ponteiro + " videos convertidos");
+                Encriptador_de_Video.ponteiro = 0;
+                progressBar2.Value = Processamento.ponteiro;
             }
         }
 
@@ -449,12 +462,22 @@ namespace ImgToText
 
             Encriptador_de_Video.ponteiro++;
 
-            label2.Text = $"Total de Videos: {Encriptador_de_Video.files.Count()} videos \nPonteiro atual: {Encriptador_de_Video.ponteiro}\nConvertidos {Encriptador_de_Video.ctOK} arquivos\nErros: {Encriptador_de_Video.ctERRRO} erros";
+            //------------------------------------
+            progressBar2.Maximum = Encriptador_de_Video.files.Count();
+            progressBar2.Value = Encriptador_de_Video.ctOK;
+            //------------------------------------
+
+            label2.Text = $"Total de Videos: {Encriptador_de_Video.files.Count()} videos.    Ponteiro atual: {Encriptador_de_Video.ponteiro}.    Convertidos {Encriptador_de_Video.ctOK} arquivos.    Erros: {Encriptador_de_Video.ctERRRO} erros";
 
 
             if (Encriptador_de_Video.files.Count() == Encriptador_de_Video.ponteiro)
             {
+               
                 timer4.Stop();
+                MessageBox.Show(Encriptador_de_Video.ponteiro + " videos convertidos");
+                Encriptador_de_Video.ponteiro = 0;
+                progressBar2.Value = Processamento.ponteiro;
+                
             }
         }
 
@@ -593,12 +616,28 @@ namespace ImgToText
             Properties.Settings.Default.Save();
         }
 
+
+        string[] arquivosImagens = new string[0];
         private void processarTodasImagensToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (pastaImagensOK())
+            string diretorio = Properties.Settings.Default.PastaImagens;
+            string[] extensoesImagem = new string[] { "*.jpg", "*.jpeg", "*.png", "*.bmp", "*.gif" };
+
+            foreach (var extensao in extensoesImagem)
             {
-                Processamento.converter_todas_imagens_da_pasta_para_txt(textBox1.Text);
+                arquivosImagens = arquivosImagens.Concat(Directory.GetFiles(diretorio, extensao)).ToArray();
             }
+
+            int ct = 0;
+            foreach (var imagem in arquivosImagens)
+            {
+                ct++;
+            }
+
+            progressBar3.Maximum = ct;
+
+
+            timer5.Start();
 
         }
 
@@ -606,7 +645,17 @@ namespace ImgToText
         {
             if (pastaImagensOK())
             {
-                Processamento.converter_todos_txt_da_pasta_para_png(pictureBox1, textBox1.Text);
+
+                int ct = 1;
+                while (File.Exists(Properties.Settings.Default.PastaImagens + "/img (" + ct + ").txt"))
+                {
+                    ct++;
+                }
+                progressBar3.Maximum = ct;
+
+                Processamento.ponteiro = 1;
+                timer6.Start();
+
             }
 
         }
@@ -909,9 +958,9 @@ namespace ImgToText
                     var p = new Process();
                     p.StartInfo.FileName = "ffmpeg";
                     p.StartInfo.Arguments = $"-sseof -1 -i \"{openFileDialog.FileName}\" -vframes 1 \"{final}\"";
-                    
+
                     richTextBox1.Text = $"-sseof -1 -i \"{openFileDialog.FileName}\" -vframes 1 \"{final}\"";
-                    
+
                     p.StartInfo.RedirectStandardOutput = true;
                     p.StartInfo.RedirectStandardError = true;
                     p.StartInfo.UseShellExecute = false;
@@ -923,6 +972,65 @@ namespace ImgToText
                     MessageBox.Show("Concluido");
                 }
             }
+        }
+
+        private void timer5_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (File.Exists(arquivosImagens[Processamento.ponteiro]))
+                {
+                    Processamento.converter_imagen_para_txt(arquivosImagens[Processamento.ponteiro], textBox1.Text);
+                    Processamento.ponteiro++;
+
+                    progressBar3.Value = Processamento.ponteiro;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Array.Clear(arquivosImagens, 0, arquivosImagens.Length);
+
+                timer5.Stop();
+                MessageBox.Show(Processamento.ponteiro + " imagens convertidas");
+                Processamento.ponteiro = 0;
+                progressBar3.Value = Processamento.ponteiro;
+
+            }
+        }
+
+        private void timer6_Tick(object sender, EventArgs e)
+        {
+
+
+            try
+            {
+                if (File.Exists(Properties.Settings.Default.PastaImagens + "/img (" + Processamento.ponteiro + ").txt"))
+                {
+                    pictureBox1.Image = Sem_OpenDialog.Text_to_Img(File.ReadAllText(Properties.Settings.Default.PastaImagens + "/img (" + Processamento.ponteiro + ").txt"), textBox1.Text);
+
+                    Diversos.SalvarIMG(pictureBox1);
+
+                    Processamento.ponteiro++;
+                    progressBar3.Value = Processamento.ponteiro;
+                }
+                else
+                {
+
+                    Array.Clear(arquivosImagens, 0, arquivosImagens.Length);
+
+                    timer6.Stop();
+                    MessageBox.Show(Processamento.ponteiro + " txts convertidos");
+                    Processamento.ponteiro = 0;
+                    progressBar3.Value = Processamento.ponteiro;
+
+                }
+            }
+            catch (Exception ex) { }
+           
+
+
+            
         }
     }
 }

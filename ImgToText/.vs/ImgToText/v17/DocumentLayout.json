@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Desktop\\ImgToText\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E6551AD0-BD05-40DA-A0C6-7F9DB3671BDF}|ImgToText\\ImgToText.csproj|C:\\Users\\User\\Desktop\\ImgToText\\imgtotext\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E6551AD0-BD05-40DA-A0C6-7F9DB3671BDF}|ImgToText\\ImgToText.csproj|solutionrelative:imgtotext\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E6551AD0-BD05-40DA-A0C6-7F9DB3671BDF}|ImgToText\\ImgToText.csproj|c:\\users\\user\\desktop\\imgtotext\\imgtotext\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E6551AD0-BD05-40DA-A0C6-7F9DB3671BDF}|ImgToText\\ImgToText.csproj|solutionrelative:imgtotext\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E6551AD0-BD05-40DA-A0C6-7F9DB3671BDF}|ImgToText\\ImgToText.csproj|c:\\users\\user\\desktop\\imgtotext\\imgtotext\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E6551AD0-BD05-40DA-A0C6-7F9DB3671BDF}|ImgToText\\ImgToText.csproj|solutionrelative:imgtotext\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E6551AD0-BD05-40DA-A0C6-7F9DB3671BDF}|ImgToText\\ImgToText.csproj|c:\\users\\user\\desktop\\imgtotext\\imgtotext\\imgtotext_class.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -32,14 +32,14 @@
               "RelativeDocumentMoniker": "ImgToText\\ImgToText_Class.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\ImgToText\\ImgToText\\ImgToText_Class.cs",
               "RelativeToolTip": "ImgToText\\ImgToText_Class.cs",
-              "ViewState": "AgIAACIBAAAAAAAAAAAwwC4BAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAC4BAAAAAAAAAAAAwDwBAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T06:03:04.966Z",
+              "WhenOpened": "2025-12-09T04:49:11.708Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Projeto]",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\ImgToText\\ImgToText\\Form1.cs",
               "RelativeDocumentMoniker": "ImgToText\\Form1.cs",
@@ -51,13 +51,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\User\\Desktop\\ImgToText\\ImgToText\\Form1.cs",
               "RelativeDocumentMoniker": "ImgToText\\Form1.cs",
               "ToolTip": "C:\\Users\\User\\Desktop\\ImgToText\\ImgToText\\Form1.cs",
               "RelativeToolTip": "ImgToText\\Form1.cs",
-              "ViewState": "AgIAAAwCAAAAAAAAAAAQwBsCAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAMoBAAAAAAAAAAAQwNwBAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-18T01:08:59.187Z",
               "EditorCaption": ""
