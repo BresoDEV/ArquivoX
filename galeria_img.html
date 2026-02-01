@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Galeria Descriptografada</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+    body {
+        background: #111;
+        color: #eee;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .controles {
+        max-width: 400px;
+        margin: 0 auto 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    input, button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 6px;
+        border: none;
+        box-sizing: border-box;
+    }
+
+    input {
+        background: #222;
+        color: #fff;
+    }
+
+    button {
+        background: #6200ea;
+        color: #fff;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: #666;
+    }
+
+    #galeria {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+        padding: 10px;
+    }
+
+    #galeria img {
+        width: 100%;
+        cursor: pointer;
+        border: 2px solid #333;
+        transition: transform 0.2s;
+    }
+
+    #galeria img:hover {
+        transform: scale(1.05);
+    }
+
+    /* MODAL */
+    #modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.9);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        padding: 10px;
+    }
+
+    #modal img {
+        max-width: 100%;
+        max-height: 100%;
+        border: 3px solid #fff;
+    }
+
+    #modal span {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 34px;
+        cursor: pointer;
+        color: #fff;
+    }
+        </style>
+    </head>
+    <body>
+        <!------------------------------------------------------------------------------>
+        <h1>Galeria de Imagens Criptografadas</h1>
+        <div class="controles">
+            <input type="password" id="senha" placeholder="Senha">
+            <input type="number" id="indexInicio" placeholder="Index inicial">
+            <input type="number" id="indexFim" placeholder="Index final">
+            <button id="Exibir">Exibir imagens</button>
+        </div>
+        <div id="galeria"></div>
+        <!-- MODAL -->
+        <div id="modal">
+            <span id="fechar">&times;</span>
+            <img id="imgModal">
+        </div>
+        <script>
+ 
+
+
+
+
+
+
+
+
+//-------------------------------------------
+
+const Exibir = document.getElementById('Exibir');
+const galeria = document.getElementById('galeria');
+const modal = document.getElementById('modal');
+const imgModal = document.getElementById('imgModal');
+const fechar = document.getElementById('fechar');
+
+Exibir.addEventListener('click', async () => {
+    const inicio = parseInt(indexInicio.value);
+    const fim = parseInt(indexFim.value);
+    const chave = joaat(senha.value);
+
+    galeria.innerHTML = '';
+
+    if (!senha.value || isNaN(inicio) || isNaN(fim) || inicio > fim) {
+        alert('Preencha corretamente os campos');
+        return;
+    }
+
+    for (let i = inicio; i <= fim; i++) {
+        try {
+            const response = await fetch(`imagens/img (${i}).txt`);
+            if (!response.ok) continue;
+
+            const data = await response.text();
+            const base64 = data.trim();
+            const imgDec = decrip(base64, chave);
+
+            const img = document.createElement('img');
+            img.src = "data:image/png;base64," + imgDec;
+
+            img.addEventListener('click', () => {
+                imgModal.src = img.src;
+                modal.style.display = 'flex';
+            });
+
+            galeria.appendChild(img);
+
+        } catch (e) {
+            console.error('Erro no índice', i, e);
+        }
+    }
+});
+
+// FECHAR MODAL
+fechar.onclick = () => modal.style.display = 'none';
+modal.onclick = e => {
+    if (e.target === modal) modal.style.display = 'none';
+};
+
+// ===== SUAS FUNÇÕES ORIGINAIS =====
+function decrip(text, key) {
+    let e = atob(text)
+    let d = ''
+    for (let i = 0; i < e.length; i++) {
+        d += String.fromCharCode(e.charCodeAt(i) ^ key.charCodeAt(i % key.length))
+    }
+    return d
+}
+
+function joaat(text) {
+    if (!text) {
+        return 0;
+    }
+    var value = 0, temp;
+    var index = 0;
+    var quoted = false;
+    if (text.charCodeAt(index) === 34) {
+        quoted = true;
+        index = (index + 1) | 0;
+    }
+    text = text.toLowerCase();
+    for (; index < text.length; index = (index + 1) | 0) {
+        var v = text.charCodeAt(index);
+        if (quoted && (v === 34)) {
+            break;
+        }
+        if (v === 92) {
+            v = 47;
+        }
+        temp = v;
+        temp = (temp + value) >>> 0;
+        value = (temp << 10) >>> 0;
+        temp = (temp + value) >>> 0;
+        value = temp >>> 6;
+        value = (value ^ temp) >>> 0;
+    }
+    temp = (value << 3) >>> 0;
+    temp = (value + temp) >>> 0;
+    var temp2 = temp >>> 11;
+    temp = (temp2 ^ temp) >>> 0;
+    temp2 = (temp << 15) >>> 0;
+    value = (temp2 + temp) >>> 0;
+    if (value < 2) {
+        value = (value + 2) >>> 0;
+    }
+    return '0x' + value.toString(16).toUpperCase();
+}
+        </script>
+    </body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dark</title>
+        <style>
+    body {
+      background: #0f0f10;
+      color: #e5e5e5;
+      font-family: Arial, sans-serif;
+      display: flex;
+      /*  justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        */
+      padding: 20px;
+    }
+
+    .container {
+      background: #1a1a1c;
+      padding: 30px;
+      border-radius: 14px;
+      width: 100%;
+      /* max-width: 400px;*/
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.6em;
+      color: #b7b7ff;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0;
+      cursor: pointer;
+      font-size: 1.05em;
+    }
+
+    input[type="radio"] {
+      accent-color: #429d41;
+      /* cor elegante */
+      transform: scale(1.2);
+      margin-right: 8px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      margin-top: 20px;
+      background: #121213;
+      border: 1px solid rgb(150, 147, 147);
+      border-radius: 6px;
+      padding: 10px;
+      color: #e3e3e3;
+      resize: none;
+      font-size: 1em;
+      outline: none;
+      transition: .2s;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      margin-top: 20px;
+      background: #121213;
+      border: 1px solid rgb(96, 96, 96);
+      border-radius: 6px;
+      padding: 10px;
+      color: #e3e3e3;
+      resize: none;
+      font-size: 1em;
+      outline: none;
+      transition: .2s;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    textarea:focus {
+      border-color: #7a5cff;
+      box-shadow: 0 0 0 2px rgba(122, 92, 255, 0.2);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background: #7a5cff;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    button:hover {
+      background: #6a4dee;
+    }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Formulário Grok</h1>
+            <!--------------------------------------------------------------------------------------->
+            <div>
+                <p>
+                    <b>Tem celular na mão?</b>
+                </p>
+                <label>
+                    <input id="Temcelularnamão" type="radio" name="opcao1">
+                    Sim, e manter
+                </label>
+                <label>
+                    <input id="Temcelularnamãoeremover" type="radio" name="opcao1">
+                    Sim, e remover
+                </label>
+                <label>
+                    <input id="naoTemcelularnamão" type="radio" name="opcao1">
+                    Não tem
+                </label>
+            </div>
+            <hr>
+            <!--------------------------------------------------------------------------------------->
+            <div>
+                <p>
+                    <b>Está com a roupa?</b>
+                </p>
+                <label>
+                    <input id="Estaderoupaemanter" type="radio" name="opcao2">
+                    Sim, e manter a mesma
+                </label>
+                <label>
+                    <input id="Estaderoupaemudar" type="radio" name="opcao2">
+                    Sim, e mudar
+                </label>
+                <label>
+                    <input id="Esta_de_roupa_e_baixar_parte" type="radio" name="opcao2">
+                    Sim, e baixar pedaço
+                </label>
+                <label>
+                    <input id="naoEstaderoupa" type="radio" name="opcao2">
+                    Não
+                </label>
+            </div>
+            <hr>
+            <!--------------------------------------------------------------------------------------->
+            <div>
+                <p>
+                    <b>Qual ação fazer?</b>
+                </p>
+                <label>
+                    <input id="deixarnoautomatico" type="radio" name="opcao3">
+                    Nada, deixar no automatico
+                </label>
+                <label>
+                    <input id="Doggy" type="radio" name="opcao3">
+                    Doggy
+                </label>
+                <label>
+                    <input id="Virarefazeranimacaoo" type="radio" name="opcao3">
+                    Virar e fazer animação
+                </label>
+                <label>
+                    <input id="dancar" type="radio" name="opcao3">
+                    Animação - Dançar
+                </label>
+            </div>
+            <hr>
+            <!--------------------------------------------------------------------------------------->
+            <div>
+                <p>
+                    <b>Fazer abertura com as mãos?</b>
+                </p>
+                <label>
+                    <input id="aberturaSim" type="radio" name="opcao4">
+                    Sim
+                </label>
+                <label>
+                    <input id="aberturaNao" type="radio" name="opcao4">
+                    Nao
+                </label>
+            </div>
+            <hr>
+            <!--------------------------------------------------------------------------------------->
+            <div>
+                <p>
+                    <b>Som ambiente:</b>
+                </p>
+                <label>
+                    <input id="ambienteNenhum" type="radio" name="opcao5">
+                    Nenhum
+                </label>
+                <label>
+                    <input id="MusicaAmbiente" type="radio" name="opcao5">
+                    Musica Ambiente
+                </label>
+                <label>
+                    <input id="MusicaAmbienteeFala" type="radio" name="opcao5">
+                    Musica Ambiente + Fala
+                </label>
+                <label>
+                    <input id="SemMusicaAmbienteeFala" type="radio" name="opcao5">
+                    Nenhum som + Fala
+                </label>
+                <label>
+                    <input
+                        id="textoFala"
+                        type="text"
+                        name="opcao5"
+                        placeholder="Fala do Personagem..."
+                    >
+                </label>
+            </div>
+            <hr>
+            <!--------------------------------------------------------------------------------------->
+            <div>
+                <p>
+                    <b>Dar Risadas?</b>
+                </p>
+                <label>
+                    <input id="RisadasNao" type="radio" name="opcao6">
+                    Nao
+                </label>
+                <label>
+                    <input id="RisadasSimDiscretas" type="radio" name="opcao6">
+                    Sim, discretas
+                </label>
+                <label>
+                    <input id="RisadasSimGargalhadas" type="radio" name="opcao6">
+                    Sim, gargalhadas
+                </label>
+            </div>
+            <hr>
+            <!--------------------------------------------------------------------------------------->
+            <div>
+                <p>
+                    <b>Velocidade dos movimentos:</b>
+                </p>
+                <label>
+                    <input id="VelocidadeLento" type="radio" name="opcao7">
+                    Lento
+                </label>
+                <label>
+                    <input id="VelocidadeNormal" type="radio" name="opcao7">
+                    Normal
+                </label>
+                <label>
+                    <input id="VelocidadeRapido" type="radio" name="opcao7">
+                    Rapido
+                </label>
+            </div>
+            <hr>
+            <!--------------------------------------------------------------------------------------->
+            <div>
+                <p>
+                    <b>Expresao:</b>
+                </p>
+                <label>
+                    <input id="ExpresaoNormal" type="radio" name="opcao8">
+                    Normal
+                </label>
+                <label>
+                    <input id="ExpresaoBravo" type="radio" name="opcao8">
+                    Bravo
+                </label>
+                <label>
+                    <input id="ExpresaoFeliz" type="radio" name="opcao8">
+                    Feliz
+                </label>
+            </div>
+            <hr>
+            <!--------------------------------------------------------------------------------------->
+            <div style="border:1px solid #7a5cff;">
+                <label>
+                    <input id="Semtextosnatela" type="checkbox">
+                    Sem textos na tela
+                </label>
+                <label>
+                    <input id="SempreOlhandoCamera" type="checkbox">
+                    Sempre olhando para a camera
+                </label>
+                <label>
+                    <input id="CorpoSuado" type="checkbox">
+                    Suor
+                </label>
+            </div>
+            <hr>
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------->
+            <div>
+                <input id="Senha" type="text" placeholder="Senha para liberar o promo">
+                <button id="Gerar">Gerar</button>
+                <textarea id="textarea" placeholder="Digite algo aqui..."></textarea>
+            </div>
+        </div>
+    </body>
+    <script>
+
+  
+
+  const Senha = document.getElementById('Senha')
+  const Gerar = document.getElementById('Gerar')
+  const textarea = document.getElementById('textarea')
+
+  const Tem_celular_na_mao = document.getElementById('Temcelularnamão')
+  const nao_Tem_celular_na_mao = document.getElementById('naoTemcelularnamão')
+  const Tem_celular_na_mao_e_remover = document.getElementById('Temcelularnamãoeremover')
+
+  const Esta_de_roupa_e_manter = document.getElementById('Estaderoupaemanter')
+  const Esta_de_roupa_e_mudar = document.getElementById('Estaderoupaemudar')
+  const Esta_de_roupa_e_baixar_parte = document.getElementById('Esta_de_roupa_e_baixar_parte')
+  const nao_Esta_de_roupa = document.getElementById('naoEstaderoupa')
+
+
+  const deixar_no_automatico = document.getElementById('deixarnoautomatico')
+  const Doggy = document.getElementById('Doggy')
+  const Virar_e_fazer_animacaoo = document.getElementById('Virarefazeranimacaoo')
+  const dancar = document.getElementById('dancar')
+
+
+  const aberturaSim = document.getElementById('aberturaSim')
+  const aberturaNao = document.getElementById('aberturaNao')
+
+  const ambienteNenhum = document.getElementById('ambienteNenhum')
+  const MusicaAmbiente = document.getElementById('MusicaAmbiente')
+  const MusicaAmbienteeFala = document.getElementById('MusicaAmbienteeFala')
+  const SemMusicaAmbienteeFala = document.getElementById('SemMusicaAmbienteeFala')
+  const textoFala = document.getElementById('textoFala')
+
+  const RisadasNao = document.getElementById('RisadasNao')
+  const RisadasSimDiscretas = document.getElementById('RisadasSimDiscretas')
+  const RisadasSimGargalhadas = document.getElementById('RisadasSimGargalhadas')
+
+  const VelocidadeLento = document.getElementById('VelocidadeLento')
+  const VelocidadeNormal = document.getElementById('VelocidadeNormal')
+  const VelocidadeRapido = document.getElementById('VelocidadeRapido')
+
+  const Semtextosnatela = document.getElementById('Semtextosnatela')
+  const SempreOlhandoCamera = document.getElementById('SempreOlhandoCamera')
+  const CorpoSuado = document.getElementById('CorpoSuado')
+
+  const ExpresaoNormal = document.getElementById('ExpresaoNormal')
+  const ExpresaoBravo = document.getElementById('ExpresaoBravo')
+  const ExpresaoFeliz = document.getElementById('ExpresaoFeliz')
+
+  //const --------- = document.getElementById('')
+  //const --------- = document.getElementById('')
+  //const --------- = document.getElementById('')
+  //const --------- = document.getElementById('')
+
+
+  Gerar.addEventListener('click', () => {
+    if (Senha.value == '') {
+      alert('Senha faltando')
+      return
+    } if (joaat(Senha.value) !== 'B9F08507704201471722321330020110013') {
+      alert('Senha errada')
+      return
+    } else {
+
+      var principal = "Crie um vídeo, seguindo a risca todas as instruções que eu vou passar a seguir: "
+ 
+      var aa = ''
+      var bb = ''
+      var cc = ''
+      var dd = ''
+      var ee = ''
+      var ff = ''
+      var gg = ''
+      var hh = ''
+      var ii = ''
+      var jj = ''
+      var kk = ''
+      var ll = ''
+      var mm = ''
+
+
+      //----------------------------------------
+      if (Tem_celular_na_mao.checked) {
+        aa = 'A pessoas na foto deve manter sempre a mão no celular como está no momento, e nunca deve tirar ela ou executar alguma ação diferente da que seja apenas de segurar o aparelho. Toda e qualquer ação, deve ser feita com a outra mão que está livre.'
+      }
+      if (nao_Tem_celular_na_mao.checked) {
+        aa = 'A pessoa na foto está com as duas mãos livres, ou seja, toda e qualquer atividade ou ação que seja solicitado para ela fazer, poderá ser feita com as duas mãos.'
+      }
+      if (Tem_celular_na_mao_e_remover.checked) {
+        aa = 'A pessoa possue um celular na mão, que deve ser apagado/removido imediatamente ao iniciar o vídeo, assim, deixando as duas mãos da pessoa livres, assim, podendo executar qualquer atividade ou ação que for solicitada, usando as duas mãos.'
+      }
+      //----------------------------------------
+      if (Esta_de_roupa_e_manter.checked) {
+        bb = 'A roupa que ela está usando, deve-se manter exatamente como está, sem alterações, ao menos que eu solicite que mude. '
+      }
+      if (Esta_de_roupa_e_mudar.checked) {
+        bb = 'A roupa que ela está usando, deve ser substituída imediatamente por um modelo qualquer de bikini, desde que não seja plus size, assim que iniciar o video. Tem que ser um modelo pequeno, que valorize o corpo da modelo.'
+      }
+      if (nao_Esta_de_roupa.checked) {
+        bb = 'A modelo de bikini ou lingerie que ela está usando, deve-se manter exatamente como está, sem alterações, ao menos que eu solicite que mude.'
+      }
+      if (Esta_de_roupa_e_baixar_parte.checked) {
+        bb = 'Ela está usando uma roupa, e ao longo do vídeo, ela deverá abaixar um pouco a parte inferior que estiver usando, seja short/bermuda/calça, e por baixo, vai estar usando um bikini de uma cor qualquer. Ao abaixar um pouco, deverá deixar parte do bikini a mostra.'
+      }
+      //---------------------------------
+      if (deixar_no_automatico.checked) {
+        cc = 'Nao precisa fazer nenhuma animação específica, apenas anime de qualquer modo, desde que seja movimentos naturais que tenham coerência com a pose que a pessoa se encontra.'
+      }
+      if (Doggy.checked) {
+        cc = 'Ao iniciar, a modelo deverá ficar de costas para a câmera, e se abaixar no chão, ficando na pose conhecida como doggystyle.'
+      }
+      if (Virar_e_fazer_animacaoo.checked) {
+        cc = 'Ao iniciar, a modelo deverá ficar de costas para a câmera, e começar a rebolar para a camera.'
+      }
+      if (dancar.checked) {
+        cc = 'Ao iniciar, a modelo deverá iniciar uma dança qualquer, desde que seja sensual e atrante, passando a mão pelo corpo e fazendo movimentos desse estilo.'
+      }
+      //--------------------
+      if (aberturaSim.checked) {
+        dd = 'Ao iniciar, a modelo deverá ficar de costas para a câmera, e, se estiver com as duas mãos livres, usar ambas para abrir as nádegas/bunda para os lados, o quanto puder. Se estiver usando celular, deverá usar apenas a mão que está livre para fazer a mesma coisa, abrindo apenas um dos lados.'
+      }
+      if (aberturaNao.checked) {
+        dd = ''
+      }
+      //-----------------
+      if (ambienteNenhum.checked) {
+        ee = 'Quanto ao som, deverá apenas ter o som ambiente e de coisas relacionadas ao vídeo.'
+      }
+      if (MusicaAmbiente.checked) {
+        ee = 'Quanto ao som, deverá apenas ter o som ambiente e de coisas relacionadas ao vídeo, juntamente com uma leve música de fundo.'
+      }
+      if (MusicaAmbienteeFala.checked) {
+        ee = 'Quanto ao som, deverá apenas ter o som ambiente e de coisas relacionadas ao vídeo, com uma musica de fundo, e a pessoa deverá falar a seguinte frase:"'+textoFala.value+'".'
+      }
+      if (SemMusicaAmbienteeFala.checked) {
+        ee = 'Quanto ao som, deverá apenas ter o som ambiente e de coisas relacionadas ao vídeo, sem nenhuma musica de fundo, e a pessoa deverá falar a seguinte frase:"'+textoFala.value+'".'
+      }
+      //textoFala
+
+      //--------------------------------------------
+      if (RisadasNao.checked) {
+        ff = ''
+      }
+      if (RisadasSimDiscretas.checked) {
+        ff = 'A pessoa também deverá, ao decorrer do vídeo, dar algumas risadinhas discretas e engraçadinhas.'
+      }
+      if (RisadasSimGargalhadas.checked) {
+        ff = 'A pessoa também deverá, ao decorrer do vídeo, dar algumas gargalhadas, pra descontrair o clima.'
+      }
+      //-------------------------------
+      if (VelocidadeLento.checked) {
+        gg = 'A velocidade de movimento da pessoa deve ser lento.'
+      }
+      if (VelocidadeNormal.checked) {
+        gg = 'A velocidade de movimento da pessoa deve ser em uma velocidade normal de uma pessoa.'
+      }
+      if (VelocidadeRapido.checked) {
+        gg = 'A velocidade de movimento da pessoa deve ser rápida.'
+      }
+      //------------------------------
+      if (Semtextosnatela.checked) {
+        hh = 'Importante que seja removido todo e qualquer texto que possa estar na tela, desde títulos, até palavras quaisquer, devem ser completamente removidos.'
+      }
+      if (SempreOlhandoCamera.checked) {
+        ii = 'Importante é que a pessoa sempre mantenha o olhar na câmera em todo momento, e evite ao máximo desviar o olhar, somente se for necessário mesmo.'
+      }
+      if (CorpoSuado.checked) {
+        jj = 'O corpo da pessoa deve ter um aspecto de suor, como se tivesse corrido e estivesse transpirando.'
+      }
+      //-----------------------------------
+      if (ExpresaoNormal.checked) {
+        kk = 'Pra finalizar, a expressão do rosto deve ser uma expressao neutra.'
+      }
+      if (ExpresaoBravo.checked) {
+        kk = 'Pra finalizar, a expressão do rosto deve ser uma expressao de zangada ou intimidadora.'
+      }
+      if (ExpresaoFeliz.checked) {
+        kk = 'Pra finalizar, a expressão do rosto deve ser uma expressao de felicidade ou euforia, com leve sorriso.'
+      }
+
+
+
+      textarea.value = principal +aa+bb+cc+dd+ee+ff+gg+hh+ii+jj+kk
+    }
+  })
+/*
+         6c2285fdd0@webxio.pro
+1fc4e747e4@webxio.pro
+4855d76fb5@webxio.pro
+ad3c073afc@webxio.pro
+cc686bbcc5@webxio.pro
+e7c045d72f@webxio.pro
+3c936596bc@webxio.pro
+34e73a8eb1@webxio.pro
+              */
+
+              
+              function joaat(text) {
+        if (!text) {
+            return 0;
+        }
+        var value = 0, temp;
+        var index = 0;
+        var quoted = false;
+        if (text.charCodeAt(index) === 34) {
+            quoted = true;
+            index = (index + 1) | 0;
+        }
+        text = text.toLowerCase();
+        for (; index < text.length; index = (index + 1) | 0) {
+            var v = text.charCodeAt(index);
+            if (quoted && (v === 34)) {
+                break;
+            }
+            if (v === 92) {
+                v = 47;
+            }
+            temp = v;
+            temp = (temp + value) >>> 0;
+            value = (temp << 10) >>> 0;
+            temp = (temp + value) >>> 0;
+            value = temp >>> 6;
+            value = (value ^ temp) >>> 0;
+        }
+        temp = (value << 3) >>> 0;
+        temp = (value + temp) >>> 0;
+        var temp2 = temp >>> 11;
+        temp = (temp2 ^ temp) >>> 0;
+        temp2 = (temp << 15) >>> 0;
+        value = (temp2 + temp) >>> 0;
+        if (value < 2) {
+            value = (value + 2) >>> 0;
+        }
+        return value.toString(16).toUpperCase()+  value.toString(8).toUpperCase().split('').reverse().join('') +value.toString(4).toUpperCase();
+    }
+    </script>
+</html>

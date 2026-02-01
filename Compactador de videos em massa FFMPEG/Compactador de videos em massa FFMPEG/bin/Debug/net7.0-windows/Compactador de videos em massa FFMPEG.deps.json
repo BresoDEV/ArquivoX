@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Compactador de videos em massa FFMPEG/1.0.0": {
+        "runtime": {
+          "Compactador de videos em massa FFMPEG.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Compactador de videos em massa FFMPEG/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

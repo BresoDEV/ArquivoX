@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\User\\AppData\\Roaming\\ftp\\ArquivoX\\ArquivoXTool\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E68CCD-07B4-4C8F-9B73-E2FC11293B72}|ArquivoXTool\\ArquivoXTool.csproj|c:\\users\\user\\appdata\\roaming\\ftp\\arquivox\\arquivoxtool\\arquivoxtool\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3E68CCD-07B4-4C8F-9B73-E2FC11293B72}|ArquivoXTool\\ArquivoXTool.csproj|solutionrelative:arquivoxtool\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E68CCD-07B4-4C8F-9B73-E2FC11293B72}|ArquivoXTool\\ArquivoXTool.csproj|c:\\users\\user\\appdata\\roaming\\ftp\\arquivox\\arquivoxtool\\arquivoxtool\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D3E68CCD-07B4-4C8F-9B73-E2FC11293B72}|ArquivoXTool\\ArquivoXTool.csproj|solutionrelative:arquivoxtool\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3E68CCD-07B4-4C8F-9B73-E2FC11293B72}|ArquivoXTool\\ArquivoXTool.csproj|c:\\users\\user\\appdata\\roaming\\ftp\\arquivox\\arquivoxtool\\arquivoxtool\\x.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3E68CCD-07B4-4C8F-9B73-E2FC11293B72}|ArquivoXTool\\ArquivoXTool.csproj|solutionrelative:arquivoxtool\\x.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "X.cs",
+              "DocumentMoniker": "C:\\Users\\User\\AppData\\Roaming\\ftp\\ArquivoX\\ArquivoXTool\\ArquivoXTool\\X.cs",
+              "RelativeDocumentMoniker": "ArquivoXTool\\X.cs",
+              "ToolTip": "C:\\Users\\User\\AppData\\Roaming\\ftp\\ArquivoX\\ArquivoXTool\\ArquivoXTool\\X.cs",
+              "RelativeToolTip": "ArquivoXTool\\X.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAlwCsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T23:18:07.506Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\User\\AppData\\Roaming\\ftp\\ArquivoX\\ArquivoXTool\\ArquivoXTool\\Form1.cs",
+              "RelativeDocumentMoniker": "ArquivoXTool\\Form1.cs",
+              "ToolTip": "C:\\Users\\User\\AppData\\Roaming\\ftp\\ArquivoX\\ArquivoXTool\\ArquivoXTool\\Form1.cs",
+              "RelativeToolTip": "ArquivoXTool\\Form1.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAUwCQAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-13T04:51:47.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\User\\AppData\\Roaming\\ftp\\ArquivoX\\ArquivoXTool\\ArquivoXTool\\Form1.cs",
+              "RelativeDocumentMoniker": "ArquivoXTool\\Form1.cs",
+              "ToolTip": "C:\\Users\\User\\AppData\\Roaming\\ftp\\ArquivoX\\ArquivoXTool\\ArquivoXTool\\Form1.cs [Projeto]",
+              "RelativeToolTip": "ArquivoXTool\\Form1.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T23:02:50.51Z",
+              "EditorCaption": " [Projeto]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

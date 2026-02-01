@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ArquivoXTool.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="PastaImagens" Type="System.String" Scope="User">
+      <Value Profile="(Default)">vazio</Value>
+    </Setting>
+    <Setting Name="PastaVideos" Type="System.String" Scope="User">
+      <Value Profile="(Default)">vazio</Value>
+    </Setting>
+    <Setting Name="Senha" Type="System.String" Scope="User">
+      <Value Profile="(Default)">vazio</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

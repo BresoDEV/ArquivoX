@@ -1,0 +1,53 @@
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.exe
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.deps.json
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.runtimeconfig.json
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.dll
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.pdb
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.Form1.resources
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.csproj.GenerateResource.cache
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.AssemblyInfo.cs
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.dll
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\refint\ArquivoXTool.dll
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.pdb
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.genruntimeconfig.cache
+C:\Users\User\Desktop\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ref\ArquivoXTool.dll
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.exe
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.dll.config
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.deps.json
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.runtimeconfig.json
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.dll
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.pdb
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.csproj.AssemblyReference.cache
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.Form1.resources
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.Properties.Resources.resources
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.csproj.GenerateResource.cache
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.AssemblyInfoInputs.cache
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.AssemblyInfo.cs
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.csproj.CoreCompileInputs.cache
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.dll
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\refint\ArquivoXTool.dll
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.pdb
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.genruntimeconfig.cache
+D:\Github Repositorios\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ref\ArquivoXTool.dll
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.exe
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.dll.config
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.deps.json
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.runtimeconfig.json
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.dll
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\bin\Debug\net6.0-windows\ArquivoXTool.pdb
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.Form1.resources
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.Properties.Resources.resources
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.csproj.GenerateResource.cache
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.AssemblyInfoInputs.cache
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.AssemblyInfo.cs
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.csproj.CoreCompileInputs.cache
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.dll
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\refint\ArquivoXTool.dll
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.pdb
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ArquivoXTool.genruntimeconfig.cache
+C:\Users\User\AppData\Roaming\ftp\ArquivoX\ArquivoXTool\ArquivoXTool\obj\Debug\net6.0-windows\ref\ArquivoXTool.dll

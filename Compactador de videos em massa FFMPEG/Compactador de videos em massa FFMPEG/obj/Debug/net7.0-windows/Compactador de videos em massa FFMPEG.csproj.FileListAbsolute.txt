@@ -1,0 +1,34 @@
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\bin\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.exe
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\bin\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.deps.json
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\bin\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.runtimeconfig.json
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\bin\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.dll
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\bin\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.pdb
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.csproj.AssemblyReference.cache
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador_de_videos_em_massa_FFMPEG.Form1.resources
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.csproj.GenerateResource.cache
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.AssemblyInfoInputs.cache
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.AssemblyInfo.cs
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.csproj.CoreCompileInputs.cache
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.dll
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\refint\Compactador de videos em massa FFMPEG.dll
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.pdb
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.genruntimeconfig.cache
+C:\Users\eduar\Desktop\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\ref\Compactador de videos em massa FFMPEG.dll
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\bin\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.exe
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\bin\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.deps.json
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\bin\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.runtimeconfig.json
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\bin\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.dll
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\bin\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.pdb
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.csproj.AssemblyReference.cache
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador_de_videos_em_massa_FFMPEG.Form1.resources
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.csproj.GenerateResource.cache
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.GeneratedMSBuildEditorConfig.editorconfig
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.AssemblyInfoInputs.cache
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.AssemblyInfo.cs
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.csproj.CoreCompileInputs.cache
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.dll
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\refint\Compactador de videos em massa FFMPEG.dll
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.pdb
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\Compactador de videos em massa FFMPEG.genruntimeconfig.cache
+D:\Github Repositorios\ArquivoX\Compactador de videos em massa FFMPEG\Compactador de videos em massa FFMPEG\obj\Debug\net7.0-windows\ref\Compactador de videos em massa FFMPEG.dll
