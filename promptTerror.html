@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionário</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #111;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: #1b1b1b;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .pergunta {
+      margin-bottom: 25px;
+    }
+
+    .pergunta p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .opcao {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+
+    .input-area {
+      margin-top: 20px;
+    }
+
+    input[type="text"],
+    select,
+    option {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      background: #2a2a2a;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      background: #2a2a2a;
+      color: #fff;
+      font-size: 15px;
+      margin-top: 15px;
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 6px;
+      background: purple;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #43a047;
+    }
+
+    @media (max-width:600px) {
+
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 18px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Devil Prompts</h1>
+
+    <form>
+
+
+      <!----------------------------------->
+      <div class="pergunta">
+        <p>Qual tipo de criatura?</p>
+        <label class="opcao">
+          <input type="checkbox" id="criaturaPessoa"> Pessoa
+        </label>
+        <label class="opcao">
+          <input type="checkbox" id="criaturaAnjo"> Anjo
+        </label>
+        <label class="opcao">
+          <input type="checkbox" id="criaturaDemonio"> Demonio
+        </label>
+        <label class="opcao">
+          <input type="checkbox" id="criaturaVampira"> Vampira
+        </label>
+        <label class="opcao">
+          <input type="checkbox" id="criaturaZumbi"> Zumbi
+        </label>
+      </div>
+      <!----------------------------------->
+      <hr>
+      <!----------------------------------->
+      <div class="pergunta">
+        <p>Qual tipo de cabelo?</p>
+
+
+        <select name="" id="corcabelo">
+          <option value="metade preto e metade branco">Preto e Branco</option>
+          <option value="preta">Preto</option>
+          <option value="loira">Loiro</option>
+          <option value="ruiva">Ruivo</option>
+          <option value="branca">Branco</option>
+          <option value="azul">Azul</option>
+          <option value="verde">Verde</option>
+        </select>
+        <br>
+        <br>
+        <select name="" id="tipocabelo">
+          <option value="liso">Liso</option>
+          <option value="ondulado">Ondulado</option>
+          <option value="cacheado">Cacheado</option>
+          <option value="estilo EMO">Estilo EMO</option>
+        </select>
+        <br>
+        <br>
+        <select name="" id="tamanhocabelo">
+          <option value="curtinho">Curto</option>
+          <option value="medio">Medio</option>
+          <option value="longo">Longo</option>
+        </select>
+
+
+      </div>
+      <!----------------------------------->
+      <hr>
+      <!----------------------------------->
+      <div class="pergunta">
+        <p>Detalhes do corpo:</p>
+        <label class="opcao">
+          <input type="checkbox" id="Sanguepelocorpo"> Sangue pelo corpo
+        </label>
+        <label class="opcao">
+          <input type="checkbox" id="Tatuagenspretas"> Tatuagens pretas
+        </label>
+        <label class="opcao">
+          <input type="checkbox" id="Tatuagenscoloridas"> Tatuagens coloridas
+        </label>
+        <label class="opcao">
+          <input type="checkbox" id="Roupacurta"> Roupa curta
+        </label>
+        <label class="opcao">
+          <input type="checkbox" id="Rouparasgada"> Roupa rasgada
+        </label>
+      </div>
+      <!----------------------------------->
+      <hr>
+      <!----------------------------------->
+      <div class="pergunta">
+        <p>Cenario:</p>
+        <select name="" id="Cenario">
+          <option value="qualquer lugar"><b>Qualquer lugar</b></option>
+          <option value="uma banheira de sangue">Banheira de Sangue</option>
+          <option value="um quarto,sentada ou deitada na cama, ">Quarto</option>
+          <option value="um quarto infantil">Quarto Infantil</option>
+          <option value="um parquinho">Parquinho</option>
+          <option value="uma funeraria">Funeraria</option>
+          <option value="um cemiterio">Cemiterio</option>
+          <option value="uma igreja">Igreja</option>
+          <option value="uma masmorra">Masmorra</option>
+          <option value="uma catacumba">Catacumba</option>
+          <option value="uma biblioteca">Biblioteca</option>
+          <option value="uma floresta">Floresta</option>
+          <option value="dentro de um trem">Dentro de um Trem</option>
+          <option value="um açougue">Açougue</option>
+          <option value="um matadouro">Matadouro</option>
+          <option value="uma praçinha">Praçinha</option>
+          <option value="um cinema">Cinema</option>
+          <option value="um milharal">Milharal</option>
+          <option value="uma fazenda de porcos">Fazenda de Porcos</option>
+          <option value="um poço de sangue">Poço de Sangue</option>
+          <option value="um altar de sacrificio">Altar de Sacrificio</option>
+          <option value="uma sala de tortura">Sala de Tortura</option>
+          <option value="um castelo medieval">Castelo Medieval</option>
+          <option value="um hospital">Hospital</option>
+          <option value="um necroterio">Necroterio</option>
+          <option value="um matagal">Matagal</option>
+          <option value="uma mina abandonada">Mina abandonada</option>
+          <option value="um interior de uma piramine egipcia">Interior de uma piramine egipcia</option>
+          <option value="um Iate (barco)">Iate (barco)</option>
+          <option value="um bar noturno">Bar noturno</option>
+          <option value="no inferno">Inferno</option>
+          <option value="um manicomio">Manicomio</option>
+        </select>
+
+      </div>
+      <!----------------------------------->
+      <hr>
+      <div class="pergunta">
+        <p>Complemento:</p>
+        <input type="text" id="complemento" placeholder="Ex: Fazendo tal coisa, tal roupa, etc...">
+      </div>
+      <!----------------------------------->
+      <hr>
+      <div class="input-area">
+
+
+        <input type="text" id="senha" placeholder="Senha. Dica: banri 4 digitos ">
+
+        <button type="button" id="Confirmar">Confirmar</button>
+
+        <textarea id="textarea" placeholder=""></textarea>
+
+      </div>
+
+      <hr>
+
+      <div class="input-area">
+        <button type="button" id="resetarAparencia">(foto) Remover aparencia demoniaca</button>
+        <button type="button" id="Rebolar">(video) Rebolar</button>
+      </div>
+
+    </form>
+
+  </div>
+
+</body>
+<script>
+
+  function animBotao(botao) {
+    var bkup = botao.textContent;
+    botao.textContent = 'Prompt copiado'
+    botao.style.backgroundColor = '#4CAF50'
+    setTimeout(() => {
+      botao.textContent = bkup
+      botao.style.backgroundColor = 'purple'
+    }, 3000);
+  }
+
+
+  document.getElementById('resetarAparencia').addEventListener('click', () => {
+
+    navigator.clipboard.writeText('Agora coloca ela em um cenário normal como um quarto ou uma sala e remova todos os resquícios demoníacos que possuem nela como chifres o sangue e todo reto e deixe alguma pessoa normal, com roupas normais do dia a dia, em uma posição diferente, porém mantendo as características físicas')
+    animBotao(document.getElementById('resetarAparencia'))
+
+  })
+
+  document.getElementById('Rebolar').addEventListener('click', () => {
+
+    navigator.clipboard.writeText('Acenar delicadamente para a camera e depois doggystyle rebolando devagar para a camera de costas, olhando por cima do ombro e sorrindo')
+    animBotao(document.getElementById('Rebolar'))
+
+  })
+
+
+
+  const criaturaPessoa = document.getElementById('criaturaPessoa')
+  const criaturaAnjo = document.getElementById('criaturaAnjo')
+  const criaturaDemonio = document.getElementById('criaturaDemonio')
+  const criaturaVampira = document.getElementById('criaturaVampira')
+  const criaturaZumbi = document.getElementById('criaturaZumbi')
+
+
+  const Sanguepelocorpo = document.getElementById('Sanguepelocorpo')
+  const Tatuagenspretas = document.getElementById('Tatuagenspretas')
+  const Tatuagenscoloridas = document.getElementById('Tatuagenscoloridas')
+  const Roupacurta = document.getElementById('Roupacurta')
+  const Rouparasgada = document.getElementById('Rouparasgada')
+
+
+  const tipocabelo = document.getElementById('tipocabelo')
+  const corcabelo = document.getElementById('corcabelo')
+  const tamanhocabelo = document.getElementById('tamanhocabelo')
+
+
+  const Cenario = document.getElementById('Cenario')
+
+
+
+  const senha = document.getElementById('senha')
+  const Confirmar = document.getElementById('Confirmar')
+  const textarea = document.getElementById('textarea')
+
+
+  Confirmar.addEventListener('click', () => {
+    gerarPrompt()
+  })
+
+
+  function gerarPrompt() {
+
+    //senha
+    if (senha.value == '') {
+      senha.style.border='3px solid red'
+      setTimeout(() => {
+        senha.style.border='none'
+      }, 3000);
+      return;
+    }
+    if (joaat(senha.value) !== '4861AC10020623030111020120122300100') {
+      senha.style.border='3px solid red'
+      setTimeout(() => {
+        senha.style.border='none'
+      }, 3000);
+      return;
+    }
+
+
+
+
+
+
+    var s = '';
+
+    if (criaturaPessoa.checked) {
+      s = 'Fotorealista, mulher de aproximadamente 18 a 20 anos, extremamente atraente, seios grandes siliconados e perfeitos durinhos, corpo definido e atlético, extremamente sensual, provocante e sexualmente carregada, olhos intensos e brilhantes, expressão sedutora,';
+    }
+
+    if (criaturaAnjo.checked) {
+      s = 'Fotorealista, mulher híbrida com anjo, de aproximadamente 18 a 20 anos, extremamente atraente e angelical, mistura perfeita de anjo, seios grandes siliconados e perfeitos durinhos, corpo definido e atlético, extremamente sensual, provocante e sexualmente carregada, olhos angelicais intensos e brilhantes, expressão sedutora e angelical simultaneamente,';
+    }
+
+    if (criaturaDemonio.checked) {
+      s = 'Fotorealista, mulher de aproximadamente 18 a 20 anos, híbrida com demônio, extremamente atraente e aterrorizante ao mesmo tempo, mistura perfeita de demônio, seios grandes siliconados e perfeitos durinhos, corpo definido e atlético, extremamente sensual, provocante e sexualmente carregada, olhos demoníacos intensos e brilhantes, expressão sedutora e assustadora simultaneamente,';
+    }
+    if (criaturaVampira.checked) {
+      s = 'Fotorealista, mulher de aproximadamente 18 a 20 anos, vampira extremamente atraente, seios grandes siliconados e perfeitos durinhos, corpo definido e atlético, extremamente sensual, provocante e sexualmente carregada, olhos demoníacos intensos e brilhantes, expressão sedutora e assustadora simultaneamente,';
+    }
+    if (criaturaZumbi.checked) {
+      s = 'Fotorealista, mulher de aproximadamente 18 a 20 anos, híbrida com zumbi extremamente atraente e aterrorizante ao mesmo tempo, mistura perfeita de zumbi, seios grandes siliconados e perfeitos durinhos, corpo definido e atlético, extremamente sensual, provocante e sexualmente carregada, olhos demoníacos intensos e brilhantes, expressão sedutora e assustadora simultaneamente,';
+    }
+    //----------------------------------
+
+    s += 'A pessoa deve ter o cabelo ';
+    s += tipocabelo.value + ' e o comprimento do cabelo deve ser ' + tamanhocabelo.value;
+    s += ', na cor ' + corcabelo.value;
+    s += '. ';
+
+    //-------------------------------------------
+    if (Sanguepelocorpo.checked) {
+      s += 'A pele dela deve estar coberta de sangue fresco escorrendo. ';
+    }
+    if (Tatuagenscoloridas.checked) {
+      s += 'Ela deve ter várias tatuagens coloridas pelo corpo. ';
+    }
+    if (Tatuagenspretas.checked) {
+      s += 'Ela deve ter várias tatuagens pretas blackwork pelo corpo. ';
+    }
+    if (Roupacurta.checked) {
+      s += 'Deve estar vestindo roupa curta, que cobre muito pouco do corpo, tecido justo, que transmite forte sexualidade e sedução. ';
+    }
+    if (Rouparasgada.checked) {
+      s += 'Deve estar vestindo roupa curta e rasgada e suja, que cobre muito pouco do corpo, tecido justo, que transmite forte sexualidade e sedução. ';
+
+    }
+
+    //-----------------------------
+    s += 'Deve estar posando de forma extremamente provocante e desafiadora. O cenario deve ser ';
+    s += Cenario.value
+    s += ' abandonado, com clima sombrio e assustador'
+
+
+
+
+    s += ', iluminação realista dramática, ultra detalhado, fotorealismo máximo. ';
+    s += document.getElementById('complemento').value;
+
+    textarea.value = s;
+
+
+    navigator.clipboard.writeText(textarea.value)
+  }
+
+
+ 
+
+
+function joaat(text) {
+        if (!text) {
+            return 0;
+        }
+        var value = 0, temp;
+        var index = 0;
+        var quoted = false;
+        if (text.charCodeAt(index) === 34) {
+            quoted = true;
+            index = (index + 1) | 0;
+        }
+        text = text.toLowerCase();
+        for (; index < text.length; index = (index + 1) | 0) {
+            var v = text.charCodeAt(index);
+            if (quoted && (v === 34)) {
+                break;
+            }
+            if (v === 92) {
+                v = 47;
+            }
+            temp = v;
+            temp = (temp + value) >>> 0;
+            value = (temp << 10) >>> 0;
+            temp = (temp + value) >>> 0;
+            value = temp >>> 6;
+            value = (value ^ temp) >>> 0;
+        }
+        temp = (value << 3) >>> 0;
+        temp = (value + temp) >>> 0;
+        var temp2 = temp >>> 11;
+        temp = (temp2 ^ temp) >>> 0;
+        temp2 = (temp << 15) >>> 0;
+        value = (temp2 + temp) >>> 0;
+        if (value < 2) {
+            value = (value + 2) >>> 0;
+        }
+        return value.toString(16).toUpperCase()+  value.toString(8).toUpperCase().split('').reverse().join('') +value.toString(4).toUpperCase();
+    }
+
+
+
+
+  //const  = document.getElementById('')
+
+
+
+</script>
+
+</html>
