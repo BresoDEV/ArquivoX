@@ -250,7 +250,7 @@ catch (Exception o)
                 {
                     using (Bitmap copia = new Bitmap(picturebox.Image))
                     {
-                        copia.Save(path+"/"+Utilitarios.gerarSenha(5)+".png", System.Drawing.Imaging.ImageFormat.Png);
+                        copia.Save(path+"/"+Utilitarios.gerarSenha(5)+".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
                         Utilitarios.Log("Imagens salva com sucesso");
                     }
                 }
@@ -628,7 +628,7 @@ catch (Exception o)
                 {
                     PictureBox p = new PictureBox();
                     p.Image = new Bitmap(Texto.Converter_para_imagem(File.ReadAllText(pastaImagens + "/img (" + i + ").txt")));
-                    Imagens.Salvar_imagem(p, pastaImagens + "/img (" + i + ").png");
+                    Imagens.Salvar_imagem(p, pastaImagens + "/img (" + i + ").jpg");
                     ct++;
                 }
                 else
