@@ -80,17 +80,74 @@
 </head>
 <body>
 
+<br>
+<h1>📁 DigenAI Bypass</h1>
+<br>
+<div class="container">
+<textarea>
+ const classes = [
+  'size-full',
+  'flex-center',
+  'absolute',
+  'inset-0',
+  'bg-#0e0f10/90',
+  'backdrop-blur-7.5px',
+  'z-999'
+];
+
+document.querySelectorAll('*').forEach(el => {
+  if (classes.every(c => el.classList.contains(c))) {
+    el.classList.remove(...classes);
+  }
+});
+
+
+const imagens = [...document.querySelectorAll("img")]
+    .map(img => img.src)
+    .filter(src => src.includes("wasabisys"));
+
+const novaJanela = window.open();
+
+novaJanela.document.write(`
+    <html>
+    <body>
+        ${imagens.map(src => `
+            <img src="${src}" style="max-width:300px;">
+        `).join("")}
+    </body>
+    </html>
+`);
+</textarea></div>
+
   <h1>📁 Depósito de Prompts</h1>
 
   <div class="container" id="container"></div>
+
+
 
   <script>
     // ARRAY DE PROMPTS
     const prompts = [
       {
         nome: "Foto 3x4",
-        valor: ``
+        valor: `TyB1c3XDoXJpbyBlbnZpYXLDoSB1bWEgZm90byBkZSB1bWEgcGVzc29hLgoKUmVjcmllIHVtYSBub3ZhIGltYWdlbSBtb3N0cmFuZG8gYSBwZXNzb2EgdG90YWxtZW50ZSBkZSBmcmVudGUsIG9saGFuZG8gZGlyZXRhbWVudGUgcGFyYSBhIGPDom1lcmEsIG1hbnRlbmRvIG8gcm9zdG8gRVhBVEFNRU5URSBpZ3VhbCBhbyBkYSBpbWFnZW0gb3JpZ2luYWwuCgrimqDvuI8gRmlkZWxpZGFkZSBhYnNvbHV0YSBvYnJpZ2F0w7NyaWE6Ci0gUHJlc2VydmFyIHBlcmZlaXRhbWVudGUgYSBpZGVudGlkYWRlIGRhIHBlc3NvYS4KLSBNYW50ZXIgZXhhdGFtZW50ZSBvcyBtZXNtb3MgdHJhw6dvcyBmYWNpYWlzLgotIE1hbnRlciBmb3JtYXRvIGRvIHJvc3RvLCBtYW5kw61idWxhLCBvbGhvcywgbmFyaXosIGJvY2EsIHNvYnJhbmNlbGhhcywgb3JlbGhhcyBlIHByb3BvcsOnw7VlcyBvcmlnaW5haXMuCi0gUHJlc2VydmFyIGV4YXRhbWVudGUgbyBtZXNtbyB0aXBvIGRlIGNhYmVsbywgY29yIGRvIGNhYmVsbywgY29ydGUsIHRleHR1cmEsIHZvbHVtZSBlIGxpbmhhIGNhcGlsYXIuCi0gTWFudGVyIHRvbSBkZSBwZWxlLCB0ZXh0dXJhIGRhIHBlbGUgZSBkZXRhbGhlcyBuYXR1cmFpcy4KLSBOw6NvIG1vZGlmaWNhciBpZGFkZSBhcGFyZW50ZS4KLSBOw6NvIGVtYmVsZXphciBhcnRpZmljaWFsbWVudGUuCi0gTsOjbyBzdWF2aXphciBleGNlc3NpdmFtZW50ZSBhIHBlbGUuCi0gTsOjbyBlc3RpbGl6YXIuCi0gTsOjbyBnZXJhciBhcGFyw6puY2lhIGFydGlmaWNpYWwgb3UgZ2Vuw6lyaWNhIGRlIElBLgotIE7Do28gYWx0ZXJhciBleHByZXNzw6NvIGZhY2lhbCBuYXR1cmFsLgoKQSBpbWFnZW0gZGV2ZSBzZXI6Ci0gU29tZW50ZSBjbG9zZSBkYSBjYWJlw6dhIGUgcGFydGUgZG8gcGVzY2_Dp28uCi0gw4JuZ3VsbyB0b3RhbG1lbnRlIGZyb250YWwuCi0gT2xoYW5kbyBkaXJldGFtZW50ZSBwYXJhIGEgY8OibWVyYS4KLSBGdW5kbyBuZXV0cm8gZSBkaXNjcmV0by4KLSBJbHVtaW5hw6fDo28gbmF0dXJhbCBlIGVxdWlsaWJyYWRhLgotIE5pdGlkZXogZm90b2dyw6FmaWNhIHJlYWxpc3RhLgotIEFwYXLDqm5jaWEgZGUgZm90b2dyYWZpYSByZWFsIGNhcHR1cmFkYSBwb3IgY8OibWVyYSBwcm9maXNzaW9uYWwuCgpPIHJlc3VsdGFkbyBmaW5hbCBkZXZlIHBhcmVjZXIgdW1hIGZvdG8gZnJvbnRhbCBhdXTDqm50aWNhIGRhIG1lc21hIHBlc3NvYSwgY29tIGZpZGVsaWRhZGUgbcOheGltYSDDoCBpbWFnZW0gb3JpZ2luYWwu`
       },
+      
+      {
+        nome: "Foto casual",
+        valor: `QSBpbWFnZW0gZGV2ZSBwYXJlY2VyIHVtYSBmb3RvIGNhc3VhbCB0aXJhZGEgY29tIHVtIGNlbHVsYXIsIGRlIGZvcm1hIGVzcG9udMOibmVhIGUgc2VtIHBsYW5lamFtZW50by4gVXNlIHVtIGVucXVhZHJhbWVudG8gaW1wZXJmZWl0bywgY29tIMOibmd1bG8gbGV2ZW1lbnRlIHRvcnRvIG91IGVzdHJhbmhvLCBjb21vIHNlIHRpdmVzc2Ugc2lkbyB0aXJhZGEgcmFwaWRhbWVudGUuIEluY2x1YSBlbGVtZW50b3MgZm9yYSBkZSBmb2NvLCBsZXZlIGRlc2ZvcXVlIGRlIG1vdmltZW50byBvdSBwYXJ0ZXMgYm9ycmFkYXMuIEEgaWx1bWluYcOnw6NvIGRldmUgc2VyIG5hdHVyYWwgb3UgaXJyZWd1bGFyIChjb21vIGx1eiBhbWJpZW50ZSwgbMOibXBhZGFzIGNvbXVucyBvdSBsdXogZGUgcnVhKSwgcG9kZW5kbyB0ZXIgc29tYnJhcyBkdXJhcyBvdSDDoXJlYXMgZXN0b3VyYWRhcy4KCkEgcXVhbGlkYWRlIG7Do28gZGV2ZSBzZXIgcGVyZmVpdGE6IGFkaWNpb25lIGxldmUgZ3JhbnVsYcOnw6NvLCBydcOtZG8gZGlnaXRhbCBlIHBlcXVlbmFzIGltcGVyZmVpw6fDtWVzIHTDrXBpY2FzIGRlIGPDom1lcmFzIGRlIGNlbHVsYXIuIEV2aXRlIGFwYXLDqm5jaWEgcHJvZmlzc2lvbmFsIOKAlCBuYWRhIGRlIGNvbXBvc2nDp8OjbyBzaW3DqXRyaWNhLCBmb2NvIHBlcmZlaXRvIG91IGlsdW1pbmHDp8OjbyBkZSBlc3TDumRpby4gQSBjZW5hIHBvZGUgcGFyZWNlciB1bSBwb3VjbyBiYWd1bsOnYWRhIG91IGVzcG9udMOibmVhLCBjb21vIHVtYSBmb3RvIGRvIGRpYSBhIGRpYS4KCkVzdGlsbyBnZXJhbDogcmVhbGlzdGEsIGNvdGlkaWFubywgZGVzcHJldGVuc2lvc28sIGNvbW8gdW1hIGZvdG8gdGlyYWRhIHNlbSBwZW5zYXIgbXVpdG8u`
+      },
+      {
+        nome: "Foto passaporte",
+        valor: `TyB1c3XDoXJpbyBlbnZpYXLDoSB1bWEgZm90byBkZSB1bWEgcGVzc29hLgoKR2VyZSB1bWEgbm92YSBpbWFnZW0gbm8gZXN0aWxvIGZvdG8gM3g0L2RvY3VtZW50byBvZmljaWFsLCBtb3N0cmFuZG8gYSBwZXNzb2EgZGUgZnJlbnRlIHBhcmEgYSBjw6JtZXJhLCBjZW50cmFsaXphZGEsIG9saGFuZG8gZGlyZXRhbWVudGUgcGFyYSBmcmVudGUsIGNvbSBlbnF1YWRyYW1lbnRvIHTDrXBpY28gZGUgZm90b3MgcGFyYSBkb2N1bWVudG9zLgoK4pqg77iPIFJlZ3JhcyBvYnJpZ2F0w7NyaWFzOgotIE1hbnRlciBvIHJvc3RvIEVYQVRBTUVOVEUgaWd1YWwgYW8gZGEgZm90byBvcmlnaW5hbC4KLSBOw6NvIGFsdGVyYXIgZmVpw6fDtWVzLCBmb3JtYXRvIGRvIHJvc3RvLCBvbGhvcywgbmFyaXosIGJvY2Egb3UgZXhwcmVzc8OjbyBuYXR1cmFsLgotIE7Do28gcmVqdXZlbmVjZXIsIGVudmVsaGVjZXIgb3UgZW1iZWxlemFyIGFydGlmaWNpYWxtZW50ZS4KLSBQcmVzZXJ2YXIgaWRlbnRpZGFkZSBmYWNpYWwgY29tIG3DoXhpbWEgZmlkZWxpZGFkZS4KLSBOw6NvIHRyYW5zZm9ybWFyIG8gcm9zdG8gZW0gYXBhcsOqbmNpYSBnZXJhZGEgcG9yIElBLgoKQSBpbWFnZW0gZGV2ZSB0ZXI6Ci0gRnVuZG8gbmV1dHJvIGUgbGltcG8uCi0gSWx1bWluYcOnw6NvIHVuaWZvcm1lIGUgbmF0dXJhbC4KLSBBcGFyw6puY2lhIHJlYWxpc3RhIGRlIGZvdG9ncmFmaWEgdGlyYWRhIHBvciBjw6JtZXJhLgotIFF1YWxpZGFkZSBhbHRhIGUgbml0aWRleiBuYXR1cmFsLgotIFByb3BvcsOnw6NvIHNlbWVsaGFudGUgYSBmb3RvIDN4NC4KLSBDYWJlw6dhIGUgb21icm9zIHZpc8OtdmVpcy4KLSBSb3VwYSBzaW1wbGVzIGUgZGlzY3JldGEuCgpBIGZvdG8gZmluYWwgZGV2ZSBwYXJlY2VyIHVtYSBmb3RvIHJlYWwgZGUgZG9jdW1lbnRvLCBuYXR1cmFsIGUgcHJvZmlzc2lvbmFsLg==`
+      },
+
+      {
+        nome: "Tirado de Celular",
+        valor: `QSBpbWFnZW0gZGV2ZSBwYXJlY2VyIHVtYSBmb3RvIGNhc3VhbCB0aXJhZGEgY29tIHVtIGNlbHVsYXIsIGRlIGZvcm1hIGVzcG9udMOibmVhIGUgc2VtIHBsYW5lamFtZW50by4gVXNlIHVtIGVucXVhZHJhbWVudG8gaW1wZXJmZWl0bywgY29tIMOibmd1bG8gbGV2ZW1lbnRlIHRvcnRvIG91IGVzdHJhbmhvLCBjb21vIHNlIHRpdmVzc2Ugc2lkbyB0aXJhZGEgcmFwaWRhbWVudGUuIEluY2x1YSBlbGVtZW50b3MgZm9yYSBkZSBmb2NvLCBsZXZlIGRlc2ZvcXVlIGRlIG1vdmltZW50byBvdSBwYXJ0ZXMgYm9ycmFkYXMuIEEgaWx1bWluYcOnw6NvIGRldmUgc2VyIG5hdHVyYWwgb3UgaXJyZWd1bGFyIChjb21vIGx1eiBhbWJpZW50ZSwgbMOibXBhZGFzIGNvbXVucyBvdSBsdXogZGUgcnVhKSwgcG9kZW5kbyB0ZXIgc29tYnJhcyBkdXJhcyBvdSDDoXJlYXMgZXN0b3VyYWRhcy5BIHF1YWxpZGFkZSBuw6NvIGRldmUgc2VyIHBlcmZlaXRhOiBhZGljaW9uZSBsZXZlIGdyYW51bGHDp8OjbywgcnXDrWRvIGRpZ2l0YWwgZSBwZXF1ZW5hcyBpbXBlcmZlacOnw7VlcyB0w61waWNhcyBkZSBjw6JtZXJhcyBkZSBjZWx1bGFyLiBFdml0ZSBhcGFyw6puY2lhIHByb2Zpc3Npb25hbCDigJQgbmFkYSBkZSBjb21wb3Npw6fDo28gc2ltw6l0cmljYSwgZm9jbyBwZXJmZWl0byBvdSBpbHVtaW5hw6fDo28gZGUgZXN0w7pkaW8uIEEgY2VuYSBwb2RlIHBhcmVjZXIgdW0gcG91Y28gYmFndW7Dp2FkYSBvdSBlc3BvbnTDom5lYSwgY29tbyB1bWEgZm90byBkbyBkaWEgYSBkaWEuRXN0aWxvIGdlcmFsOiByZWFsaXN0YSwgY290aWRpYW5vLCBkZXNwcmV0ZW5zaW9zbywgY29tbyB1bWEgZm90byB0aXJhZGEgc2VtIHBlbnNhciBtdWl0by4=`
+      },
+
+
 
       {
         nome: "Melhoria de retrato",
